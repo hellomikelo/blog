@@ -10,8 +10,8 @@ description:         Personal Blog
 # url:                 http://lanyon.getpoole.com
 # url:                 https://yuanhunglo.github.io
 url:                 http://www.yuanhunglo.com
-baseurl:             /blog
-# baseurl:             ''
+# baseurl:             /blog
+baseurl:             ''
 paginate:            5
 
 # About/contact
