@@ -9,8 +9,9 @@ tagline:             Design and Data Science
 description:         Personal Blog
 # url:                 http://lanyon.getpoole.com
 # url:                 https://yuanhunglo.github.io
-# url:                 www.yuanhunglo.com
-baseurl:             /blog
+url:                 www.yuanhunglo.com
+# baseurl:             /blog
+baseurl:             ''
 paginate:            5
 
 # About/contact
