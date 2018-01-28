@@ -10,7 +10,7 @@ description:         'A reserved <a href="http://jekyllrb.com" target="_blank">J
 # url:                 http://lanyon.getpoole.com
 url:                 https://yuanhunglo.github.io
 # url:                 https://yuanhunglo.com
-baseurl:             '/blog'
+baseurl:             '/blog/'
 paginate:            5
 
 # About/contact
