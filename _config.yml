@@ -24,3 +24,5 @@ version:             1.0.0
 
 gems: [jekyll-paginate]
   paginate_path: "page:num" 
+
+theme: jekyll-theme-cayman
