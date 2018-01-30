@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Exploding text in lithographic mask design using AutCAD and Inkscape
+published: true
+future: true
 ---
 
 
