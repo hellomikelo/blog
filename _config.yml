@@ -11,7 +11,7 @@ description:         ''
 # url:                 http://127.0.0.1:4444
 # baseurl:             '/blog/'
 baseurl:             http://yuanhunglo.github.io/blog
-paginate:            1
+paginate:            5
 port:                4444
 
 # About/contact
@@ -23,7 +23,7 @@ author:
 # Custom vars
 version:             1.0.0
 
-# gems: [jekyll-paginate]
-# paginate_path: "page:num" 
+gems: [jekyll-paginate]
+paginate_path: "/blog/page:num" 
 
 # theme: jekyll-theme-cayman
