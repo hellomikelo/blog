@@ -13,6 +13,7 @@ description:         Personal Blog
 baseurl:             http://yuanhunglo.github.io/blog
 # baseurl:             ''
 paginate:            5
+port:                4444
 
 # About/contact
 author:
