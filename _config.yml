@@ -1,8 +1,6 @@
 # Permalinks
-#
-# Use of `relative_permalinks` ensures post links from the index work properly.
-permalink:           date
-# relative_permalinks: true 
+permalink:           pretty
+relative_permalinks: true 
 
 # Setup
 title:               Mike Lo
