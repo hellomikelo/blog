@@ -1,10 +1,12 @@
+permalink: pretty
+
 # Setup
 title:               Mike Lo
 tagline:             "Design and Data Science"
 description:         "Mike's Blog"
 # url:                 http://yuanhunglo.github.io
 #baseurl:             http://yuanhunglo.github.io/blog/
-url:             "http://yuanhunglo.github.io/blog"
+url: "http://yuanhunglo.github.io/blog"
 # baseurl:             ''
 paginate:            5
 
@@ -17,39 +19,4 @@ author:
 # Custom vars
 version:             1.0.0
 
-permalink: pretty
 
-
-
-# Permalinks
-#
-# Use of `relative_permalinks` ensures post links from the index work properly.
-# permalink:           date
-#permalink:           pretty
-#relative_permalinks: true
-
-# Setup
-#title:               Mike Lo
-#tagline:             Design and Data Science
-#description:         ''
-# url:                 http://yuanhunglo.github.io 
-# url:                 http://127.0.0.1:4444
-# baseurl:             '/blog/'
-#baseurl:             http://yuanhunglo.github.io/blog
-
-#paginate:            5
-#port:                4444
-
-# About/contact
-# author:
-#  name:              Mark Otto
-#  url:               https://twitter.com/mdo
-#  email:             markdotto@gmail.com
-
-# Custom vars
-#version:             1.0.0
-
-#gems: [jekyll-paginate]
-#  paginate_path: "/blog/page:num" 
-
-# theme: jekyll-theme-cayman
