@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About Me
+title: About Mike
 ---
 
 Hello, my name is Mike. I am currently a PhD candidate in UCLA Department of Bioengineering, working in John Miao's [Coherent Imaging Group](http://www.physics.ucla.edu/research/imaging/ "Miao Group") in the Department of Physics. My research revolves around lensless X-ray computational imaging in 2D and 3D, with applications in structural biology. The "computational" aspects come in the flavors of image reconstruction, phase retrieval and optimization. 
