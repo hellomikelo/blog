@@ -1,7 +1,7 @@
 # Setup
 # title:               Mike Lo
-tagline:             'Design and Data Science'
-description:         'Mike's Blog'
+tagline:             "Design and Data Science"
+description:         "Mike's Blog"
 # url:                 http://yuanhunglo.github.io
 #baseurl:             http://yuanhunglo.github.io/blog/
 url:             "http://yuanhunglo.github.io/blog/"
@@ -53,5 +53,3 @@ permalink: pretty
 #  paginate_path: "/blog/page:num" 
 
 # theme: jekyll-theme-cayman
-
-theme: jekyll-theme-minimal
