@@ -1,6 +1,9 @@
 ---
 layout: post
-title: Getting started with Conda - Python environment management
+title: Getting started with Conda
+description: Python environment management
+categories: 
+- python
 ---
 
 Conda is an open source package management system and environment management system that quickly installs, runs and updates packages and their dependencies. In other words, Conda allows you to to create separate environments containing files, packages and their dependencies that will not interact with other environments. This saves beginning programmers a lot of time when trying to set up their computer such that they can start learning. To learn more about Conda, visit [Conda's](https://conda.io/docs/index.html, "Conda") website. Conda directory contains two main categories, 
