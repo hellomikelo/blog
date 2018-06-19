@@ -24,6 +24,6 @@ author:
 version:             1.0.0
 
 gems: [jekyll-paginate]
-paginate_path: "/blog/page:num" 
+  paginate_path: "/blog/page:num" 
 
 # theme: jekyll-theme-cayman
