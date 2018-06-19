@@ -53,3 +53,5 @@ permalink: pretty
 #  paginate_path: "/blog/page:num" 
 
 # theme: jekyll-theme-cayman
+
+theme: jekyll-theme-minimal
