@@ -1,5 +1,3 @@
-permalink: pretty
-
 # Setup
 title:               Mike Lo
 tagline:             'Design and Data Science'
@@ -18,6 +16,8 @@ author:
 
 # Custom vars
 version:             1.0.0
+
+permalink: pretty
 
 
 
