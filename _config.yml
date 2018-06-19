@@ -1,6 +1,7 @@
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
+<<<<<<< HEAD
 permalink:           date
 
 # Setup
@@ -11,6 +12,9 @@ description:         ''
 # url:                 http://127.0.0.1:4444
 # baseurl:             '/blog/'
 baseurl:             http://yuanhunglo.github.io/blog
+=======
+
+>>>>>>> origin/master
 paginate:            5
 port:                4444
 
