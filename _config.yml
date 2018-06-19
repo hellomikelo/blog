@@ -2,7 +2,7 @@
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 # permalink:           date
-permalink:           relative_permalinks
+permalink:           pretty
 
 # Setup
 title:               Mike Lo
