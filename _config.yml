@@ -16,10 +16,10 @@ paginate:            5
 port:                4444
 
 # About/contact
-author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+# author:
+#  name:              Mark Otto
+#  url:               https://twitter.com/mdo
+#  email:             markdotto@gmail.com
 
 # Custom vars
 version:             1.0.0
