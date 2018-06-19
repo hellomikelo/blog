@@ -1,4 +1,3 @@
-# Permalinks
 permalink: pretty
 
 # Setup
@@ -7,7 +6,7 @@ tagline:             'Design and Data Science'
 description:         'Mike's Blog'
 # url:                 http://yuanhunglo.github.io
 #baseurl:             http://yuanhunglo.github.io/blog/
-url:             http://yuanhunglo.github.io/blog/
+url:             "http://yuanhunglo.github.io/blog/"
 # baseurl:             ''
 paginate:            5
 
