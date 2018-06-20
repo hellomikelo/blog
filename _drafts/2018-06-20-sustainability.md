@@ -4,6 +4,14 @@ title: Sustainability
 description: Thinking in circles
 categories: 
 - sustainability
-- circular economy
 ---
+
+
+Inefficiencies
+
+## Disposable containers
+
+## Smarter recycling
+
+## Modular design
 

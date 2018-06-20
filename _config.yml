@@ -1,11 +1,11 @@
+# The ":" in front means the word is a variable. The order can be changed to have a different format
 permalink:           /:categories/:year/:month/:day/:title:output_ext
 
 # Setup
-title:               Yuanhung (Mike) Lo
-tagline:             "Data + Urbanism"
-description:         "Mike's Blog" 
+title:               "Data + Urbanism"
+tagline:             "A blog by Mike Lo"
+description:         "Data science and the development of smart cities" 
 url:                 "http://yuanhunglo.github.io/blog/"  # main URL to the blog
-# baseurl:             ''
 paginate:            5  # how many posts to show on the page
 
 # About/contact
@@ -17,4 +17,7 @@ author:
 # Custom vars
 version:             1.0.0
 
-
+# For local Jekyll serving
+port:                4444
+gems: [jekyll-paginate]
+paginate_path: "/blog/page:num" 
