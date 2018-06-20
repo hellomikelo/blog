@@ -2,9 +2,9 @@
 permalink:           /:categories/:year/:month/:day/:title:output_ext
 
 # Setup
-title:               "Data + Urbanism"
+title:               "Data + Sustainable Urbanism"
 tagline:             "A blog by Mike Lo"
-description:         "Data science and the development of smart cities" 
+description:         "Data science and the development of sustainable smart cities" 
 url:                 "http://yuanhunglo.github.io/blog/"  # main URL to the blog
 paginate:            5  # how many posts to show on the page
 
