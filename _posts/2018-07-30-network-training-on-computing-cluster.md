@@ -14,11 +14,11 @@ This part gives the [Sun Grid Engine](https://en.wikipedia.org/wiki/Oracle_Grid_
 	#!/bin/csh -f
 	#
 	#$ -cwd
-	#$ -o *output directory*
+	#$ -o output/directory
 	#$ -j y
 	#$ -l exclusive,h_data=8G,h_rt=6:00:00
 	#$ -v QQAPP=job
-	#$ -M *email for sending job-related notifications*
+	#$ -M email_for_sending_job-related_notifications@email.com
 	#$ -m bea
 	# job is rerunable
 	#$ -r n
@@ -30,9 +30,9 @@ Not sure what below lines do, but they apparently set the path to the files rela
 	 set qqversion =
 	 set qqapp = "job serial"
 	 set qqmtasks = 8
-	 set qqidir = **directory/to/training/files**
-	 set qqjob = **file name**
-	 set qqodir = **directory/to/training/files**
+	 set qqidir = directory/to/training/files
+	 set qqjob = file name
+	 set qqodir = directory/to/training/files
 
 Change to the project directory and initiate the job scheduler.
 
@@ -49,9 +49,9 @@ Load Anaconda and load Python environment.
 Activate TensorFlow conda environment. One caveat here is that there is a conflict for the command `source` in both C shell and conda, so you cannot directly call `source` to activate the tensorflow environment inside your csh script. Fortunately, someone has written a csh version of the `activate` command that is available on [GitHub](https://gist.github.com/mikecharles/f09486e884a0b41e1e8f), so you can activate the tensorflow environment by directly calling it in the script.
 
 	 echo "Anaconda loaded"
-	 setenv CONDA_ENVS_PATH **/path/to/conda/environments** # Set path to search for Conda environments
-	 source **/path/to/activate.csh** tensorflow # Use CSH version of conda activate to change to tensorflow environment
-	 setenv PATH **/path/to/tensorflow/conda/environment**/bin:$PATH # Add Tensorflow env to beginning of search paths
+	 setenv CONDA_ENVS_PATH /path/to/conda/environments # Set path to search for Conda environments
+	 source /path/to/activate.csh tensorflow # Use CSH version of conda activate to change to tensorflow environment
+	 setenv PATH /path/to/tensorflow/conda/environment/bin:$PATH # Add Tensorflow env to beginning of search paths
 	 echo "Tensorflow loaded"
 	 setenv MCR_CACHE_ROOT $TMPDIR
 
