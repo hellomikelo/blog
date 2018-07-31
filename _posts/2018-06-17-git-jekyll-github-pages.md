@@ -33,7 +33,7 @@ So that's it! Happy blogging!
 
 	The prompt will show you a server address, (e.g. http://127.0.0.1:4444) that you can then open with in a browser to see a preview of your blog.
 
-* Sometimes if you mess with the `_config.yml` file that contains Jekyll's configuration parameteres, you may introduce errors that will prevent Github from updating any changes. YAML files are very sensitive to formatting, so sometimes even missing a white space can ruin things. To check for errors, you can use the <a href="https://codebeautify.org/yaml-validator" target="_blank">YAML validator</a> from Code Beautify.
+* Sometimes if you mess with the `_config.yml` file that contains Jekyll's configuration parameters, you may introduce errors that will prevent Github from updating any changes. YAML files are very sensitive to formatting, so sometimes even missing a white space can ruin things. To check for errors, you can use the <a href="https://codebeautify.org/yaml-validator" target="_blank">YAML validator</a> from Code Beautify.
 
 
 
