@@ -6,12 +6,11 @@ categories:
 - sustainability
 ---
 
+Some future development I hope will happen
 
-Inefficiencies
+## The end of disposable containers
 
-## Disposable containers
+## Modular design of everyday products
 
-## Smarter recycling
-
-## Modular design
+## Circular economy of everyday products
 
