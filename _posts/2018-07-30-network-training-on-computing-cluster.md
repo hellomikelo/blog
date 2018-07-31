@@ -9,7 +9,7 @@ categories:
 
 Recently I've been trying to outsource my neural network training onto a computing cluster (the Hoffman2 cluster at UCLA). Specifically, I'm trying to use Tensorflow's implementation of the CNN model on CIFAR-10 dataset. Training the model interactively was not difficult. I just had to load the Anaconda module, install Tensorflow package and its associated modules, then train the model. However, to do it non-interactively, i.e. submit as a job to a remote node, it requires writing up a simple C shell script for submission. I'm posting the command file for job submission here for those who may be interested in implementing machine learning on a computing cluster.
 
-This part gives the Sun Grid Engine job scheduler some parameters for initiating a remote job, providing information on how much memory to request, how long to run the job for, etc. 
+This part gives the [Sun Grid Engine](https://en.wikipedia.org/wiki/Oracle_Grid_Engine) job scheduler some parameters for initiating a remote job, providing information on how much memory to request, how long to run the job for, etc. 
 	
 	#!/bin/csh -f
 	#
@@ -46,7 +46,7 @@ Load Anaconda and load Python environment.
 	 source /u/local/Modules/default/init/modules.csh
 	         module load anaconda/python3-4.2
 
-Activate TensorFlow conda environment. One caveat here is that there is a conflict for the command `source` in both C shell and conda, so you cannot directly call `source` to activate the tensorflow environment inside your csh script. Fortunately, someone has written a csh version of the `activate` command ([here](https://gist.github.com/mikecharles/f09486e884a0b41e1e8f), so you can activate the tensorflow environment by directly calling it in the script.
+Activate TensorFlow conda environment. One caveat here is that there is a conflict for the command `source` in both C shell and conda, so you cannot directly call `source` to activate the tensorflow environment inside your csh script. Fortunately, someone has written a csh version of the `activate` command that is available on [GitHub](https://gist.github.com/mikecharles/f09486e884a0b41e1e8f), so you can activate the tensorflow environment by directly calling it in the script.
 
 	 echo "Anaconda loaded"
 	 setenv CONDA_ENVS_PATH **/path/to/conda/environments** # Set path to search for Conda environments
@@ -55,7 +55,7 @@ Activate TensorFlow conda environment. One caveat here is that there is a confli
 	 echo "Tensorflow loaded"
 	 setenv MCR_CACHE_ROOT $TMPDIR
 
-Begin training the neural network!
+Begin training the neural network! This also prints the output to a text file so you can check the progress as it goes along. Note that the output does not update instantaneously, so don't freak out if you don't see anything in the file right away.
 
 	 echo "Begin model training..."
 	 python cifar10_train.py | tee -a train_cifar10.output.$JOB_ID
