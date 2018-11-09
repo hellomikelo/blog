@@ -9,6 +9,7 @@ seminal papers on deep learning:
 3. <a href="https://arxiv.org/pdf/1406.2661.pdf" target="_blank">GAN</a> Goodfellow, 2014, 
 4. RNN
 5. <a href="https://arxiv.org/pdf/1412.6980.pdf" target="_blank">Adam Optimzer</a>
+6. <a href="https://arxiv.org/pdf/1412.6980.pdf" target="_blank">Batch normalization</a>
 
 
 

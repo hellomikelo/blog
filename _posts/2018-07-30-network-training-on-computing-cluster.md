@@ -46,7 +46,7 @@ Load Anaconda and load Python environment.
 	 source /u/local/Modules/default/init/modules.csh
 	         module load anaconda/python3-4.2
 
-Activate TensorFlow conda environment. One caveat here is that there is a conflict for the command `source` in both C shell and conda, so you cannot directly call `source` to activate the tensorflow environment inside your csh script. Fortunately, someone has written a csh version of the `activate` command that is available on [GitHub](https://gist.github.com/mikecharles/f09486e884a0b41e1e8f), so you can activate the tensorflow environment by directly calling it in the script.
+Activate TensorFlow conda environment. One caveat here is that there is a conflict for the command `source` in both C shell and conda (normally you would activate Tensorflow with `source activate tensorflow`), so you cannot directly call `source` to activate the tensorflow environment inside your csh script. Fortunately, someone has written a csh version of the `activate` command that is available on [GitHub](https://gist.github.com/mikecharles/f09486e884a0b41e1e8f), so you can activate the tensorflow environment by directly calling it in the script.
 
 	 echo "Anaconda loaded"
 	 setenv CONDA_ENVS_PATH /path/to/conda/environments # Set path to search for Conda environments
