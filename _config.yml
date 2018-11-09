@@ -6,8 +6,8 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Mike Lo
-email: hellomikelo@gmail.com
+title: Yuanhung Lo
+email: lo.yuanhung@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   My personal journey 
 
@@ -16,7 +16,7 @@ url: "" # the base hostname & protocol for your site
 # twitter_username: briancaffey
 github_username:  yuanhunglo
 linkedin_username: yuan-hung-lo-a8915551
-linkedin_name: Yuan Hung Lo
+linkedin_name: Yuanhung Lo
 
 # Build settings
 markdown: kramdown
@@ -26,7 +26,7 @@ highlighter: rouge
 #  - jekyll-assets
 
 port: 4444
-collections:
-  projects:
-    output: true
-    permalink: /:collection/:name
+# collections:
+#   projects:
+#     output: true
+#     permalink: /:collection/:name
