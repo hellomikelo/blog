@@ -1,9 +1,21 @@
 ---
 layout: page
-title: About Mike
+title: About
+permalink: /about
+
 ---
 
-![Mike](/assets/images/me-and-kangaroo.jpg "Kangaroo and I")
+<style>
+img {
+    /*border-radius: 10%;*/
+    display: block;
+    margin: 0 auto;
+}
+</style>
+<img src="../static/images/me-and-kangaroo.jpg" width="300">
+
+
+<!-- ![Mike]("./_static/images/me-and-kangaroo.jpg" "Kangaroo and I") -->
 
 Hello, my name is Mike. I am currently a PhD candidate in UCLA Department of Bioengineering, working in the <a href="http://www.physics.ucla.edu/research/imaging/" target="_blank">Coherent Imaging Group</a> in the Department of Physics, under the mentorship of John Miao. My research revolves around lensless X-ray computational imaging in 2D and 3D, with applications in structural biology. The "computational" aspects come in the flavors of image reconstruction, phase retrieval and optimization. 
 
@@ -15,7 +27,12 @@ In this blog I hope to keep track of my learning progress in machine learning / 
 
 If you are interested in learning more about my graduate research, please see my <a href="https://scholar.google.com/citations?user=L_oHzBUAAAAJ&hl=en" target="_blank">Google Scholar page</a>.
 
+Please connect with me on social media:
 
-
-
-  
+<ul style="list-style: none;">
+<li>{% include purple-icon-github.html username=site.github_username %}</li>
+<!-- <li>{% include icon-twitter.html username=site.twitter_username %}</li> -->
+<li>{% include linkedin.html %}</li>
+<!-- <li>{% include so.html so_link=site.so_link username=site.so_username %}</li> -->
+<!-- <li>{% include steemit.html steemit_name=site.steemit_name steemit_username=site.steemit_username %}</li> -->
+</ul>
