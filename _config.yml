@@ -6,17 +6,16 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Yuanhung Lo
+title: Yuan Hung Lo
 email: lo.yuanhung@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  My personal journey 
+description: Personal blog # this means to ignore newlines until "baseurl:"
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 # twitter_username: briancaffey
 github_username:  yuanhunglo
 linkedin_username: yuan-hung-lo-a8915551
-linkedin_name: Yuanhung Lo
+linkedin_name: yuanhunglo
 
 # Build settings
 markdown: kramdown

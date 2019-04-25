@@ -1,9 +1,9 @@
 ---
 layout: post
-title: POST TITLE
-description: POST DESCRIPTION
+title: Using CNN to perform STEM projection background subtraction
+description: ...
 categories: 
-- POST CATEGORY
+- image processing
 ---
 
 * Implement CNN for CIFAR-10 

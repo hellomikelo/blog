@@ -12,6 +12,8 @@ $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
+$table-font-size:  15px;
+
 $spacing-unit:     30px;
 
 $text-color:       #111;
@@ -23,10 +25,10 @@ $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area
-$content-width:    800px;
+$content-width:    850px;
 
 $on-palm:          600px;
-$on-laptop:        800px;
+$on-laptop:        850px;
 
 
 
@@ -56,7 +58,9 @@ p, blockquote, ul, ol, dl, li, table, pre {
 margin: 15px 0; }
 
 table {
-  padding: 0; }
+  padding: 0; 
+  margin-left: auto; 
+  margin-right: auto; }
   table tr {
     border-top: 1px solid #cccccc;
     background-color: white;
@@ -69,12 +73,14 @@ table {
       border: 1px solid #cccccc;
       text-align: left;
       margin: 0;
-      padding: 6px 13px; }
+      padding: 6px 13px; 
+      font-size: $table-font-size; }
     table tr td {
       border: 1px solid #cccccc;
       text-align: left;
       margin: 0;
-      padding: 6px 13px; }
+      padding: 6px 13px; 
+      font-size: $table-font-size; }
     table tr th :first-child, table tr td :first-child {
       margin-top: 0; }
     table tr th :last-child, table tr td :last-child {

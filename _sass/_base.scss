@@ -8,12 +8,11 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
-
-
 /**
  * Basic styling
  */
 body {
+    text-align: justify;
     font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
     color: $text-color;
     background-color: $background-color;
@@ -43,7 +42,7 @@ ul, ol, dl, figure,
  * Images
  */
 img {
-    max-width: 100%;
+    max-width: 750px;
     vertical-align: middle;
 }
 
@@ -67,6 +66,7 @@ figcaption {
  */
 ul, ol {
     margin-left: $spacing-unit;
+    padding-left: $spacing-unit + 4;
 }
 
 li {
@@ -113,8 +113,8 @@ blockquote {
     color: $grey-color;
     border-left: 4px solid $grey-color-light;
     padding-left: $spacing-unit / 2;
-    font-size: 18px;
-    letter-spacing: -1px;
+    font-size: $base-font-size;
+    letter-spacing: 0px;
     font-style: italic;
 
     > :last-child {
