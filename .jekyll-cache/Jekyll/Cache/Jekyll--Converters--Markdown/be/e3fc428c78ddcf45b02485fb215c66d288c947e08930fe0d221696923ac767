@@ -1,0 +1,2 @@
+I"¡<p>Quick tiP: If you are ever in a situation where you want to search for a keyword in every file of a directory (or even the entire computer), a very useful command line tool is <code class="highlighter-rouge">grep</code> (<a href="https://linux.die.net/man/1/grep">manual</a>), which print lines of any file names, or any lines of text inside a file, that matches a defined pattern. Sample usage is as follows:</p>
+:ET

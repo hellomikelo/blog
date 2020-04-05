@@ -1,0 +1,77 @@
+I"L<h2 id="git">Git</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">ctrl+l</code> clears the terminal screen</li>
+  <li><code class="highlighter-rouge">.gitignore</code> is a text file that contains the list of all files you don’t want git to track changes</li>
+  <li><code class="highlighter-rouge">gif config</code> to change default preferences</li>
+  <li>The idea of adding and committing:
+<img src="https://swcarpentry.github.io/git-novice/fig/git-staging-area.svg" alt="git" /></li>
+  <li>Example workflow:
+    <ol>
+      <li><code class="highlighter-rouge">git init</code> # creates an empty .git directory in a new directory to keep track of change history</li>
+      <li><code class="highlighter-rouge">git status</code></li>
+      <li><code class="highlighter-rouge">vi mars.txt</code></li>
+      <li><code class="highlighter-rouge">git add mars.txt</code> # gets file changes ready for commit locally</li>
+      <li><code class="highlighter-rouge">git commit -m 'change 1'</code> # adds file to staging area and assign the change an unique ID. You can commit multiple “adds” together (assigned to one ID) to keep track of them all as a single package in the change history.</li>
+      <li><code class="highlighter-rouge">vi mars.txt</code> # makes changes to the working copy of the file</li>
+      <li><code class="highlighter-rouge">git diff HEAD~$VERSION_NUM mars.txt</code> # shows changes between commit and working copy (before <code class="highlighter-rouge">add</code>). <code class="highlighter-rouge">$VERSION_NUM</code> is the version number you want to compare the current version to. No <code class="highlighter-rouge">$VERSION_NUM</code> means most current version</li>
+      <li><code class="highlighter-rouge">git commit -m 'change 2'</code> # add further message</li>
+      <li><code class="highlighter-rouge">git log</code> # shows history of changes</li>
+      <li><code class="highlighter-rouge">git checkout HEAD~$VERSION_NUM mars.txt</code> # reverses change (but does not delete new changes), i.e. replaces the working copy with the most recently committed version. <code class="highlighter-rouge">$VERSION_NUM</code> is the version number you want to revert to</li>
+      <li><code class="highlighter-rouge">git stash</code> # put all uncommitted changes to “stash” directory</li>
+      <li><code class="highlighter-rouge">git revert</code> # ? Deletes files when reverting commit?</li>
+      <li><code class="highlighter-rouge">git pull origin master</code> # pull changes from remote repo (origin)into local machine (master)</li>
+      <li><code class="highlighter-rouge">git remote add origin git@github.com:...</code> # link local repo to remote repo</li>
+      <li><code class="highlighter-rouge">git push -u origin master</code> # push changes from local repo to remote repo</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="python">Python</h2>
+
+<ul>
+  <li>To install new <a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions">extensions</a> in jupyter notebook</li>
+  <li><code class="highlighter-rouge">glob</code> finds files and directories whose names match a pattern</li>
+</ul>
+
+<h1 id="defensive-programming">Defensive programming</h1>
+
+<p>Make programs assuming that mistakes will happen and to guard against them.</p>
+<ul>
+  <li>An assertion is simply a statement that checks something to be true at a certain point in a program. It also helps people understand programs. Each assertion gives the person reading the program a chance to check (consciously or otherwise) that their understanding matches what the code is doing.</li>
+  <li>Most good programmers follow two rules when adding assertions to their code.
+    <ol>
+      <li><strong>Fail early, fail often.</strong> The greater the distance between when and where an error occurs and when it’s noticed, the harder the error will be to debug, so good code catches mistakes as early as possible.</li>
+      <li><strong>Turn bugs into assertions or tests.</strong> Whenever you fix a bug, write an assertion that catches the mistake should you make it again. If you made a mistake in a piece of code, the odds are good that you have made other mistakes nearby, or will make the same mistake (or a related one) the next time you change it. Writing assertions to check that you haven’t regressed (i.e., haven’t re-introduced an old problem) can save a lot of time in the long run, and helps to warn people who are reading the code (including your future self) that this bit is tricky.</li>
+    </ol>
+  </li>
+  <li>Three main types:
+    <ol>
+      <li>A <strong>precondition</strong> is something that must be true at the start of a function in order for it to work correctly</li>
+      <li>A <strong>postcondition</strong> is something that the function guarantees is true when it finishes</li>
+      <li>An <strong>invariant</strong> is something that is always true at a particular point inside a piece of code</li>
+    </ol>
+  </li>
+  <li>e.g.
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
+</code></pre></div>    </div>
+  </li>
+  <li>print progress of program often to keep track of potential errors, and to inform about its status</li>
+  <li>print errors with as much relevant information as possible</li>
+</ul>
+
+<h1 id="test-driven-development">Test-Driven Development</h1>
+
+<ul>
+  <li>Steps:
+    <ol>
+      <li>Write a short function for each test.</li>
+      <li>Write a range_overlap function that should pass those tests.</li>
+      <li>If range_overlap produces any wrong answers, fix it and re-run the test functions.</li>
+    </ol>
+  </li>
+  <li>Writing the tests before writing the function they exercise is called test-driven development (TDD)</li>
+  <li><code class="highlighter-rouge">python -i myscript.py</code> runs the script interactively, then keeps all the variables in memory so you can access them.</li>
+</ul>
+
+:ET
