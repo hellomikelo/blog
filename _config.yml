@@ -12,7 +12,7 @@ description: Personal blog # this means to ignore newlines until "baseurl:"
 
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://github.com/yuanhunglo" # the base hostname & protocol for your site
-site_url: "https://github.com/yuanhunglo/blog"
+site_url: "hellomikelo/blog"
 
 # twitter_username: briancaffey
 github_username:  yuanhunglo
