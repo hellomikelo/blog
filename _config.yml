@@ -11,8 +11,8 @@ email: hellomikelo@gmail.com
 description: Personal blog # this means to ignore newlines until "baseurl:"
 
 baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "hellomikelo.com/blog" # the base hostname & protocol for your site
-site_url: "hellomikelo.com/blog"
+url: "hellomikelo.com" # the base hostname & protocol for your site
+# site_url: "hellomikelo.com/blog"
 
 # twitter_username: briancaffey
 github_username:  yuanhunglo
