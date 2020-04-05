@@ -1,4 +1,4 @@
-I"Û"<style>
+I"‘"<style>
 img {
     /*border-radius: 10%;*/
     display: block;
@@ -6,8 +6,7 @@ img {
 }
 </style>
 
-<!-- <img src="../static/images/me-and-kangaroo.jpg" width="300"> -->
-<p><img src="../static/gif/Fashion_MNIST_progress.gif" width="300" /></p>
+<p><img src="../static/images/me-and-kangaroo.jpg" width="300" /></p>
 
 <p>Hello there,</p>
 

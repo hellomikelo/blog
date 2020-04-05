@@ -2,7 +2,6 @@
 layout: page
 title: About
 permalink: /about
-
 ---
 
 <style>
@@ -12,8 +11,8 @@ img {
     margin: 0 auto;
 }
 </style>
-<!-- <img src="../static/images/me-and-kangaroo.jpg" width="300"> -->
-<img src="../static/gifs/Fashion_MNIST_progress.gif" width="300">
+
+<img src="../static/images/me-and-kangaroo.jpg" width="300">
 
 Hello there, 
 
