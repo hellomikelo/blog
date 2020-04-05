@@ -17,7 +17,8 @@ categories:
 
 4. Generate a MATLAB command (.cmd) script for submitting a job to run the executable on remote compute node: `matexe.q -ns -o ~/job-output file-name`. This will generate a **file-name.cmd**. Note: Do not include the .m extension when performing matexe.q.
 
-5. If you are NOT running a jobarray and only want to execute your MATLAB script as is, then you can use a text editor of your choice (e.g. emac, vim) to edit **file-name.cmd** (the `-l ...` line) to specify resource requests and then submit the command file to queue (see below). If you want to run a jobarray, then you also need to specify the parameter to submit with each job. A sample command file for **sampleScript.m** is shown below:
+5. If you are NOT running a jobarray and only want to execute your MATLAB script as is, then you can use a text editor of your choice (e.g. emac, vim) to edit **file-name.cmd** (the `-l ...` line) to specify resource requests and then submit the command file to queue (see below). If you want to run a jobarray, then you also need to specify the parameter to submit with each job. A sample command file for **sampleScript.m** is shown below:  
+
 ```
 #!/bin/csh -f
 #  sampleScript.cmd
@@ -90,7 +91,7 @@ categories:
   time /u/project/miao/y1lo/fib_genfire/scripts/sampleScript $SGE_TASK_ID $PROJECT_NAME >& /u/home/y/y1lo/job-output/sampleScript.output.$JOB_ID
 #
   echo ""
-  echo "sampleScript finished at:  "` date `
+  echo "sampleScript finished at:  " 'date' 
 #
 # Cleanup after serial execution
 #
@@ -105,17 +106,21 @@ categories:
         cat /u/home/y/y1lo/job-output/sampleScript.joblog.$JOB_ID >> /u/local/apps/queue.logs/job.log.serial
   endif
   exit (0)
-
 ```
-Specifically, the lines to edit/add are 
+
+Specifically, the lines to edit/add are  
+
 ```
 #$ -l h_data=16G,h_rt=2:00:00
 #$ -t 1-121:1
 ```
-The option `-l ...` is for requesting the amount of resources for each compute node, much the same way you request a compute node when you first log onto Hoffman2. The option `-t 1-121:1` means each copy of your MATLAB executable that is running in a remote compute node will receive an input value (in type string) ranging from 1 to 121 in increments of 1 (there will be a total of 121 jobs). After you have defined the range of input variables, you need to somehow give this to the executable. This is achieved in line
+
+The option `-l ...` is for requesting the amount of resources for each compute node, much the same way you request a compute node when you first log onto Hoffman2. The option `-t 1-121:1` means each copy of your MATLAB executable that is running in a remote compute node will receive an input value (in type string) ranging from 1 to 121 in increments of 1 (there will be a total of 121 jobs). After you have defined the range of input variables, you need to somehow give this to the executable. This is achieved in line  
+
 ```
 time /u/project/miao/y1lo/fib_genfire/scripts/sampleScript $SGE_TASK_ID $PROJECT_NAME >& /u/home/y/y1lo/job-output/
 ```
+
 by adding the `$SGE_TASK_ID` variable after the call to the executable. FYI, you can specify additional variables if your function takes in multiple variables. Here `$PROJECT_NAME` is another variable for sampleScript.m.
 
 6. Submit the edited command file **file-name.cmd** to Hoffman2 job scheduler queue to run: `qsub file-name.cmd`.
