@@ -2,7 +2,7 @@
 layout: post
 title: Software Carpentry Day 1
 description: 
-publish: true
+published: true
 categories: 
 - misc
 ---

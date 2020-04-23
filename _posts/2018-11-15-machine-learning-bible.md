@@ -1,11 +1,9 @@
 ---
-
 layout: post
 title: Machine Learning notes
-publish: true
+published: true
 categories: 
-- ML
-
+- datasci
 ---
 
 For newcomers to data science and machine learning (ML) like myself, the variety and the depth of different topics can be overwhelming at times. So in this post I document various notes as I learn about different facets of machiine learning. The notes are very condensed, and the intent is to use them as references in actual practice. So for total beginners this post will probably not be very helpful. Hopefully this will benefit not only myself but others out there as well. Briefly, this post contains the following:  

@@ -2,7 +2,7 @@
 layout: post
 title: Jobarray submission guide for UCLA's Hoffman2 cluster
 description: 
-publish: false
+published: true
 categories: 
 - research
 ---

@@ -1,11 +1,9 @@
 ---
-
 layout: post
 title: A guide to Los Angeles neighborhoods for thrifty young professionals
-publish: true
+published: true
 categories: 
-- ML
-
+- datasci
 ---
 
 ## Summary

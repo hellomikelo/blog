@@ -2,7 +2,7 @@
 layout: post
 title: LaTex formatting for UCLA dissertation using uclathe 
 description: 
-publish: true
+published: true
 categories: 
 - misc
 ---

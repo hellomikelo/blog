@@ -2,7 +2,7 @@
 layout: post
 title: Published computer vision deep learning frameworks
 description: 
-publish: true
+published: true
 categories: 
 - misc
 ---

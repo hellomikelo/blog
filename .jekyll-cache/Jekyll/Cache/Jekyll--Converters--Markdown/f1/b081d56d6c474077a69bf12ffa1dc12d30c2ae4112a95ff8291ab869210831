@@ -1,0 +1,70 @@
+I"U<p>Previously I introduced <a href="http://bit.ly/pair-app">Pair</a>, an image-based product collection recommender built using <a href="www.streamlit.io">Streamlit</a> and deployed online using <a href="https://cloud.google.com/kubernetes-engine">Google Kubernetes Engine</a>. Recently I also deployed <a href="http://bit.ly/cov19-tracker">COV19 Tracker</a>, an uncluttered dashboard that visualizes the latest COVID-19 case numbers across the world and in the US. In this post I will go through the step-by-step process of how I deployed those applications from start to finish. Most of the workflow follows this GKE tutorial on <a href="https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app">deploying a containerized web application</a>.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+  <li>
+    <p><strong>Google Cloud SDK:</strong> Before we start, you need to <a href="https://cloud.google.com/sdk/install">install the Cloud software development kit (SDK)</a>, which includes the <code class="highlighter-rouge">gcloud</code> command-line tool that provides the primary command-line interface for Google Cloud.</p>
+  </li>
+  <li>
+    <p><strong>Kubenetes SDK:</strong> After you install <code class="highlighter-rouge">gcloud</code>, you need to install the <code class="highlighter-rouge">kubectl</code> command-line tool, which provides the primary command-line interface for running commands against Kubernetes clusters. <code class="highlighter-rouge">kubectl</code> can be installed via the following command: <code class="highlighter-rouge">gcloud components install kubectl</code>.</p>
+  </li>
+  <li>
+    <p><strong>Docker:</strong> You also need to <a href="https://docs.docker.com/get-docker/">download and install Docker application</a>. If you are new to Docker, here’s a <a href="https://docs.docker.com/get-started/">quickstart guide</a>.</p>
+  </li>
+</ol>
+
+<p>Once these are installed then you’re ready to start deploying!</p>
+
+<h2 id="workflow">Workflow</h2>
+<ol>
+  <li>
+    <p><strong>Dockerize the app:</strong> You need to first build a Docker image (think of the recipe for a cake) of your application. See here for a <a href="https://docs.docker.com/get-started/part2/">quick tutorial</a>. In short, this involves</p>
+
+    <ol>
+      <li>Defining Dockerfile</li>
+      <li>Building the Docker image</li>
+    </ol>
+
+    <p><strong>Tip:</strong> Even before Dockerizing, create your requirements.txt and try installing all the dependencies in a clean virtual machine to see if you included all the required libraries and packages. If the app runs successfully after installation, then you can be more confident that the Docker image will be error-free. This could save time in the long run because Dockerization takes a few minutes depending on your files and dependencies, so having to re-Dockerize after fixing every dependency error could be time-consuming.</p>
+  </li>
+  <li>
+    <p><strong>Test the container locally:</strong> Test run the image as a container (think of the cake made from the recipe) by</p>
+
+    <p><code class="highlighter-rouge">docker run --rm -p 8501:8501 gcr.io/{$PROJECT_ID}/*your-app-name*:v1</code></p>
+
+    <p>Then point your internet browser to <code class="highlighter-rouge">localhost:8501</code> to see the app. If it shows up as you expected, then you know your application is ready for the big time.</p>
+
+    <p>Note:</p>
+    <ul>
+      <li><code class="highlighter-rouge">-p</code> – or the <code class="highlighter-rouge">--publish</code> flag – asks Docker to forward incoming traffic on the host’s port to the container’s port (the specific port used by Streamlit is 8501). Containers have their own private set of ports, so if you want to reach one from the network, you have to forward traffic to it in this way. Otherwise, firewall rules will prevent all network traffic from reaching your container, as a default security posture.</li>
+      <li><code class="highlighter-rouge">{$PROJECT_ID}</code> is your GCP project ID, which you can find in the <a href="https://console.cloud.google.com">GCP console</a></li>
+      <li>The <code class="highlighter-rouge">gcr.io</code> prefix refers to Container Registry, where the image will be hosted.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Push image to Google Container Registry (GCR):</strong> Send the image up to the cloud to prepare for deployment.</p>
+
+    <p><code class="highlighter-rouge">docker push gcr.io/{$PROJECT_ID}/*your-app-name*:v1</code></p>
+  </li>
+  <li>
+    <p><strong>Create a container cluster:</strong> Create a <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture">cluster</a> to run the container image. It basically means intiailizing a group of computing resources that will run the app. You need to first set default Google Cloud options that tells gcloud where to find resources to set up the cluster</p>
+
+    <p><code class="highlighter-rouge">gcloud config set project $PROJECT_ID</code><br />
+ <code class="highlighter-rouge">gcloud config set compute/zone $COMPUTE_ZONE</code></p>
+
+    <p>Then create the cluster by</p>
+
+    <p><code class="highlighter-rouge">gcloud container clusters create *your-cluster-name* --num-nodes=2</code></p>
+
+    <p><strong>Note:</strong> If you are using an existing Google Kubernetes Engine cluster or if you have created a cluster through Google Cloud Console, you need to run the following command to retrieve cluster credentials and configure kubectl command-line tool with them:</p>
+
+    <p><code class="highlighter-rouge">gcloud container clusters get-credentials *your-cluster-name*</code></p>
+
+    <p>If you have already created a cluster with the gcloud container clusters create command listed above, this step is not necessary.</p>
+  </li>
+  <li>
+
+    <p><code class="highlighter-rouge">kubectl create deployment *your-web-deployment-name* --image=gcr.io/mike-lo-1172020/pair-demo-app:v1</code></p>
+  </li>
+</ol>
+:ET

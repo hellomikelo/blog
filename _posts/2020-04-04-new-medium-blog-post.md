@@ -2,7 +2,7 @@
 layout: post
 title:  New Medium blog post on my recent ML project
 description: 
-publish: true
+published: true
 categories: 
 - datasci
 ---

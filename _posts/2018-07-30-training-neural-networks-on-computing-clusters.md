@@ -2,7 +2,7 @@
 layout: post
 title: Training neural networks on computing clusters
 description:
-publish: true
+published: true
 categories: 
 - linux
 ---

@@ -1,11 +1,9 @@
 ---
-
 layout: post
 title: Notes from William's Style - Toward Clarity and Grace
-publish: false
+published: false
 categories: 
 - writing
-
 ---
 
 This post contains notes from my reading of [William's Style: Toward Clarity and Grace]('https://www.amazon.com/Style-Clarity-Chicago-Writing-Publishing/dp/0226899152'). 
