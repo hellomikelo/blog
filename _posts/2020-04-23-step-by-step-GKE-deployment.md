@@ -90,9 +90,17 @@ Once you have completed the above prerequisites, you're ready to start the 6-ste
 
 7. **Iterate on your app:** At this point your app is live on the internet, but depending on incoming traffic flow or feature suggestions by your users, you maybe want to make changes to your deployment infrastructure or your app. You can continue to adjust the number of nodes you want to use for the cluster with 
 
-	`kubectl scale deployment *your-web-deployment-name* --replicas=*num-of-nodes*`
+	`kubectl scale deployment *your-web-deployment-name* --replicas=*num-of-nodes*`.
 
-	and you can continue to iterate on newer versions of your app locally. When you are ready to release a newn version of your app, go through steps 1-3 again (remember to increment the version when creating new Docker images). Once the image is in GCR, you can update the deployment via
+	Another way to change the the number of nodes is via `gcloud` (I'm not sure how they differ). First get the name of your container cluster,
+
+	`gcloud container clusters list`,
+
+	then 
+
+	`gcloud container clusters resize *container-cluster-name* --num-nodes *num-of-nodes*`.
+
+	You can continue to iterate on newer versions of your app locally. When you are ready to release a newn version of your app, go through steps 1-3 again (remember to increment the version when creating new Docker images). Once the image is in GCR, you can update the deployment via
 
 	```
 	kubectl set image *your-web-deployment-name* *your-app-name*=gcr.io/${PROJECT_ID}/*your-app-name*:v2
