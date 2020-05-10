@@ -1,0 +1,94 @@
+I"‹
+<ul class="category">
+
+  <h1>github</h1>
+    
+    <ul class="post-list">
+    <span class="post-meta">Jun 17, 2018</span>     
+    <a href="/github/2018/06/17/git-jekyll-github-pages.html">Short guide to using git with Jekyll and Github Pages</a>
+    </ul>
+  
+
+  <h1>python</h1>
+    
+    <ul class="post-list">
+    <span class="post-meta">Jun 19, 2018</span>     
+    <a href="/python/2018/06/19/getting-started-with-Conda.html">Getting started with Conda</a>
+    </ul>
+  
+
+  <h1>linux</h1>
+    
+    <ul class="post-list">
+    <span class="post-meta">Jul 30, 2018</span>     
+    <a href="/linux/2018/07/30/training-neural-networks-on-computing-clusters.html">Training neural networks on computing clusters</a>
+    </ul>
+  
+    <ul class="post-list">
+    <span class="post-meta">Jul 21, 2018</span>     
+    <a href="/linux/2018/07/21/grep.html">The very useful grep command for searching general keywords in command line</a>
+    </ul>
+  
+
+  <h1>datasci</h1>
+    
+    <ul class="post-list">
+    <span class="post-meta">Apr 24, 2019</span>     
+    <a href="/datasci/2019/04/24/LA-guide-by-k-means-clustering.html">A guide to Los Angeles neighborhoods for thrifty young professionals</a>
+    </ul>
+  
+    <ul class="post-list">
+    <span class="post-meta">Nov 15, 2018</span>     
+    <a href="/datasci/2018/11/15/machine-learning-bible.html">Machine Learning notes</a>
+    </ul>
+  
+
+  <h1>Research</h1>
+    
+    <ul class="post-list">
+    <span class="post-meta">Sep 13, 2019</span>     
+    <a href="/research/2019/09/13/guide-to-runnning-jobarray-jobs-on-hoffman2.html">Jobarray submission guide for UCLA's Hoffman2 cluster</a>
+    </ul>
+  
+    <ul class="post-list">
+    <span class="post-meta">Jul 17, 2019</span>     
+    <a href="/research/2019/07/17/LaTex-for-UCLA-dissertation.html">LaTex formatting for UCLA dissertation using uclathe</a>
+    </ul>
+  
+
+  <h1>Miscellaneous</h1>
+    
+    <ul class="post-list">
+    <span class="post-meta">Aug 14, 2019</span>     
+    <a href="/miscellaneous/2019/08/14/software-carpentry-day-1.html">Software Carpentry notes</a>
+    </ul>
+  
+
+  <h1>misc</h1>
+    
+    <ul class="post-list">
+    <span class="post-meta">Aug 15, 2019</span>     
+    <a href="/misc/2019/08/15/software-carpentry-day-2.html">Software Carpentry Day 2</a>
+    </ul>
+  
+
+  <h1>Data Science</h1>
+    
+    <ul class="post-list">
+    <span class="post-meta">May 10, 2020</span>     
+    <a href="/data%20science/2020/05/10/airbnb-js-scraper.html">The numbers behind AirBnB's recent layoffs</a>
+    </ul>
+  
+    <ul class="post-list">
+    <span class="post-meta">Apr 23, 2020</span>     
+    <a href="/data%20science/2020/04/23/step-by-step-GKE-deployment.html">Step-by-step Streamlit app deployment via GKE</a>
+    </ul>
+  
+    <ul class="post-list">
+    <span class="post-meta">Apr 4, 2020</span>     
+    <a href="/data%20science/2020/04/04/new-medium-blog-post.html">New Medium blog post on my recent ML project</a>
+    </ul>
+  
+
+</ul>
+:ET

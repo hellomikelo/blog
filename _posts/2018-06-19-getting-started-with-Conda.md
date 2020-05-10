@@ -2,11 +2,12 @@
 layout: post
 title: Getting started with Conda
 description: Python environment management
-categories: 
-- python
+excerpt_separator: <!--more-->
+categories: [Guides]
 ---
 
 For beginner programmers such as myself who don't want to get bogged down with setting up a proper programming environment, and instead want to focus on writing codes for data analysis, Conda is a great program to help you circumvent the hassle and do all the necessary installations for you. Here I'll show how to quickly set up a usable Python environment using conda, assuming that Conda is already installed on your system.
+<!--more-->
 
 ## What's Conda?
 Conda is an open source package and environment management system that quickly installs, runs and updates packages and their dependencies. In other words, Conda allows you to to create separate environments containing files, packages and their dependencies that will not interact with other environments. To learn more about Conda and how to install it, visit Conda's <a href="https://conda.io/docs/index.html" target="_blank">website</a>. 

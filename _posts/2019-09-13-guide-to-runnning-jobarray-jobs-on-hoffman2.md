@@ -3,11 +3,12 @@ layout: post
 title: Jobarray submission guide for UCLA's Hoffman2 cluster
 description: 
 published: true
-categories: 
-- research
+excerpt_separator: <!--more-->
+categories: [Research]
 ---
 
 # Guide to running MATLAB jobarray jobs on UCLA's Hoffman2
+<!--more-->
 
 1. Log onto Hoffman2 using terminal using ssh `*user_name*@hoffman2.idre.ucla.edu` or using [NoMachine](https://www.hoffman2.idre.ucla.edu/access/nx/).
 

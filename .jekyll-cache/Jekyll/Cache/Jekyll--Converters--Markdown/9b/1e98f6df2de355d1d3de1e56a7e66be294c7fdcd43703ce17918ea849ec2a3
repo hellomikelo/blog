@@ -1,0 +1,6 @@
+I"]<h1 id="guide-to-running-matlab-jobarray-jobs-on-uclas-hoffman2">Guide to running MATLAB jobarray jobs on UCLA’s Hoffman2</h1>
+
+<ol>
+  <li>Log onto Hoffman2 using terminal using ssh <code class="highlighter-rouge">*user_name*@hoffman2.idre.ucla.edu</code> or using <a href="https://www.hoffman2.idre.ucla.edu/access/nx/">NoMachine</a>.</li>
+</ol>
+:ET

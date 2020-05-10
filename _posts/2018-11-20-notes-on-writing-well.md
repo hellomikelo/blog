@@ -2,11 +2,12 @@
 layout: post
 title: Notes from William's Style - Toward Clarity and Grace
 published: false
-categories: 
-- writing
+excerpt_separator: <!--more-->
+categories: [Writing]
 ---
 
 This post contains notes from my reading of [William's Style: Toward Clarity and Grace]('https://www.amazon.com/Style-Clarity-Chicago-Writing-Publishing/dp/0226899152'). 
+<!--more-->
 
 ## Clarity
 Principles of Clear Writing (“tell story”)

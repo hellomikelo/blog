@@ -2,11 +2,12 @@
 layout: post
 title: Short guide to using git with Jekyll and Github Pages
 description: 
-categories: 
-- github
+excerpt_separator: <!--more-->
+categories: [Guides]
 ---
 
 I've been using <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> to build this blog for a while now, but since I haven't been updating this blog often, I always forget the basic git workflow for pushing updated content from my local computer onto Github. Therefore, I'm writing a short guide to quickly update a Github blog when new posts are created. 
+<!--more-->
 
 ## Update blog from user computer to Github
 

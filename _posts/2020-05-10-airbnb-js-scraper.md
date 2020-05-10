@@ -1,16 +1,15 @@
 ---
 layout: post
 title: The numbers behind AirBnB's recent layoffs
-description: 
+description: testing
 published: true
-categories: 
-- datasci
+excerpt_separator: <!--more-->
+categories: [Data Science]
 ---
 
-The negative impact brought on by the Coronavirus pandemic is finally hitting the tech industry, as major tech companies begin laying off employees in droves in anticipation of the prolonged economic downturn. I want to understand the demographic of those in the tech industry that are impacted by this crsis, so I analyzed the profiles of AirBnB employees from their recently published [AirBnB talent pool](https://www.airbnb.com/d/talent).
+The negative impact brought on by the Coronavirus pandemic is finally hitting the tech industry, as major tech companies begin laying off employees in droves in anticipation of the prolonged economic downturn. I want to understand the demographic of those in the tech industry that are impacted by this crsis, so I analyzed the profiles of AirBnB employees from their recently published [AirBnB talent pool](https://www.airbnb.com/d/talent). In the post I'll also explain the codes I used to scrape the website for your scraping pleasure.
 
-In the post I'll also explain the codes I used to scrape the website for your scraping pleasure. 
-
+<!--more--> 
 
 ```python
 import time 
@@ -110,7 +109,7 @@ df.head()
 </style>
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: left;">
       <th></th>
       <th>name</th>
       <th>title</th>
