@@ -234,6 +234,7 @@ Almost 80% are fine with remote work, but only around 45% are fine with relocati
 This was part of my Funemployment [20% Project](https://en.wikipedia.org/wiki/20%25_Project) series to learn how to scrape data from dynamic JS-rendered websites, and also to learn about the ongoing layoffs at major tech companies. In the future I'll do more of these when I come across other new and interesting datasets. 
 
 ---
+
 ## References
 * [Scraping Client Side Rendered Data with Python and Selenium](https://sadesmith.com/2018/06/15/blog/scraping-client-side-rendered-data-with-python-and-selenium) (blog)
 * [Web-scraping JavaScript page with Python](https://stackoverflow.com/a/26440563/2643353) (Stackoverflow)
