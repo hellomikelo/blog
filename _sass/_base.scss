@@ -12,6 +12,7 @@ dl, dd, ol, ul, figure {
 /**
  * Basic styling
  */
+
 h1, h2, h3, h4, h5, h6 {
     text-align: left;
 }
@@ -42,6 +43,9 @@ ul, ol, dl, figure,
     margin-bottom: $spacing-unit / 2;
 }
 
+ul, ol, li {
+    line-height: $post-line-height;
+}
 
 
 /**
