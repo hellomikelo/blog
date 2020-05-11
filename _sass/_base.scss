@@ -11,6 +11,11 @@ dl, dd, ol, ul, figure {
 /**
  * Basic styling
  */
+h1, h2, h3, h4, h5, h6 {
+    text-align: left
+}
+
+
 body {
     text-align: justify;
     font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
