@@ -142,6 +142,7 @@ code {
     border-radius: 3px;
     // background-color: #eef;
     background-color: lighten($grey-color, 43%);
+    line-height: $code-line-height;
 }
 
 
