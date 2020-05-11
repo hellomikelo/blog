@@ -7,7 +7,7 @@ excerpt_separator: <!--more-->
 categories: [Data Science]
 ---
 
-![pair-gke-deployment](/static/imgs/pair-gke-deployment.png "pair-gke-deployment")
+![pair-gke-deployment](/static/imgs/pair-gke-deployment.png "pair-gke-deployment"){:height="75%" width="75%"}
 
 Previously I introduced [Pair](http://bit.ly/pair-app), an image-based product collection recommender built using [Streamlit](www.streamlit.io) and deployed online using [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine) and [Google Cloud Platforms](https://cloud.google.com/). Recently I also deployed [COV19 Tracker](http://bit.ly/cov19-tracker), an uncluttered dashboard that visualizes the latest COVID-19 case numbers across the world and in the US. In this post I will go through the step-by-step process of how I deployed those applications from start to finish. The workflow may seem long at the first glance, but it will be much faster once you go through it once. The workflow is based on this GKE tutorial on [deploying a containerized web application](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app).
 
