@@ -185,7 +185,7 @@ g.set(xlabel='Percent of total (%)', ylabel='Department',
 ```
 
 
-![png](/static/imgs/20200510a.png)
+![png](/static/imgs/20200510a.png){:height="100%" width="100%"}
 
 
 **Note:** This is not an indicator of how dispensible one department is compare to another, since we don't know how many total employees are in each department. It could very well be that customer service, engineering, design, sales and recruiting comprise the majority of the company's workforce, so that's why there is a high percentage of people in those departments being laid off.
@@ -204,7 +204,7 @@ g.set(xlabel='Percent of total (%)', ylabel='City',
 ```
 
 
-![png](/static/imgs/20200510b.png)
+![png](/static/imgs/20200510b.png){:height="100%" width="100%"}
 
 
 Around 50% of the total layoffs are from SF, which makes sense considering it is the AirBnB headquarter. More surprising are Montreal and Portland, which I guess probably have a large AirBnB campus.
@@ -224,7 +224,7 @@ g2.set(xlabel='Percent of total (%)',
 ```
 
 
-![png](/static/imgs/20200510c.png)
+![png](/static/imgs/20200510c.png){:height="100%" width="100%"}
 
 
 Almost 80% are fine with remote work, but only around 45% are fine with relocation. Seems like tech workers are more than ready for a normalized remote work culture, but do tech companies feel the same way? It seems that major tech companies are ready for such [changes](https://www.theverge.com/2020/5/8/21252240/google-employees-essential-staff-remote-work-from-home-2021).
