@@ -2,8 +2,8 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
+    // border-top: 5px solid $grey-color-dark;
+    // border-bottom: 1px solid $grey-color-light;
     min-height: 56px;
 
     // Positioning context for the mobile navigation icon
@@ -14,13 +14,18 @@
     font-size: 32px;
     font-weight: 300;
     line-height: 56px;
+    color: $grey-color;
     letter-spacing: -1px;
     margin-bottom: 0;
     float: left;
 
-    &,
     &:visited {
-        color: $grey-color-dark;
+        color: $grey-color;
+    }
+
+    &:hover {
+        color: $text-color;
+        // text-decoration: underline;
     }
 }
 
@@ -33,8 +38,13 @@
     }
 
     .page-link {
-        color: $text-color;
+        color: $grey-color;
         line-height: $base-line-height;
+
+        &:hover {
+            color: $text-color;
+            // text-decoration: underline;
+        }
 
         // Gaps between nav items, but not on the last one
         &:not(:last-child) {
@@ -98,7 +108,7 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
+    // border-top: 1px solid $grey-color-light;
     padding: $spacing-unit 0;
 }
 
@@ -174,6 +184,19 @@
 
 .page-heading {
     font-size: 24px;
+    font-weight: $base-font-weight;
+}
+
+.post-meta {
+    font-size: $base-font-size;
+    color: $grey-color;
+}
+
+.post-link {
+    display: block;
+    font-size: 20px;
+    font-weight: $title-font-weight;
+    letter-spacing: $base-spacing;
 }
 
 .post-list {
@@ -186,17 +209,6 @@
     }
 }
 
-.post-meta {
-    font-size: $base-font-size;
-    color: $grey-color;
-}
-
-.post-link {
-    display: block;
-    font-size: 24px;
-}
-
-
 
 /**
  * Posts
@@ -206,9 +218,10 @@
 }
 
 .post-title {
-    font-size: 32px;
-    letter-spacing: 0px;
+    font-size: $title-font-size;
+    letter-spacing: $base-spacing;
     line-height: 1;
+    font-weight: $title-font-weight;
 
     @include media-query($on-laptop) {
         font-size: 32px;
@@ -217,29 +230,35 @@
 
 .post-content {
     margin-bottom: $spacing-unit;
+    letter-spacing: $base-spacing;
 
     h2 {
-        font-size: 28px;
-        font-weight: 400;
+        font-size: 21px;
+        font-weight: $title-font-weight;
+        letter-spacing: $base-spacing;
 
         @include media-query($on-laptop) {
-            font-size: 26px;
+            font-size: 24px;
         }
     }
 
     h3 {
-        font-size: 24px;
+        font-size: 18px;
+        font-weight: $title-font-weight - 100;
+        letter-spacing: $base-spacing;
 
         @include media-query($on-laptop) {
-            font-size: 22px;
+            font-size: 18px;
         }
     }
 
     h4 {
-        font-size: 20px;
+        font-size: 15px;
+        font-weight: $title-font-weight - 100;
+        letter-spacing: $base-spacing;
 
         @include media-query($on-laptop) {
-            font-size: 18px;
+            font-size: 16px;
         }
     }
 }

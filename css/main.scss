@@ -7,12 +7,17 @@
 
 // Our variables
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$base-font-weight: 400;
+$base-font-size:   15px;
+$base-font-weight: 350;
+$base-spacing: 0.2px;
+
+$title-font-size: 28px;
+$title-font-weight: 550;
+
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
-$table-font-size:  15px;
+$table-font-size:  13px;
 
 $spacing-unit:     30px;
 
@@ -21,7 +26,7 @@ $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
 
 $grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
+$grey-color-light: lighten($grey-color, 25%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area

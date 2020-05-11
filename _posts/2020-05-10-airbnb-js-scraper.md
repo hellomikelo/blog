@@ -1,13 +1,15 @@
 ---
+
 layout: post
 title: The numbers behind AirBnB's recent layoffs
 description: testing
 published: true
 excerpt_separator: <!--more-->
 categories: [Data Science]
+
 ---
 
-The negative impact brought on by the Coronavirus pandemic is finally hitting the tech industry, as major tech companies begin laying off employees in droves in anticipation of the prolonged economic downturn. I want to understand the demographic of those in the tech industry that are impacted by this crsis, so I analyzed the profiles of AirBnB employees from their recently published [AirBnB talent pool](https://www.airbnb.com/d/talent). In the post I'll also explain the codes I used to scrape the website for your scraping pleasure.
+The negative impact brought on by the Coronavirus pandemic is finally hitting the tech industry, as major tech companies begin laying off employees in droves in anticipation of the prolonged economic downturn. I want to understand the demographic of those in the tech industry that are impacted by this crisis, so I analyzed the profiles of AirBnB employees from their recently published [AirBnB talent pool](https://www.airbnb.com/d/talent). In the post I'll also explain the codes I used to scrape the website for your scraping pleasure.
 
 <!--more--> 
 
@@ -232,8 +234,6 @@ Almost 80% are fine with remote work, but only around 45% are fine with relocati
 ## Conclusion
 
 This was part of my Funemployment [20% Project](https://en.wikipedia.org/wiki/20%25_Project) series to learn how to scrape data from dynamic JS-rendered websites, and also to learn about the ongoing layoffs at major tech companies. In the future I'll do more of these when I come across other new and interesting datasets. 
-
----
 
 ## References
 * [Scraping Client Side Rendered Data with Python and Selenium](https://sadesmith.com/2018/06/15/blog/scraping-client-side-rendered-data-with-python-and-selenium) (blog)
