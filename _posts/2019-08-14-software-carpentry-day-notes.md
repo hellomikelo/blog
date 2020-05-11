@@ -12,7 +12,7 @@ I attended a Software Carpentry workshop that teaches basic research computing s
 
 ## Bash shell
 
-# Working with files and directories and pipe and filters
+### Working with files and directories and pipe and filters
 
 * command is a small program that does something (e.g. usage: `command [-flag] [arguments]`)
 * 4 types of contents in a directory: directory, file, executable program (\*), symbolic link (@)
@@ -40,7 +40,7 @@ I attended a Software Carpentry workshop that teaches basic research computing s
 * `!$` retrieves the last word of the last command
 * `ctrl+r` search previous history
 
-# For loops
+### For loops
 
 For loops in shell scripting: 
 ```
@@ -54,7 +54,7 @@ This is useful for going through files and do something with each of them.
 * `echo "do $something"` prints to screen everything enclosed in the quote marks. It redirects the output from the command
 * `echo do $something` expands the loop variable name
 
-# Shell scripts
+### Shell scripts
 
 * to make and run a shell script, make `middle.sh`:
 ```
@@ -78,7 +78,7 @@ echo $test_var
 
 ## Python
 
-# Defensive programming
+### Defensive programming
 
 * Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.
 * Put assertions in programs to check their state as they run, and to help readers understand how those programs are supposed to work.
@@ -125,7 +125,7 @@ for i, character in enumerate(word):
 * To install new [extensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions) in jupyter notebook
 * `glob` finds files and directories whose names match a pattern
 
-# Defensive programming
+### Defensive programming
 
 Make programs assuming that mistakes will happen and to guard against them.
 * An assertion is simply a statement that checks something to be true at a certain point in a program. It also helps people understand programs. Each assertion gives the person reading the program a chance to check (consciously or otherwise) that their understanding matches what the code is doing.
@@ -143,7 +143,7 @@ assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
 * print progress of program often to keep track of potential errors, and to inform about its status
 * print errors with as much relevant information as possible
 
-# Test-Driven Development
+### Test-Driven Development
 
 * Steps:
 	1. Write a short function for each test.

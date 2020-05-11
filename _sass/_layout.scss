@@ -231,6 +231,17 @@
 .post-content {
     margin-bottom: $spacing-unit;
     letter-spacing: $base-spacing;
+    font-weight: $base-font-weight;
+
+    h1 {
+        font-size: $title-font-size;
+        font-weight: $title-font-weight;
+        letter-spacing: $base-spacing;
+
+        @include media-query($on-laptop) {
+            font-size: 24px;
+        }
+    }
 
     h2 {
         font-size: 21px;
