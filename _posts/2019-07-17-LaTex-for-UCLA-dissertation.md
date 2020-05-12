@@ -1,13 +1,16 @@
 ---
+
 layout: post
-title: LaTex formatting for UCLA dissertation using uclathe 
+title: LaTex Formatting for UCLA Dissertation Using uclathe 
 description: 
 published: true
 excerpt_separator: <!--more-->
 categories: [Research]
+
 ---
 
 I'm currently writing my PhD dissertation using the [uclathe](https://github.com/uclathes/uclathes) style. Below are notes and tips on my writing process using LaTex:
+
 <!--more-->
 
 * For references, the template includes a **uclathe** bibliographystyle. However, that style follows BibTex's default **alpha** style, which uses author abbreviations and years rather than numbers to denote each citation. I personally like to enumerate my references, so I opted to use the **ieeetr** style, which enumerates and sorts the references automatically

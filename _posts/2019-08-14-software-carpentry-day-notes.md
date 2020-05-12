@@ -1,10 +1,12 @@
 ---
+
 layout: post
-title: Software Carpentry notes
+title: Software Carpentry Notes
 description: 
 published: true
 excerpt_separator: <!--more-->
 categories: [Miscellaneous]
+
 ---
 
 I attended a Software Carpentry workshop that teaches basic research computing skills. The following useful reference materials are taken from their GitHub pages on [shell scripting]](https://swcarpentry.github.io/shell-novice/reference/), [Python](https://swcarpentry.github.io/python-novice-inflammation/reference/), and [git](https://swcarpentry.github.io/git-novice/reference). These are really useful so I highly recommend using them for basic reference. Advanced version is [here](https://intermediate-and-advanced-software-carpentry.readthedocs.io/en/latest/)

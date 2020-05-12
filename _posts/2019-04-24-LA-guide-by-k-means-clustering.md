@@ -1,13 +1,16 @@
 ---
+
 layout: post
-title: A guide to Los Angeles neighborhoods for thrifty young professionals
+title: A Guide to Los Angeles Neighborhoods for Thrifty Young Professionals
 published: true
 excerpt_separator: <!--more-->
 categories: [Data Science]
+
 ---
 
 ## Summary
 In this report I hoped to create a guide for young professionals who are interested in relocating to Los Angeles but are unsure of which neighborhood to live in. To accomplish this, I scraped data from several sources, namely
+
 <!--more-->
 
 1. Rental price data from the American Community Survey

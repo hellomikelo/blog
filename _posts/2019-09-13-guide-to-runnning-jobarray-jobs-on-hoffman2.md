@@ -1,10 +1,12 @@
 ---
+
 layout: post
-title: Guide to running MATLAB jobarray jobs on UCLA's Hoffman2
+title: Guide to Running MATLAB jobarray Jobs on UCLA's Hoffman2
 description: 
 published: true
 excerpt_separator: <!--more-->
 categories: [Research]
+
 ---
 
 ## Workflow

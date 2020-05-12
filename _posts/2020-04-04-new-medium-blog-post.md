@@ -1,10 +1,12 @@
 ---
+
 layout: post
-title:  New Medium blog post on my recent ML project
+title:  New Medium Blog Post on My Recent ML Project
 description: 
 published: true
 excerpt_separator: <!--more-->
 categories: [Data Science]
+
 ---
 
 ![pair-app](/static/gifs/pair-demo-final.gif "the Pair web application I built for the project"){:height="100%" width="100%"}

@@ -1,0 +1,12 @@
+I"<p>I’m currently writing my PhD dissertation using the <a href="https://github.com/uclathes/uclathes">uclathe</a> style. Below are notes and tips on my writing process using LaTex:</p>
+
+<!--more-->
+
+<ul>
+  <li>For references, the template includes a <strong>uclathe</strong> bibliographystyle. However, that style follows BibTex’s default <strong>alpha</strong> style, which uses author abbreviations and years rather than numbers to denote each citation. I personally like to enumerate my references, so I opted to use the <strong>ieeetr</strong> style, which enumerates and sorts the references automatically</li>
+  <li>If you are using TexStudio as your editor, it is recommended that you use the following <code class="highlighter-rouge">Build &amp; View</code> (<code class="highlighter-rouge">Preferences</code> -&gt; <code class="highlighter-rouge">Build</code> -&gt; <code class="highlighter-rouge">Build &amp; View</code>) order of commands: <strong>PdfLaTex</strong> - <strong>BibTex</strong> - <strong>PdfLaTex</strong> - <strong>PdfLaTex</strong>. I think this has to do with how the bibliography is processed with LaTex</li>
+  <li>For some reason sometimes .bbl does not update from .bib when compiling. In that case, delete the .bbl file and re-compile</li>
+  <li>If you try to compile a document containing a bibliography without actually citing anything, there will be a “something’s wrong–perhaps a missing \item \end{thebibliography}” error. In this case, actually cite something, delete .bbl file then recompile. UPDATE [4/4/2020]: Per Junhyung’s suggestion, “you can actually include the command <code class="highlighter-rouge">\nocite{*}</code> in the file and it will print everything in your .bib file in the bibliography and not give you the error you mention here.”</li>
+</ul>
+
+:ET

@@ -1,13 +1,16 @@
 ---
+
 layout: post
-title: Training neural networks on computing clusters
+title: Training Neural Networks on Computing Clusters
 description:
 published: true
 excerpt_separator: <!--more-->
 categories: [Guides]
+
 ---
 
 Recently I've been trying to outsource my neural network training onto a computing cluster (the Hoffman2 cluster at UCLA). Specifically, I'm trying to use Tensorflow's implementation of the CNN model on CIFAR-10 dataset. Training the model interactively was not difficult. I just had to load the Anaconda module, install Tensorflow package and its associated modules, then train the model. However, to do it non-interactively, i.e. submit as a job to a remote node, it requires writing up a simple C shell script for submission. I'm posting the command file for job submission here for those who may be interested in implementing machine learning on a computing cluster.
+
 <!--more-->
 
 This part gives the [Sun Grid Engine](https://en.wikipedia.org/wiki/Oracle_Grid_Engine) job scheduler some parameters for initiating a remote job, providing information on how much memory to request, how long to run the job for, etc. 

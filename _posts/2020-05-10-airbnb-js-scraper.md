@@ -1,7 +1,7 @@
 ---
 
 layout: post
-title: The numbers behind AirBnB's recent layoffs
+title: The Numbers Behind AirBnB's Recent Layoffs
 description: testing
 published: true
 excerpt_separator: <!--more-->

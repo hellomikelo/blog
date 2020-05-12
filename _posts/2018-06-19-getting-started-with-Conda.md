@@ -1,12 +1,15 @@
 ---
+
 layout: post
-title: Getting started with Conda
+title: Getting Started with Conda
 description: Python environment management
 excerpt_separator: <!--more-->
 categories: [Guides]
+
 ---
 
 For beginner programmers such as myself who don't want to get bogged down with setting up a proper programming environment, and instead want to focus on writing codes for data analysis, Conda is a great program to help you circumvent the hassle and do all the necessary installations for you. Here I'll show how to quickly set up a usable Python environment using conda, assuming that Conda is already installed on your system.
+
 <!--more-->
 
 ## What's Conda?

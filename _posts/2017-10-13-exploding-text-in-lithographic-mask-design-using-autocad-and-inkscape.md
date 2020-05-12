@@ -1,12 +1,16 @@
 ---
+
 layout: post
-title: Exploding text in lithographic mask design using AutCAD and Inkscape
+title: Exploding Text in Lithographic Mask Design Using AutCAD and Inkscape
 published: true
-future: true
+categories: [Guides]
+excerpt_separator: <!--more-->
+
 ---
 
-
 This post will explain how I created exploding text inside AutoCAD for lithography mask design using Inkscape. Normally, the text you enter in AutoCAD is automatically hatched, which for some reason cannot be read correctly by mask fracturing software. I've tried the text explode tool (**TXTEXP**) in Express Tools, but at least in the Mac version of AutoCAD it does not work. Maybe it works in the Windows version, I don't know. Anyway, in order to properly incorporate text into your design, you must create outlined versions of your text. For this workaround I'm using AutoCAD 2017 Mac edition. 
+
+<!--more--> 
 
 1. To begin, open Inkscape and create text using whichever font and font size you'd like. 
 2. **Path** -> **Object to Path**. If you double click the text now you will see that each character is now its own object and has its own path. 

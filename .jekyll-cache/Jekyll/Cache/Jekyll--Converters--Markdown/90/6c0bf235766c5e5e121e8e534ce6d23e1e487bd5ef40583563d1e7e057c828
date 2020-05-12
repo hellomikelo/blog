@@ -1,0 +1,3 @@
+I"�<p>Recently I’ve been trying to outsource my neural network training onto a computing cluster (the Hoffman2 cluster at UCLA). Specifically, I’m trying to use Tensorflow’s implementation of the CNN model on CIFAR-10 dataset. Training the model interactively was not difficult. I just had to load the Anaconda module, install Tensorflow package and its associated modules, then train the model. However, to do it non-interactively, i.e. submit as a job to a remote node, it requires writing up a simple C shell script for submission. I’m posting the command file for job submission here for those who may be interested in implementing machine learning on a computing cluster.</p>
+
+:ET

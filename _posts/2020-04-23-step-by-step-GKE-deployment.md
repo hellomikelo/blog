@@ -1,10 +1,12 @@
 ---
+
 layout: post
-title: Step-by-step Streamlit app deployment via GKE
+title: Step-by-Step Streamlit App Deployment Via GKE
 description: 
 published: true
 excerpt_separator: <!--more-->
 categories: [Data Science]
+
 ---
 
 ![pair-gke-deployment](/static/imgs/pair-gke-deployment.png "pair-gke-deployment"){:height="100%" width="100%"}
