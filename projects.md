@@ -9,6 +9,10 @@ published: true
 
 ### PhD Research
 
+![jpg](/assets/images/phd-history.jpg){:width="100%"}
+
+#### Publications
+
 M. Gallagher-Jones\*, C. S. B. Dias\*, A. Pryor Jr.\*, K. Bouchmella, L. Zhao, __Y. H. Lo__, M. B. Cardoso, D. Shapiro, J. A. Rodriguez and J. Miao. Correlative cellular ptychography with functionalized nanoparticles at the Fe L-edge. _Scientific Reports_ __7__, 4757 (2017).
 
 A. Pryor Jr., Y. Yang, A. Rana, M. Gallagher-Jones, J. Zhou, __Y. H. Lo__, G. Melinte, W. Chiu, J. A. Rodriguez, J. Miao. GENFIRE: A generalized Fourier iterative reconstruction algorithm for high-resolution 3D imaging. _Scientific Reports_ _7_, 10409 (2017).
