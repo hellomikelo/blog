@@ -1,0 +1,14 @@
+<!-- <div class="youtube-wrapper">
+  <iframe src="https://www.youtube.com/embed/{{ include.id }}" frameborder="0" allowfullscreen>
+  </iframe>
+</div> -->
+
+{% if include.width %}
+<div style="width: {{ include.width }}; margin:0 auto;">
+{% else %}
+<div style="width: 100%; margin:0 auto;">
+{% endif %}
+	<div class="youtube-wrapper">
+		<iframe class="yt" allowfullscreen src="https://www.youtube.com/embed/{{ include.id }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+</div>

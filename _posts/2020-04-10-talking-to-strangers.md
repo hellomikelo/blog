@@ -9,8 +9,6 @@ excerpt_separator: <!--more-->
 
 ---
 
-## What is it about? 
-
 *Talking to Strangers* is a book that dissects why we humans are so bad at understanding other people's intentions and motives. We make lot of first impressions in our daily lives, and the saying, don't judge a book by its cover, is easier said than done in most cases.
 
 <!--more-->

@@ -47,12 +47,22 @@ $on-laptop:        850px;
 //         padding-left: $spacing-unit / 2;
 //     }
 // }
+
 @mixin media-query($device) {
     @media screen and (max-width: $device) {
         @content;
     }
 }
 
+
+// Set embedded video size (YouTube)
+// @media screen and (max-width: $content-width) {
+//    iframe {
+//        max-width: 100% !important;
+//        width: auto !important;
+//        height: auto !important;
+//    }
+//}
 
 
 // Import partials from `sass_dir` (defaults to `_sass`)

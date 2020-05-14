@@ -10,8 +10,10 @@ permalink: /archive
   {% assign total = total | plus: 1 %}
 {% endfor %}
 
+{% assign sorted_categories = site.categories | sort %}
+
 <ul class="post-list">
-{% for category in site.categories %}
+{% for category in sorted_categories %}
   <h3>{{ category[0] }}</h3>
     {% for post in category[1] %}
     <ul class='post-list'>
