@@ -9,9 +9,9 @@
 title: hellomikelo
 description: Mike Lo's Blog on Data Science and Design
 
+url: "hellomikelo.com" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "/" # the base hostname & protocol for your site
-# site_url: "hellomikelo.com/blog"
+# site_url: 
 
 # twitter_username: hellomikelo
 github_username:  yuanhunglo
