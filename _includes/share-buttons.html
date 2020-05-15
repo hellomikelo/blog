@@ -21,7 +21,7 @@
 	{% capture share-link %} {{ "https://social-plugins.line.me/lineit/share?text=" }}{{ page.title }}{{ ": " }}{{ page.description }}{{ "&url=" }}{{ site.url }}{{ page.url }} {% endcapture%}
 	{% include share.html 
 		link=share-link 
-		onclick="" 
+		onclick=onclick 
 		icon="icon-line.svg" 
 		type="Line" %} |	
 
