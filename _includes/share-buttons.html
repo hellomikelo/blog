@@ -17,7 +17,7 @@
 		icon="icon-facebook.svg" 
 		type="Facebook" %} |	
 
-	{% capture share-link %} {{ "https://social-plugins.line.me/lineit/share?text=" }}{{ page.title }}{{ ": " }}{{ page.description }}{{ "&url=" }}{{ <site class="url"></site> }}{{ page.url }} {% endcapture%}
+	{% capture share-link %} {{ "https://social-plugins.line.me/lineit/share?text=" }}{{ page.title }}{{ ": " }}{{ page.description }}{{ "&url=" }}{{ site.url }}{{ page.url }} {% endcapture%}
 	{% include share.html 
 		link=share-link 
 		onclick=onclick 
