@@ -206,7 +206,7 @@
     list-style: none;
     padding-left: 0;
     letter-spacing: $base-spacing;
-    line-height: 1;
+    // line-height: 1;
 
     > li {
         margin-bottom: $spacing-unit;
@@ -326,7 +326,7 @@
 
         &:hover {
             color: $text-color;
-            border-bottom: 1px dashed #fff;
+            // border-bottom: 1px dashed #fff;
         }
     }
 }
