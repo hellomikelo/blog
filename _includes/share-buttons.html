@@ -10,7 +10,7 @@
 		icon="icon-email.svg" 
 		type="E-mail" %} |
 
-	{% capture share-link %} {{ "https://www.facebook.com/sharer/sharer.php?u=" }}{{ site.url }}{{ page.url }} {% endcapture%}
+	{% capture share-link %} {{ "m.facebook.com/sharer/sharer.php?u=" }}{{ site.url }}{{ page.url }} {% endcapture%}
 	{% include share.html 
 		link=share-link 
 		onclick=onclick 
@@ -31,14 +31,14 @@
 		icon="icon-linkedin.svg" 
 		type="LinkedIn" %} |	
 
-	{% capture share-link %} {{ "http://www.reddit.com/submit?title=" }} {{ page.title }} {{ "&url=" }}{{ site.url }}{{ page.url }} {% endcapture%}
+	{% capture share-link %} {{ "m.reddit.com/submit?title=" }} {{ page.title }} {{ "&url=" }}{{ site.url }}{{ page.url }} {% endcapture%}
 	{% include share.html 
 		link=share-link 
 		onclick=onclick 
 		icon="icon-reddit.svg" 
 		type="Reddit" %} |		
 
-	{% capture share-link %} {{ "https://twitter.com/intent/tweet?text=" }}{{ page.description }}{{ "&url=" }}{{ site.url }}{{ page.url }} {% endcapture%}
+	{% capture share-link %} {{ "https://mobile.twitter.com/intent/tweet?text=" }}{{ page.title }}{{ "&url=" }}{{ site.url }}{{ page.url }} {% endcapture%}
 	{% include share.html 
 		link=share-link 
 		onclick=onclick 
