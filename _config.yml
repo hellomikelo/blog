@@ -7,24 +7,25 @@
 
 # Site settings
 title: hellomikelo
-description: Mike Lo's blog on data science, design and productive thinking # this means to ignore newlines until "baseurl:"
+description: Mike Lo's Blog on Data Science and Design
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site
+url: "/" # the base hostname & protocol for your site
 # site_url: "hellomikelo.com/blog"
 
-# twitter_username: briancaffey
+# twitter_username: hellomikelo
 github_username:  yuanhunglo
 linkedin_username: mike-yhl 
-linkedin_name: yuanhunglo
 email: hellomikelo@gmail.com
 
 # Build settings
 # markdown: kramdown
 # highlighter: rouge
 
+# plugins: [jekyll-paginate, jekyll-seo-tag]
 #gems:
 #  - jekyll-assets
+
 
 port: 4444
 # collections:
