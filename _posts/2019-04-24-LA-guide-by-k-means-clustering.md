@@ -4,7 +4,7 @@ layout: post
 title: A Guide to Los Angeles Neighborhoods for Thrifty Young Professionals
 published: true
 excerpt_separator: <!--more-->
-categories: [Data Science]
+categories: [Data-Science]
 
 ---
 
@@ -1944,7 +1944,7 @@ averages.plot(x='Median Rent', y='Safety Ranking', kind='scatter');
 ```
 
 
-![png](/static/imgs/output_44_0.png){:height="100%" width="100%"}
+![png](/static/imgs/output_44_0.png){: width="50%"}
 
 
 ```python
@@ -1953,7 +1953,7 @@ averages.plot(x='Median Rent', y='Population', kind='scatter');
 ```
 
 
-![png](/static/imgs/output_45_0.png){:height="100%" width="100%"}
+![png](/static/imgs/output_45_0.png){: width="50%"}
 
 
 
@@ -1963,7 +1963,7 @@ averages.plot(x='Safety Ranking', y='Population', kind='scatter');
 ```
 
 
-![png](/static/imgs/output_46_0.png){:height="100%" width="100%"}
+![png](/static/imgs/output_46_0.png){: width="50%"}
 
 
 ### 5.1 Rent prices and neighborhood safety

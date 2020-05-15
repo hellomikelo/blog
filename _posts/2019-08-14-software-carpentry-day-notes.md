@@ -5,7 +5,7 @@ title: Software Carpentry Notes
 description: 
 published: true
 excerpt_separator: <!--more-->
-categories: [Data Science]
+categories: [Data-Science]
 
 ---
 

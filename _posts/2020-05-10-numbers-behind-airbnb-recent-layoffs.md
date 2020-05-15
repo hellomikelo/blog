@@ -5,7 +5,7 @@ title: The Numbers Behind AirBnB's Recent Layoffs
 description: testing
 published: true
 excerpt_separator: <!--more-->
-categories: [Data Science]
+categories: [Data-Science]
 
 ---
 

@@ -5,7 +5,7 @@ title:  New Medium Blog Post on My Recent ML Project
 description: 
 published: true
 excerpt_separator: <!--more-->
-categories: [Data Science]
+categories: [Data-Science]
 
 ---
 
