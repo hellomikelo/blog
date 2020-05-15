@@ -2,7 +2,7 @@
 
 layout: post
 title: The Numbers Behind AirBnB's Recent Layoffs
-description: testing
+description: 
 published: true
 excerpt_separator: <!--more-->
 categories: [Data-Science]
