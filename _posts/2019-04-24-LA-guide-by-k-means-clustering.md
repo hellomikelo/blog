@@ -1944,7 +1944,7 @@ averages.plot(x='Median Rent', y='Safety Ranking', kind='scatter');
 ```
 
 
-![png]({{ site.url }}/assets/images/output_44_0.png){:height="100%" width="100%"}
+![png](/static/imgs/output_44_0.png){:height="100%" width="100%"}
 
 
 ```python
@@ -1953,7 +1953,7 @@ averages.plot(x='Median Rent', y='Population', kind='scatter');
 ```
 
 
-![png]({{ site.url }}/assets/images/output_45_0.png){:height="100%" width="100%"}
+![png](/static/imgs/output_45_0.png){:height="100%" width="100%"}
 
 
 
@@ -1963,7 +1963,7 @@ averages.plot(x='Safety Ranking', y='Population', kind='scatter');
 ```
 
 
-![png]({{ site.url }}/assets/images/output_46_0.png){:height="100%" width="100%"}
+![png](/static/imgs/output_46_0.png){:height="100%" width="100%"}
 
 
 ### 5.1 Rent prices and neighborhood safety

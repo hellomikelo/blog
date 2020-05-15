@@ -10,9 +10,9 @@ with
 
 =================
 
-If you want to add images, add "{{ site.url }}/assets/images/" to the beginning of the image path, e.g.
+If you want to add images, add "/static/imgs/" to the beginning of the image path, e.g.
 
-![png]({{ site.url }}/assets/images/output_44_0.png)
+![png](/static/imgs/output_44_0.png)
 
 =================
 

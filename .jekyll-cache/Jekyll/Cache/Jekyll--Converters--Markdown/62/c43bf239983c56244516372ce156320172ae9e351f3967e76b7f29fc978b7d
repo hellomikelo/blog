@@ -1,4 +1,4 @@
-I"ð¢<h2 id="summary">Summary</h2>
+I"«¢<h2 id="summary">Summary</h2>
 <p>In this report I hoped to create a guide for young professionals who are interested in relocating to Los Angeles but are unsure of which neighborhood to live in. To accomplish this, I scraped data from several sources, namely</p>
 
 <!--more-->
@@ -1822,19 +1822,19 @@
 </span><span class="n">averages</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'Median Rent'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Safety Ranking'</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">'scatter'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><img src="http://localhost:4444/assets/images/output_44_0.png" alt="png" height="100%" width="100%" /></p>
+<p><img src="/static/imgs/output_44_0.png" alt="png" height="100%" width="100%" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># plot average median rent vs average safety ranking
 </span><span class="n">averages</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'Median Rent'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Population'</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">'scatter'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><img src="http://localhost:4444/assets/images/output_45_0.png" alt="png" height="100%" width="100%" /></p>
+<p><img src="/static/imgs/output_45_0.png" alt="png" height="100%" width="100%" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># plot average median rent vs average safety ranking
 </span><span class="n">averages</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'Safety Ranking'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'Population'</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">'scatter'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><img src="http://localhost:4444/assets/images/output_46_0.png" alt="png" height="100%" width="100%" /></p>
+<p><img src="/static/imgs/output_46_0.png" alt="png" height="100%" width="100%" /></p>
 
 <h3 id="51-rent-prices-and-neighborhood-safety">5.1 Rent prices and neighborhood safety</h3>
 
