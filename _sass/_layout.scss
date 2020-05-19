@@ -213,8 +213,14 @@
         // line-height: $base-line-height; 
     }
     > ul {
+        //margin:  0;
+        //margin: $spacing-unit/8 0;
         //margin-bottom: $spacing-unit;
-        line-height: $list-line-height; 
+        //line-height: $list-line-height; 
+    }
+
+    > ul:not(:last-child) {
+        //margin: $spacing-unit*0 0;
     }
 }
 
@@ -251,7 +257,7 @@
 .post-title {
     font-size: $title-font-size;
     letter-spacing: $base-spacing;
-    line-height: 1;
+    // line-height: 1;
     font-weight: $title-font-weight;
 
     @include media-query($on-laptop) {
