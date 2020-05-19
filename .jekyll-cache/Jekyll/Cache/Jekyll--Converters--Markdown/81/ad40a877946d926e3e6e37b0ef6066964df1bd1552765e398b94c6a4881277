@@ -1,0 +1,5 @@
+I":<p><img src="/static/imgs/aet-nipt.jpg" alt="atomic electron tomography" width="100%" /></p>
+
+<p>Traditionally image denoising in electron and X-ray microscopy relies on subtracting a background that is either a constant throughout the image, or by mathematically estimating a smooth background using methods such as the Laplace’s equation. Such methods are either too crude, or required segmenting the object and creating a mask in order to form the boundary for estimation, and also oftentimes requires manually-chosen tuning parameters for optimal performance. Here, I played around with a deep learning approach to denoising electron microscopy images, where I trained a CNN to recognize and subtract out artifacts in noisy tomography projection images to recover images that are more faithful to the true objects.</p>
+
+:ET

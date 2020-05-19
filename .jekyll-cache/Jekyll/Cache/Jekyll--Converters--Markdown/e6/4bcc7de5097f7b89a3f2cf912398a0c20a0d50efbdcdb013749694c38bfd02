@@ -1,0 +1,98 @@
+I"Ä
+<!-- <ul class="post-list"> -->
+
+<h3>Data-Science</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;May 10, 2020 | &lt;/span&gt; 
+	&lt;a href="/data-science/2020/05/10/numbers-behind-airbnb-recent-layoffs.html"&gt;The Numbers Behind AirBnB's Recent Layoffs&lt;/a&gt;
+&lt;/ul&gt;
+  
+&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Apr 4, 2020 | &lt;/span&gt; 
+	&lt;a href="/data-science/2020/04/04/new-medium-blog-post.html"&gt;New Medium Blog Post on My Recent ML Project&lt;/a&gt;
+&lt;/ul&gt;
+  
+&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Aug 14, 2019 | &lt;/span&gt; 
+	&lt;a href="/data-science/2019/08/14/software-carpentry-day-notes.html"&gt;Software Carpentry Notes&lt;/a&gt;
+&lt;/ul&gt;
+  
+&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Apr 24, 2019 | &lt;/span&gt; 
+	&lt;a href="/data-science/2019/04/24/LA-guide-by-k-means-clustering.html"&gt;A Guide to Los Angeles Neighborhoods for Thrifty Young Professionals&lt;/a&gt;
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<h3>Design</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;May 14, 2020 | &lt;/span&gt; 
+	&lt;a href="/design/2020/05/14/design-ah-tv-program.html"&gt;Design Ah! Reminding Us to Look, Think, and Create&lt;/a&gt;
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<h3>Guide</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Apr 23, 2020 | &lt;/span&gt; 
+	&lt;a href="/guide/2020/04/23/step-by-step-GKE-deployment.html"&gt;Step-by-Step Streamlit App Deployment Via GKE&lt;/a&gt;
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<h3>Guides</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Jul 30, 2018 | &lt;/span&gt; 
+	&lt;a href="/guides/2018/07/30/training-neural-networks-on-computing-clusters.html"&gt;Training Neural Networks on Computing Clusters&lt;/a&gt;
+&lt;/ul&gt;
+  
+&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Jul 21, 2018 | &lt;/span&gt; 
+	&lt;a href="/guides/2018/07/21/grep.html"&gt;The Very Useful grep Command for Searching General Keywords in Command Line&lt;/a&gt;
+&lt;/ul&gt;
+  
+&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Jun 19, 2018 | &lt;/span&gt; 
+	&lt;a href="/guides/2018/06/19/getting-started-with-Conda.html"&gt;Getting Started with Conda&lt;/a&gt;
+&lt;/ul&gt;
+  
+&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Jun 17, 2018 | &lt;/span&gt; 
+	&lt;a href="/guides/2018/06/17/git-jekyll-github-pages.html"&gt;Short Guide to Using git with Jekyll and Github Pages&lt;/a&gt;
+&lt;/ul&gt;
+  
+&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Oct 13, 2017 | &lt;/span&gt; 
+	&lt;a href="/guides/2017/10/13/exploding-text-in-lithographic-mask-design-using-autocad-and-inkscape.html"&gt;Exploding Text in Lithographic Mask Design Using AutCAD and Inkscape&lt;/a&gt;
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<h3>Misc</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;May 15, 2020 | &lt;/span&gt; 
+	&lt;a href="/misc/2020/05/15/job-hunt-by-algo.html"&gt;An Algorithmic Approach to Finding a Job&lt;/a&gt;
+&lt;/ul&gt;
+  
+&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;May 15, 2020 | &lt;/span&gt; 
+	&lt;a href="/misc/2020/05/15/algos-to-live-by.html"&gt;job hunt&lt;/a&gt;
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<h3>Research</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Sep 13, 2019 | &lt;/span&gt; 
+	&lt;a href="/research/2019/09/13/runnning-jobarrays-on-hoffman2.html"&gt;Running MATLAB jobarrays on UCLA's Hoffman2&lt;/a&gt;
+&lt;/ul&gt;
+  
+&lt;ul class='post-list'&gt;
+	&lt;span class="post-meta"&gt;Jul 17, 2019 | &lt;/span&gt; 
+	&lt;a href="/research/2019/07/17/LaTex-for-UCLA-dissertation.html"&gt;LaTex Formatting for UCLA Dissertation Using uclathe&lt;/a&gt;
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<!-- </ul> -->
+:ET

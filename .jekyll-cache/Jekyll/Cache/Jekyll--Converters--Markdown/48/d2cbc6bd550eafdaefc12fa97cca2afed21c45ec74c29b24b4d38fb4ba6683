@@ -1,0 +1,32 @@
+I"7<p>During my job search, I often ask myself this question: how much time should I allocate to perfecting my resume and honing my skills versus actively networking and applying with my current resume? In an ideal world with infinite time and resources (and employers who don’t care about prolonged vacancies in experiences!), I could start the process only when I have the perfect resume full of completed projects and experiences, but unfortunately I live in a time- and resource-constrained world that is always forces me to have to make a choice. If I spend too much time honing my skills, then I won’t have a chance to let companies know that I’m open to opportunities. On the other hand, if I spend too much time applying for jobs or networking, then my resume may not be competitive against other candidates. So what <em>is</em> the right way to approach this job search dilemma? Put another way, how can I maximize my chance of landing interviews and getting a job?</p>
+
+<!--more-->
+
+<p>This tension between exploring new skills and exploiting existing experiences is actually studied extensively in mathematics, in what’s called the <strong>explore-exploit trade-off</strong>, where exploration involves gathering information, and exploitation uses the information available to get a known good result. This is more commonly known as the <a href="https://en.wikipedia.org/wiki/Multi-armed_bandit">multi-armed bandit problem</a>. The problem is described in the book <a href="https://algorithmstoliveby.com/">Algorithms to Live By</a> as follows.</p>
+
+<blockquote>
+  <p>Imagine walking into a casino full of different slot machines, each one with its own odds of a payoff. The rub, of course, is that you aren’t told those odds in advance: until you start playing, you won’t have any idea which machines are the most lucrative (“loose,” as slot-machine aficionados call it) and which ones are just money sinks. Naturally, you’re interested in maximizing your total winnings. And it’s clear that this is going to involve some combination of pulling the arms on different machines to test them out (exploring), and favoring the most promising machines you’ve found (exploiting).</p>
+</blockquote>
+
+<p>In general form, the problem states that a person has multiple options to pursue (level up skills or network and apply to jobs), a different probability of reward for each option (each choice contributes to finding a job with varying success), and a certain amount of effort (or money, or time) to be allocated among them. What action to take depends on much time you have left.</p>
+
+<p>A sobering property of trying new things is that the value of exploration, of finding a new favorite, can only go down over time. The flip side is that the value of exploitation can only go up over time. So explore when you will have time to use the resulting knowledge, exploit when you’re ready to cash in. The interval makes the strategy.</p>
+
+<p><strong>Win-Stay, Lose-Shift algorithm</strong>: choose an arm at random, and keep pulling it as long as it keeps paying off.</p>
+
+<p>When not knowing the interval to consider, the present has a higher priority: a cured patient today is taken to be more valuable than one cured a week or a year from now, and certainly the same holds true of profits. Economists refer to this idea, of valuing the present more highly than the future, as “discounting.”</p>
+
+<p><strong>Gittins index</strong>: Pay-off maximization framework. For every slot machine we know little or nothing about, there is some guaranteed payout rate which, if offered to us in lieu of that machine, will make us quite content never to pull its handle again. It’s based on geometric discounting of future reward, valuing each pull at a constant fraction of the previous one. The Gittins index, then, provides a formal, rigorous justification for preferring the unknown, provided we have some opportunity to exploit the results of what we learn from exploring. The unknown has a chance of being better, even if we actually expect it to be no different, or if it’s just as likely to be worse.</p>
+
+<p>Gittins index is not quick to compute, so another framework would be more accessible in general cases. Regret can be highly motivating. regret minimization framework. In the long run, optimism is the best prevention for regret.</p>
+
+<p><strong>Upper Confidence Bound algorithms</strong>: In a multi-armed bandit problem, an Upper Confidence Bound algorithm says, quite simply, to pick the option for which the top of the confidence interval is highest. So an Upper Confidence Bound algorithm doesn’t care which arm has performed best so far; instead, it chooses the arm that could reasonably perform best in the future. the Upper Confidence Bound is always greater than the expected value, but by less and less as we gain more experience with a particular option.</p>
+
+<p>Upper Confidence Bound algorithms implement a principle that has been dubbed “optimism in the face of uncertainty.” Optimism, they show, can be perfectly rational. By focusing on the best that an option could be, given the evidence obtained so far, these algorithms give a boost to possibilities we know less about.</p>
+
+<p>Bandits live (A/B testing)</p>
+
+<p>In general, it seems that people tend to over-explore to favor the new disproportionately over the best. when the world can change, continuing to explore can be the right choice. So long as things continue to change, you must never fully cease exploring.</p>
+
+<p>The Gittins index and the Upper Confidence Bound, as we’ve seen, inflate the appeal of lesser-known options beyond what we actually expect, since pleasant surprises can pay off many times over. But at the same time, this means that exploration necessarily leads to being let down on most occasions. Shifting the bulk of one’s attention to one’s favorite things should increase quality of life.</p>
+:ET

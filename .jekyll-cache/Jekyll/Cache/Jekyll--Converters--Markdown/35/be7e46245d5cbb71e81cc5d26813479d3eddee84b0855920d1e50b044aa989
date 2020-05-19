@@ -1,0 +1,6 @@
+I"�<p>exploration is gathering information, and exploitation is using the information you have to get a known good result.</p>
+
+<p>In computer science, the tension between exploration and exploitation takes its most concrete form in a scenario called the “multi-armed bandit problem.”</p>
+
+<p>Imagine walking into a casino full of different slot machines, each one with its own odds of a payoff. The rub, of course, is that you aren’t told those odds in advance: until you start playing, you won’t have any idea which machines are the most lucrative (“loose,” as slot-machine aficionados call it) and which ones are just money sinks. Naturally, you’re interested in maximizing your total winnings. And it’s clear that this is going to involve some combination of pulling the arms on different machines to test them out (exploring), and favoring the most promising machines you’ve found (exploiting).</p>
+:ET

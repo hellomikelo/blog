@@ -1,0 +1,11 @@
+I"z<p><img src="/static/imgs/aet-nipt.jpg" alt="atomic electron tomography" width="100%" /></p>
+
+<p>Traditionally image denoising in electron and X-ray microscopy rely</p>
+
+<p>background is estimated by either subtracting a constant value from the entire image,</p>
+<ul>
+  <li>Or by creating a mask of the object of interest and use Laplace’s equation to estimate and subtract background.</li>
+  <li>Such methods are either too crude, or required segmenting the object and creating a mask in order to form the boundary for estimation, and also oftentimes requires manually-chosen tuning parameters for optimal performance.</li>
+</ul>
+
+:ET

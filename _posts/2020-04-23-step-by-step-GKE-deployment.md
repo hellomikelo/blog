@@ -38,7 +38,9 @@ Once you have completed the above prerequisites, you're ready to start the 6-ste
 
 2. **Test the container locally:** Test run the image as a container (think of the cake made from the recipe) by 
 
-	`docker run --rm -p 8501:8501 gcr.io/{$PROJECT_ID}/*your-app-name*:v1`
+	```
+	docker run --rm -p 8501:8501 gcr.io/{$PROJECT_ID}/*your-app-name*:v1
+	```
 
 	Then point your internet browser to `localhost:8501` to see the app. If it shows up as you expected, then you know your application is ready for the big time.
 
@@ -51,20 +53,28 @@ Once you have completed the above prerequisites, you're ready to start the 6-ste
 
 3. **Push image to Google Container Registry (GCR):** Send the image up to the cloud to prepare for deployment.
 
-	`docker push gcr.io/{$PROJECT_ID}/*your-app-name*:v1`
+	```
+	docker push gcr.io/{$PROJECT_ID}/*your-app-name*:v1
+	```
 
 4. **Create a container cluster:** Create a [cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture) to run the container image. It basically means intiailizing a group of computing resources that will run the app. You need to first set default Google Cloud options that tells gcloud where to find resources to set up the cluster
 
-	`gcloud config set project $PROJECT_ID`  
-	`gcloud config set compute/zone $COMPUTE_ZONE`
+	```
+	gcloud config set project $PROJECT_ID
+	gcloud config set compute/zone $COMPUTE_ZONE
+	```
 
 	Then create the cluster (in this example with 2 nodes) by 
 
-	`gcloud container clusters create *your-cluster-name* --num-nodes=2`
+	```
+	gcloud container clusters create *your-cluster-name* --num-nodes=2
+	```
 
 	**Note:** If you are using an existing Google Kubernetes Engine cluster or if you have created a cluster through Google Cloud Console, you need to run the following command to retrieve cluster credentials and configure kubectl command-line tool with them:
 
-	`gcloud container clusters get-credentials *your-cluster-name*`
+	```
+	gcloud container clusters get-credentials *your-cluster-name*
+	```
 
 	If you have already created a cluster with the gcloud container clusters create command listed above, this step is not necessary.
 
@@ -78,11 +88,15 @@ Once you have completed the above prerequisites, you're ready to start the 6-ste
 
 6. **Expose your application to the internet:** Assign external IP addresses for your app so it is accessible from the internet.
 
-	`kubectl expose deployment *your-web-deployment-name* --type=LoadBalancer --port 80 --target-port 8501`
+	```
+	kubectl expose deployment *your-web-deployment-name* --type=LoadBalancer --port 80 --target-port 8501
+	```
 
 	This command creates a [Service](https://kubernetes.io/docs/user-guide/services/) resource, which provides networking and IP support to your application's Pods. GKE creates an external IP and a Load Balancer for your application. After a minute or so, an `EXTERNAL-IP` will be assigned to your app. You can find it via
 
-	`kubectl get service` 
+	```
+	kubectl get service
+	``` 
 
 	which will show something like this:
 
@@ -95,18 +109,25 @@ Once you have completed the above prerequisites, you're ready to start the 6-ste
 
 7. **Iterate on your app:** At this point your app is live on the internet, but depending on incoming traffic flow or feature suggestions by your users, you maybe want to make changes to your deployment infrastructure or your app. You can continue to adjust the number of nodes you want to use for the cluster with 
 
-	`kubectl scale deployment *your-web-deployment-name* --replicas=*num-of-nodes*`.
+	```
+	kubectl scale deployment *your-web-deployment-name* --replicas=*num-of-nodes*
+	```
 
 	Another way to change the the number of nodes is via `gcloud` (I'm not sure how they differ). First get the name of your container cluster,
 
-	`gcloud container clusters list`,
+	```
+	gcloud container clusters list
+	```
 
 	then 
 
-	`gcloud container clusters resize *container-cluster-name* --num-nodes *num-of-nodes*`.
+	```
+	gcloud container clusters resize *container-cluster-name* --num-nodes *num-of-nodes*
+	```
 
 	You can continue to iterate on newer versions of your app locally. When you are ready to release a newn version of your app, go through steps 1-3 again (remember to increment the version when creating new Docker images). Once the image is in GCR, you can update the deployment via
 
+	
 	```
 	kubectl set image *your-web-deployment-name* *your-app-name*=gcr.io/${PROJECT_ID}/*your-app-name*:v2
 	```

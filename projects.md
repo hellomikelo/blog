@@ -21,7 +21,7 @@ __Y. H. Lo__, L. Zhao, M. Gallagher-Jones, A. Rana, J. Lodico, W. Xiao, B.C. Reg
 
 J. Deng\*, __Y. H. Lo__\*, M. Gallagher-Jones, S. Chen, A. Pryor Jr., Q. Jin, Y. P. Hong, Y. S. G. Nashed, S. Vogt, J. Miao, C. Jacobsen. Correlative 3D x-ray fluorescence and ptychographic tomography of frozen-hydrated green algae. _Science Advances_ __4__, eaau4548 (2018).
 
-__Y. H. Lo__, C.-T. Liao, J. Zhou, A. Rana, C. S. Bevis, G. Gui, B. Enders, K. M. Cannon, Y.-S.Yu, R. Celestre, K. Nowrouzi, D. Shapiro, H. Kapteyn, R. Falcone, C. Bennett, M. Murnane, J. Miao. Multimodal x-ray and electron microscopy of the Allende meteorite. _Science Advances_ __5__, eaax3009 (2019).
+__Y. H. Lo__, C.-T. Liao, J. Zhou, A. Rana, C. S. Bevis, G. Gui, B. Enders, K. M. Cannon, Y.-S.Yu, R. Celestre, K. Nowrouzi, D. Shapiro, H. Kapteyn, R. Falcone, C. Bennett, M. Murnane, J. Miao. Multimodal x-ray and electron microscopy of the Allende meteorite. _Science Advances_ __5__, eaax3009 (2019). [[Phys.org Highlight](https://phys.org/news/2019-09-multimodal-x-ray-electron-microscopy-allende.html)]
 
 __Y. H. Lo__, J. Zhou, A. Rana, D. Morrill, C. Gentry, B. Enders, Y.-S. Yu, C.-Y. Sun, D. Shapiro, R. Falcone, H. Kapteyn, M. Murnane, P. U. P. A. Gilbert, J. Miao. X-ray linear dichroic ptychography reveals mis-orientations within coral skeleton 'single crystals'. _Submitted_ (2019).
 

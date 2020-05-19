@@ -1,6 +1,7 @@
 /**
  * Site header
  */
+
 .site-header {
     // border-top: 5px solid $grey-color-dark;
     // border-bottom: 1px solid $grey-color-light;
@@ -107,6 +108,7 @@
 /**
  * Site footer
  */
+
 .site-footer {
     // border-top: 1px solid $grey-color-light;
     padding: $spacing-unit 0;
@@ -196,7 +198,7 @@
 
 .post-link {
     display: block;
-    font-size: 20px;
+    font-size: 21px;
     font-weight: $title-font-weight;
     letter-spacing: $base-spacing;
 }
@@ -206,10 +208,13 @@
     list-style: none;
     padding-left: 0;
     letter-spacing: $base-spacing;
-    // line-height: 1;
-
     > li {
         margin-bottom: $spacing-unit;
+        // line-height: $base-line-height; 
+    }
+    > ul {
+        //margin-bottom: $spacing-unit;
+        line-height: $list-line-height; 
     }
 }
 
@@ -330,3 +335,12 @@
         }
     }
 }
+
+
+/**
+ * Table
+ */
+
+.dataframe thead tr th {
+    text-align: center;  
+    }

@@ -1,0 +1,62 @@
+I"9<p>A question that I often ask myself during my job search process is this: how early before I need a job should I start applying for jobs so I have the best chance of landing not just <em>any</em> job, but my optimal job? This then leads me to wonder when I should stop refining my resume and start sending it out to companies. In an ideal world with infinite time and resources (and employers who don’t care about prolonged vacancies in experiences), I would only start the process when I have the perfect resume full of completed projects and experiences. But unfortunately I live in a world that is always under the constraint of time and resources that forces me to have to act as soon as possible. So with those constraints in place, when <em>is</em> the best time to start the job hunt to maximize my chance of landing my optimal job?</p>
+
+<!--more-->
+
+<p>I looked into this and found that this problem is actually similar to a mathematical theory called <a href="https://en.wikipedia.org/wiki/Optimal_stopping">optimal stopping</a>, which deals with the problem of choosing a time to take a particular action to maximize an expected reward, or to minimize cost. The various applications of this theory in everyday lives are discussed in detail in the book <a href="https://algorithmstoliveby.com/">Algorithms to Live By</a>. I thought it’d be interesting to map that thinking to my job hunting situation and estimate how long before I land job interviews should I start sending out my resume.</p>
+
+<p>For the sake of simplicity, I consider four criteria (there are many more out there):</p>
+
+<ol>
+  <li>I have no idea of the what my dream job is (“<a href="https://en.wikipedia.org/wiki/Complete_information">no-information game</a>”)</li>
+  <li>I have a good idea of what my dream job is (“<a href="https://en.wikipedia.org/wiki/Complete_information">complete information</a>”)</li>
+  <li>Once I submit my application I have a 100% chance of getting an interview</li>
+  <li>Once I submit my application I have a 50% chance of getting an interview</li>
+</ol>
+
+<p>Here are the numbers are for the above scenarios:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">-</th>
+      <th style="text-align: center">No information about my dream job</th>
+      <th style="text-align: center">Full information about my dream job</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>50% chance of interview</strong></td>
+      <td style="text-align: center">25%</td>
+      <td style="text-align: center">37-58%</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>100% chance of interview</strong></td>
+      <td style="text-align: center">37%</td>
+      <td style="text-align: center">58%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>*assuming no second chances once you’ve made the first decision. The odds will increase if second chances are allowed.</p>
+
+<!-- stopped here -->
+
+<p>The percentage means the amount of time before a predetermined date I should start applying for jobs, regardless of how ready I am. For instance, let’s say I want to land</p>
+
+<p>The <strong>37% Rule</strong> derives from optimal stopping’s most famous puzzle, which has come to be known as the “<a href="https://en.wikipedia.org/wiki/Secretary_problem">secretary problem</a>.”</p>
+
+<p>Its setup is much like the apartment hunter’s dilemma that we considered earlier. Imagine you’re interviewing a set of applicants for a position as a secretary, and your goal is to maximize the chance of hiring the single best applicant in the pool. While you have no idea how to assign scores to individual applicants, you can easily judge which one you prefer. (A mathematician might say you have access only to the ordinal numbers—the relative ranks of the applicants compared to each other—but not to the cardinal numbers, their ratings on some kind of general scale.)</p>
+
+<p>Look-Then-Leap Rule: You set a predetermined amount of time for “looking”—that is, exploring your options, gathering data—in which you categorically don’t choose anyone, no matter how impressive. After that point, you enter the “leap” phase, prepared to instantly commit to anyone who outshines the best applicant you saw in
+the look phase.</p>
+
+<p>look at the first 37% of the applicants, choosing none (non-committal), then be ready to leap for anyone better than all those you’ve seen so far. This is assuming we know nothing about the applicants other than how they compare to one another (“no-information game”). A 63% failure rate, when following the best possible strategy, is a sobering fact. But compare to randomly picking it’s still much better</p>
+
+<p>If we have full-information, then we can follow the <strong>Threshold Rule</strong>, where we immediately accept an applicant if she is above a certain percentile. But we do, however, need to be keenly aware of how much looking remains available. If a lot are left, then it’s OK to pass up good choices. Success rate for this case is 58%.</p>
+
+<p>If you have, say, a 50/50 chance of being rejected, then the same kind of mathematical analysis that yielded the 37% Rule says you should start making offers after just a quarter of your search. If turned down, keep making offers to every best-yet person you see until somebody accepts. With such a strategy, your chance of overall success—that is, proposing and being accepted by the best applicant in the pool—will also be 25%.</p>
+
+<p>For example, assume an immediate proposal is a sure thing but belated proposals are rejected half the time. Then the math says you should keep looking noncommittally until you’ve seen 61% of applicants, and then only leap if someone in the remaining 39% of the pool proves to be the best yet. If you’re still single after considering all the possibilities—as Kepler was—then go back to the best one that got away. The symmetry between strategy and outcome holds in this case once again, with your chances of ending up with the best applicant under this second-chances-allowed scenario also being 61%.</p>
+
+<p>Another scenario: If we decline the current offer, will the chance of a better one, multiplied by how much better we expect it to be, more than compensate for the cost of the wait? The critical thing to note in this problem is that our threshold depends only on the <strong>cost of search</strong>. Since the chances of the next offer being a good one—and the cost of finding out—never change, our stopping price has no reason to ever get lower as the search goes on, regardless of our luck. We set it once, before we even begin, and then we quite simply hold fast.</p>
+:ET
