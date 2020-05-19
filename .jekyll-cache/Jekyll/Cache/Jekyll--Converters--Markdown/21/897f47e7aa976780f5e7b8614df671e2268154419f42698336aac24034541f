@@ -1,4 +1,4 @@
-I"1
+I"‰
 <ul class="post-list">
 
   <h3>Data-Science</h3>
@@ -14,13 +14,18 @@
     </ul>
   
     <ul class="post-list">
+    	<span class="post-meta">Aug 29, 2019 | </span> 
+    	<a href="/data-science/2019/08/29/dncnn-em-images-denoising.html">Deep Neural Network Denoising of Electron Microscopy Images</a>
+    </ul>
+  
+    <ul class="post-list">
     	<span class="post-meta">Aug 14, 2019 | </span> 
     	<a href="/data-science/2019/08/14/software-carpentry-day-notes.html">Software Carpentry Notes</a>
     </ul>
   
     <ul class="post-list">
     	<span class="post-meta">Apr 24, 2019 | </span> 
-    	<a href="/data-science/2019/04/24/LA-guide-by-k-means-clustering.html">A Guide to Los Angeles Neighborhoods for Thrifty Young Professionals</a>
+    	<a href="/data-science/2019/04/24/data-tour-through-la-neighborhoods.html">A Data Tour Through Los Angeles Neighborhoods</a>
     </ul>
   
 
@@ -65,19 +70,6 @@
     <ul class="post-list">
     	<span class="post-meta">Oct 13, 2017 | </span> 
     	<a href="/guides/2017/10/13/exploding-text-in-lithographic-mask-design-using-autocad-and-inkscape.html">Exploding Text in Lithographic Mask Design Using AutCAD and Inkscape</a>
-    </ul>
-  
-
-  <h3>Misc</h3>
-    
-    <ul class="post-list">
-    	<span class="post-meta">May 15, 2020 | </span> 
-    	<a href="/misc/2020/05/15/job-hunt-by-algo.html">A Multi-Armed Bandit Approach to Job Search</a>
-    </ul>
-  
-    <ul class="post-list">
-    	<span class="post-meta">May 15, 2020 | </span> 
-    	<a href="/misc/2020/05/15/algos-to-live-by.html">job hunt</a>
     </ul>
   
 

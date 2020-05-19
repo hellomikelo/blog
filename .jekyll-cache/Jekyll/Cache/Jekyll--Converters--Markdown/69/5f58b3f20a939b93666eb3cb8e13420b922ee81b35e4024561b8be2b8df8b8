@@ -1,5 +1,0 @@
-I"�<p>exploration is gathering information, and exploitation is using the information you have to get a known good result.</p>
-
-<p>In computer science, the tension between exploration and exploitation takes its most concrete form in a scenario called the “multi-armed bandit problem.” The problem in the most general form: multiple options to pursue, a different probability of reward for each option, and a certain amount of effort (or money, or time) to be allocated among them. Being sensitive to how much time you have left is exactly what the computer science of the explore/exploit dilemma suggests. where people perceive themselves to be on the interval relevant to their decision.</p>
-
-:ET
