@@ -14,7 +14,7 @@ permalink: /archive
 
 <ul class="post-list">
 {% for category in sorted_categories %}
-  <h3>{{ category[0] }}</h3>
+  <h3 class="h3-post-title">{{ category[0] }}</h3>
     {% for post in category[1] %}
     <ul class='post-list'>
     	<span class="post-meta">{{ post.date | date: "%b %-d, %Y | " }}</span> 
