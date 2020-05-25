@@ -1,0 +1,421 @@
+I"L�<p>Following my previous 20% Project that analyzed AirBnB’s latest round of layoffs, in this latest installment I explored the bigger tech industry layoffs across America. <a href="https://talentconnect.torchcapital.vc/">Torch Capital</a>, a NY-based venture capital, created <a href="https://talentconnect.torchcapital.vc/">Torch Capital Talent Connect</a> database for tech workers that are laid off due to the pandemic to explore new opportunities. I scraped the information of job seekers who are listed in the databased to learn more about the details of tech job layoffs.</p>
+
+<!--more-->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">time</span> 
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="n">mdates</span>
+
+<span class="c1"># for scraping javascript rendered webpages
+</span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
+
+<span class="c1">#&lt;!-- from plotly import __version__ --&gt;
+#&lt;!-- from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot --&gt;
+#&lt;!-- import plotly.graph_objects as go --&gt;
+#&lt;!-- init_notebook_mode(connected=False) --&gt;
+</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s">'whitegrid'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">'font.size'</span><span class="p">:</span><span class="mi">14</span><span class="p">})</span>
+</code></pre></div></div>
+
+<script src="plotly.js" charset="utf-8" type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
+<h2 id="scrape-data">Scrape data</h2>
+<p>First, start by creating a <code class="highlighter-rouge">TorchConnectScraper</code> class object to scrape the data. Analysis will come afterwards.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TorchConnectScraper</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile_list</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    
+    <span class="k">def</span> <span class="nf">open_browser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+        <span class="c1"># initialize headless Chrome browser
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s">''</span><span class="p">)</span><span class="o">+</span><span class="s">'/chromedriver'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    
+    
+    <span class="k">def</span> <span class="nf">get_seekers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">next_page</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">while</span> <span class="n">next_page</span><span class="p">:</span>
+            <span class="c1"># get page HTML
+</span>            <span class="n">page_html</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">page_source</span>
+            <span class="n">bsoup</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">page_html</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+            <span class="c1"># get profiles
+</span>            <span class="n">profiles</span> <span class="o">=</span> <span class="n">bsoup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'tr'</span><span class="p">,</span> 
+                                      <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'MuiTableRow-root'</span><span class="p">,</span> 
+                                             <span class="s">'role'</span><span class="p">:</span><span class="s">'row'</span><span class="p">})</span>
+            <span class="c1"># parse and append to profile list
+</span>            <span class="k">for</span> <span class="n">profile</span> <span class="ow">in</span> <span class="n">profiles</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">profile_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clean_profile</span><span class="p">(</span><span class="n">profile</span><span class="p">))</span>
+            <span class="c1"># move onto next page
+</span>            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s">"//button[@title='Next page']/span"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">remote</span><span class="o">.</span><span class="n">errorhandler</span><span class="o">.</span><span class="n">ElementClickInterceptedException</span><span class="p">:</span>
+                <span class="n">next_page</span> <span class="o">=</span> <span class="bp">False</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">profile_list</span><span class="p">,</span> 
+                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'add_date'</span><span class="p">,</span> <span class="s">'name'</span><span class="p">,</span> <span class="s">'company'</span><span class="p">,</span> 
+                           <span class="s">'sector'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">,</span> <span class="s">'city'</span><span class="p">,</span> <span class="s">'relocate'</span><span class="p">])</span>
+        
+        
+    <span class="k">def</span> <span class="nf">get_city</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+        <span class="s">"""not used"""</span>
+        <span class="n">processed</span> <span class="o">=</span> <span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">r','</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+                     <span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r'washington\s?.*'</span><span class="p">,</span> <span class="s">'washington d.c.'</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r'.*(san francisco|sf).*'</span><span class="p">,</span> <span class="s">'san francisco'</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r'.*(new york|nyc|ny|newyork).*'</span><span class="p">,</span> <span class="s">'new york'</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r'.*remote.*'</span><span class="p">,</span> <span class="s">'remote'</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>       
+                     <span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                     <span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+                     <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s">'city'</span><span class="p">})</span> 
+                    <span class="p">)</span>    
+        <span class="k">return</span> <span class="n">processed</span>
+        
+    
+    <span class="k">def</span> <span class="nf">clean_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">):</span>
+        <span class="n">add_date</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">company</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">sector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_sector</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">city</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_city</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">relocate</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+    <span class="c1">#     linkedin = res.contents[7].text
+</span>    <span class="c1">#     email = res.contents[8].text
+</span>        <span class="k">return</span> <span class="p">[</span><span class="n">add_date</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">company</span><span class="p">,</span> <span class="n">sector</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="n">relocate</span><span class="p">]</span>
+    
+    
+    <span class="o">@</span><span class="nb">staticmethod</span>
+    <span class="k">def</span> <span class="nf">clean_city</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">r','</span><span class="p">,</span> <span class="n">txt</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'washington\s?.*'</span><span class="p">,</span> <span class="s">'washington d.c.'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'.*(san francisco|sf).*'</span><span class="p">,</span> <span class="s">'san francisco'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'.*(new york|nyc|ny|newyork).*'</span><span class="p">,</span> <span class="s">'new york'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'.*(boston).*'</span><span class="p">,</span> <span class="s">'boston'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>        
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'.*remote.*'</span><span class="p">,</span> <span class="s">'remote'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">new</span>
+
+
+    <span class="o">@</span><span class="nb">staticmethod</span>
+    <span class="k">def</span> <span class="nf">clean_sector</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">txt</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="s">'Unknown'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">new</span> <span class="k">else</span> <span class="n">new</span>
+        <span class="k">return</span> <span class="n">new</span>
+    
+    
+    <span class="k">def</span> <span class="nf">close_browser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+    
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Scrape data from website
+</span><span class="n">url</span> <span class="o">=</span> <span class="s">'https://talentconnect.torchcapital.vc/browse/talent'</span>
+<span class="n">scraper</span> <span class="o">=</span> <span class="n">TorchConnectScraper</span><span class="p">()</span>
+<span class="n">scraper</span><span class="o">.</span><span class="n">open_browser</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">scraper</span><span class="o">.</span><span class="n">get_seekers</span><span class="p">()</span>
+<span class="n">scraper</span><span class="o">.</span><span class="n">close_browser</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="eda">EDA</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">date</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">add_date</span><span class="p">)))</span>
+<span class="n">latest</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">Y/</span><span class="si">%</span><span class="s">m/</span><span class="si">%</span><span class="s">d"</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">"Number of job seekers: {df.shape[0]:,} (as of {latest})"</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Number of job seekers: 1,185 (as of 2020/05/25)
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>add_date</th>
+      <th>name</th>
+      <th>company</th>
+      <th>sector</th>
+      <th>title</th>
+      <th>city</th>
+      <th>relocate</th>
+      <th>date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>05/25/2020</td>
+      <td>Shahnaz Moz</td>
+      <td>EPIC Semiconductors</td>
+      <td>BD/Sales/Marketing</td>
+      <td>Marketing Director</td>
+      <td>Vancouver</td>
+      <td>yes</td>
+      <td>2020-05-25</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>05/24/2020</td>
+      <td>Lydia Chim</td>
+      <td>University of Southern California</td>
+      <td>Finance/Ops/Analytics</td>
+      <td>Student</td>
+      <td>Los Angeles</td>
+      <td>yes</td>
+      <td>2020-05-24</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Let’s check the distribution layoffs by the tech sectors.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sectors</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'sector'</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">sectors</span> <span class="o">=</span> <span class="n">sectors</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span><span class="s">'counts'</span><span class="p">})</span>
+<span class="n">sectors</span><span class="p">[</span><span class="s">'pct'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sectors</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">sectors</span><span class="o">.</span><span class="n">pct</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">sectors</span><span class="o">.</span><span class="n">sector</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s">'h'</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Percent of Total (</span><span class="si">%</span><span class="s">)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Sector'</span><span class="p">);</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="output_8_0.png" alt="png" /></p>
+
+<p><strong>~40% of the layoffs are in the areas of business development, sales, and marketing</strong>. This differs from AirBnB’s case, which laid off mostly workers in customer service, recruiting, and design. I think this strategy makes business sense, since in times of uncertainty companies will want to set stricter priorities and reduce spending by cutting expandable costs around new investments and advertisement. <strong>Engineering, product, design, and other roles associated with products comprise ~22% of the layoffs</strong>. Even though products are an essential part of any tech company, sadly those who are involved in actually making the products are not spared in times of crisis. The reality is that resource-strapped tech companies need to curtail innovation and conserve resources in order to survive the downturn. <strong>Finance/Ops/analytics comes in 3rd with ~20% of the total layoffs</strong>. These performs any company’s core functions by bringing in revenue, so it makes sense to see that they’re more resilient to layoffs. I wonder if this difference in sector layoffs applies to non-tech industry as well.</p>
+
+<p>Next, let’s qualitatively check the types of positions that are laid off with a word cloud.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Generate Text for Wordcloud
+</span><span class="n">titles</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r'[\(\)/\|\\&amp;+,]'</span><span class="p">,</span> <span class="s">' '</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">text</span><span class="o">=</span> <span class="s">""</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="n">value</span> <span class="o">+</span> <span class="s">' '</span>
+    
+<span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">630</span><span class="p">,</span>
+                      <span class="n">max_font_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">collocations</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+<span class="c1">#                       color_func=lambda *args, **kwargs: (255,0,0),
+</span>                      <span class="n">colormap</span><span class="o">=</span><span class="s">'Blues'</span><span class="p">,</span> <span class="n">background_color</span><span class="o">=</span><span class="s">'white'</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">"bilinear"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">"off"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="output_10_0.png" alt="png" /></p>
+
+<p>Looks like a lot of senior personnel with <strong>director</strong>, <strong>manager</strong>, and <strong>marketing</strong> titles have been laid off, most likely from sales/BD/marketing. In times of crisis even people with seniority are not immune to job insecurity. I would bet this kind of economic downturn also gives companies a good reason to “restructure” by weeding out unproductive workers who have worked their way through the ranks by staying in the company. This brings up another harsh reality of the capitalistic society we live in: no one is truly indispensable to a company. The layoff pool also have a lot of <strong>engineers</strong>, <strong>operations</strong>, <strong>product</strong>, and <strong>analysts</strong> people, which constitute the production side of the company.</p>
+
+<p>Since we also have the dates of individual listings, we can see how the number of job seekers in each sector changed over time.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'date'</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">total</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span><span class="s">'counts'</span><span class="p">})</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">total</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">ndays</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">total</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">a</span><span class="p">:</span><span class="n">b</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">total</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndays</span><span class="p">))}</span>
+<span class="n">total</span><span class="p">[</span><span class="s">'total'</span><span class="p">]</span> <span class="o">=</span> <span class="n">total</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">total</span><span class="p">[</span><span class="s">'date_'</span><span class="p">]</span> <span class="o">=</span> <span class="n">total</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+
+
+<span class="n">day_by_sec</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'date'</span><span class="p">,</span> <span class="s">'sector'</span><span class="p">])</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">day_by_sec</span> <span class="o">=</span> <span class="n">day_by_sec</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span><span class="s">'counts'</span><span class="p">})</span>
+<span class="n">day_by_sec</span> <span class="o">=</span> <span class="n">day_by_sec</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">day_by_sec</span><span class="p">[</span><span class="s">'date_'</span><span class="p">]</span> <span class="o">=</span> <span class="n">day_by_sec</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># scatter plot
+</span><span class="n">fig0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">tight_layout</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ax0</span> <span class="o">=</span> <span class="n">fig0</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">ax0</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">day_by_sec</span><span class="o">.</span><span class="n">counts</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">day_by_sec</span><span class="o">.</span><span class="n">date_</span><span class="p">,</span> 
+                <span class="n">style</span><span class="o">=</span><span class="n">day_by_sec</span><span class="o">.</span><span class="n">sector</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="n">day_by_sec</span><span class="o">.</span><span class="n">sector</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+                <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s">'hls'</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">6</span><span class="p">),</span>
+                <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span>
+               <span class="p">);</span>
+
+<span class="c1"># bar plot
+</span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">total</span><span class="o">.</span><span class="n">date_</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">total</span><span class="o">.</span><span class="n">total</span><span class="p">,</span> 
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span>
+           <span class="p">);</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndays</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">total</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">a, </span><span class="si">%</span><span class="s">b </span><span class="si">%</span><span class="s">d'</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndays</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Num. Seekers by Sector'</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Date'</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">u'both'</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">u'both'</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span> <span class="n">markerscale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Cumulative Sum'</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1200</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">u'both'</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">u'both'</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="output_13_0.png" alt="png" /></p>
+
+<p>This time-dependent plot is interesting and deserves close study. On the first day the website was up (Apr. 5th) over 300 people shared their information on the website, with BD/Sales/Marketing making most of the pool. Then over the next 3 weeks there were varying influxes of new job seekers from different sectors that posted to the board. The total numbers added each day during those 3 weeks varied considerably from weekday to weekday, reflecting a few weeks of tumultuous scramble as companies rush to figure out a strategy for dealing with the economic downturn. We even see a big increase on Apr 17. Let’s see what that’s about.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">date</span> <span class="o">==</span> <span class="s">'2020-04-17'</span><span class="p">]</span><span class="o">.</span><span class="n">company</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Opendoor                                      64
+Clarify Health Solutions                       2
+International Institute of Tourism Studies     2
+Harvard Graduate School of Education           1
+Avery Dennison                                 1
+Name: company, dtype: int64
+</code></pre></div></div>
+
+<p><a href="https://www.opendoor.com/">Opendoor</a> is a SF-based real estate startup that <a href="https://techcrunch.com/2020/04/15/softbank-backed-opendoor-has-announced-a-massive-layoff-cutting-35-of-its-employees/">laid off 600 of its employees</a> (35% of its overall team) on April 15th. This explains the spike in new job seekers on the board on April 17th. Just out of curiosity, below are the 5 companies with the most layoffs on the job board.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'company'</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>company
+Opendoor        64
+Wonderschool    32
+Loftsmart       26
+Lola            16
+                12
+Name: name, dtype: int64
+</code></pre></div></div>
+
+<p>After 3 weeks, the number of new job seekers on Torch Connect decreased, and now the board averages less than 5 new additions per day. Lastly, let’s swtich up and check what cities those seekers are in.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">city</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'city'</span><span class="p">:</span><span class="s">'counts'</span><span class="p">,</span> <span class="s">'index'</span><span class="p">:</span><span class="s">'city'</span><span class="p">})</span>
+        <span class="p">)</span>
+<span class="n">city</span><span class="p">[</span><span class="s">'pct'</span><span class="p">]</span> <span class="o">=</span> <span class="n">city</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">city</span><span class="o">.</span><span class="n">pct</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city</span><span class="o">.</span><span class="n">city</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">orient</span><span class="o">=</span><span class="s">'h'</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Percent of Total (</span><span class="si">%</span><span class="s">)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'City'</span><span class="p">);</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="output_19_0.png" alt="png" /></p>
+
+<p>Let’s also show a map with the numbers.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get city coordinates 
+</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">=</span> <span class="s">'https://public.opendatasoft.com/api/records/1.0/search/?'</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">'dataset'</span><span class="p">:</span><span class="s">'1000-largest-us-cities-by-population-with-geographic-coordinates'</span><span class="p">,</span> 
+          <span class="s">'facet'</span><span class="p">:[</span><span class="s">'state'</span><span class="p">,</span> <span class="s">'city'</span><span class="p">],</span> 
+          <span class="s">'sort'</span><span class="p">:</span><span class="s">'-rank'</span><span class="p">,</span> <span class="s">'rows'</span><span class="p">:</span><span class="mi">500</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get new data frame with all data
+</span><span class="n">states</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'records'</span><span class="p">])</span>
+<span class="n">states</span> <span class="o">=</span> <span class="p">(</span><span class="n">states</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'datasetid'</span><span class="p">,</span> <span class="s">'recordid'</span><span class="p">,</span> <span class="s">'record_timestamp'</span><span class="p">,</span>
+                               <span class="s">'geometry.type'</span><span class="p">,</span> <span class="s">'fields.growth_from_2000_to_2013'</span><span class="p">])</span>
+          <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'fields.city'</span><span class="p">:</span><span class="s">'city'</span><span class="p">,</span> <span class="s">'fields.state'</span><span class="p">:</span><span class="s">'state'</span><span class="p">,</span> 
+                           <span class="s">'fields.rank'</span><span class="p">:</span><span class="s">'rank'</span><span class="p">,</span> <span class="s">'fields.growth_from_2000_to_2013'</span><span class="p">:</span><span class="s">'growth'</span><span class="p">,</span>
+                           <span class="s">'fields.population'</span><span class="p">:</span><span class="s">'pop'</span><span class="p">,</span> <span class="s">'fields.coordinates'</span><span class="p">:</span><span class="s">'coordinates'</span><span class="p">,</span>
+                           <span class="s">'geometry.coordinates'</span><span class="p">:</span><span class="s">'geo_coords'</span><span class="p">})</span>
+         <span class="p">)</span>
+<span class="n">states</span><span class="p">[[</span><span class="s">'lat'</span><span class="p">,</span> <span class="s">'lon'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">states</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">states</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">states</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'coordinates'</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c1"># states.head()
+</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">city</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">states</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s">'city'</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s">'city'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
+<span class="n">cities</span><span class="p">[</span><span class="s">'text'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cities</span><span class="o">.</span><span class="n">city</span> <span class="o">+</span> <span class="s">', '</span> <span class="o">+</span> <span class="n">cities</span><span class="o">.</span><span class="n">state</span>
+<span class="c1"># cities.head()
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># plot the map
+</span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">limits</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">51</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">"royalblue"</span><span class="p">,</span> <span class="s">"crimson"</span><span class="p">,</span> <span class="s">"lightseagreen"</span><span class="p">,</span> <span class="s">"orange"</span><span class="p">,</span> <span class="s">"lightgrey"</span><span class="p">]</span>
+
+<span class="n">scale</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">limits</span><span class="p">)):</span>
+    <span class="n">lim</span> <span class="o">=</span> <span class="n">limits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">sdf</span> <span class="o">=</span> <span class="n">cities</span><span class="p">[(</span><span class="n">cities</span><span class="o">.</span><span class="n">counts</span> <span class="o">&gt;</span> <span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">cities</span><span class="o">.</span><span class="n">counts</span> <span class="o">&lt;</span> <span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scattergeo</span><span class="p">(</span>
+        <span class="n">locationmode</span> <span class="o">=</span> <span class="s">'USA-states'</span><span class="p">,</span>
+        <span class="n">lon</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">[</span><span class="s">'lon'</span><span class="p">],</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">[</span><span class="s">'lat'</span><span class="p">],</span>
+        <span class="n">marker</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">[</span><span class="s">'counts'</span><span class="p">]</span><span class="o">/</span><span class="n">scale</span><span class="p">,</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="s">'rgb(40,40,40)'</span><span class="p">,</span>
+            <span class="n">line_width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">sizemode</span> <span class="o">=</span> <span class="s">'area'</span><span class="p">),</span>
+    <span class="n">customdata</span><span class="o">=</span><span class="n">sdf</span><span class="p">[[</span><span class="s">'text'</span><span class="p">,</span><span class="s">'counts'</span><span class="p">,</span> <span class="s">'pop'</span><span class="p">,</span> <span class="s">'pct'</span><span class="p">]],</span>
+    <span class="n">hovertemplate</span><span class="o">=</span><span class="s">'&lt;b&gt;</span><span class="si">%</span><span class="s">{customdata[0]}&lt;/b&gt;&lt;br&gt;# job seekers: </span><span class="si">%</span><span class="s">{customdata[1]:,}&lt;br&gt;Population: </span><span class="si">%</span><span class="s">{customdata[2]:,}&lt;br&gt;Pct total: </span><span class="si">%</span><span class="s">{customdata[3]:.1f}</span><span class="si">%</span><span class="s">'</span><span class="p">,</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">'{0} - {1}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+    
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+        <span class="n">title_text</span> <span class="o">=</span> <span class="s">'Job Seekers Across America&lt;br&gt;(Click legend to toggle traces)'</span><span class="p">,</span>
+        <span class="n">showlegend</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="n">geo</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">scope</span> <span class="o">=</span> <span class="s">'usa'</span><span class="p">,</span>
+            <span class="n">landcolor</span> <span class="o">=</span> <span class="s">'rgb(217, 217, 217)'</span><span class="p">,</span>          
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>About 1/3 of the job seekers are located in NY, probably because Torch Capital has more opportunity to promote this database there. SF and LA make up another 20%. There are also many job seekers from cities across the world, such as Hyderabad, Bristol, and Copenhagen, that I didn’t include in the map here.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>And there you have it. In this short project I explored a database of tech industry job seekers that have recently been laid off due to the Coronavirus pandemic. A large portion of the pool are in the business development, marketing and sales sector, in which there are a significant number of individuals with mid to senior level titles such as “director” and “manager”. Engineers, designers and programmers are also not spared in the layoffs. Lastly, I visualized the spread of job seekers across the states and found that ~50% are from the major tech hubs of NY, SF and LA, and a decent amount are coming from smaller cities such as Denver, Pheonix, and Austin.</p>
+
+<p>To wrap up, I want to point out that behind those numbers are individual stories of pain and disappointment caused by the economic crisis. I don’t want to dehumanize them by treating them as just another number, but I think this kind of analysis can be somewhat comforting in showing that no matter how bleak the job market looks in the foreseeable future, many tech workers in America are experiencing this “interesting” time together.</p>
+:ET

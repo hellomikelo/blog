@@ -1,0 +1,455 @@
+I"�Q<p>Following my previous 20% Project that analyzed AirBnB’s latest round of layoffs, in this latest installment I explored the bigger tech industry layoffs across America. <a href="https://talentconnect.torchcapital.vc/">Torch Capital</a>, a NY-based venture capital, created <a href="https://talentconnect.torchcapital.vc/">Torch Capital Talent Connect</a> database for tech workers that are laid off due to the pandemic to explore new opportunities. I scraped the information of job seekers who are listed in the databased to learn more about the details of tech job layoffs.</p>
+
+<!--more-->
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">time</span> 
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="n">mdates</span>
+
+<span class="c1"># for scraping javascript rendered webpages
+</span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
+
+<span class="c1">#&lt;!-- from plotly import __version__ --&gt;
+#&lt;!-- from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot --&gt;
+#&lt;!-- import plotly.graph_objects as go --&gt;
+#&lt;!-- init_notebook_mode(connected=False) --&gt;
+</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s">'whitegrid'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">'font.size'</span><span class="p">:</span><span class="mi">14</span><span class="p">})</span>
+</code></pre></div></div>
+
+<script src="plotly.js" charset="utf-8" type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
+<h2 id="scrape-data">Scrape data</h2>
+<p>First, start by creating a <code class="highlighter-rouge">TorchConnectScraper</code> class object to scrape the data. Analysis will come afterwards.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TorchConnectScraper</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile_list</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    
+    <span class="k">def</span> <span class="nf">open_browser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+        <span class="c1"># initialize headless Chrome browser
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s">''</span><span class="p">)</span><span class="o">+</span><span class="s">'/chromedriver'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    
+    
+    <span class="k">def</span> <span class="nf">get_seekers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">next_page</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">while</span> <span class="n">next_page</span><span class="p">:</span>
+            <span class="c1"># get page HTML
+</span>            <span class="n">page_html</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">page_source</span>
+            <span class="n">bsoup</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">page_html</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+            <span class="c1"># get profiles
+</span>            <span class="n">profiles</span> <span class="o">=</span> <span class="n">bsoup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'tr'</span><span class="p">,</span> 
+                                      <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'MuiTableRow-root'</span><span class="p">,</span> 
+                                             <span class="s">'role'</span><span class="p">:</span><span class="s">'row'</span><span class="p">})</span>
+            <span class="c1"># parse and append to profile list
+</span>            <span class="k">for</span> <span class="n">profile</span> <span class="ow">in</span> <span class="n">profiles</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">profile_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clean_profile</span><span class="p">(</span><span class="n">profile</span><span class="p">))</span>
+            <span class="c1"># move onto next page
+</span>            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s">"//button[@title='Next page']/span"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">remote</span><span class="o">.</span><span class="n">errorhandler</span><span class="o">.</span><span class="n">ElementClickInterceptedException</span><span class="p">:</span>
+                <span class="n">next_page</span> <span class="o">=</span> <span class="bp">False</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">profile_list</span><span class="p">,</span> 
+                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'add_date'</span><span class="p">,</span> <span class="s">'name'</span><span class="p">,</span> <span class="s">'company'</span><span class="p">,</span> 
+                           <span class="s">'sector'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">,</span> <span class="s">'city'</span><span class="p">,</span> <span class="s">'relocate'</span><span class="p">])</span>
+        
+        
+    <span class="k">def</span> <span class="nf">get_city</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+        <span class="s">"""not used"""</span>
+        <span class="n">processed</span> <span class="o">=</span> <span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">r','</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+                     <span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r'washington\s?.*'</span><span class="p">,</span> <span class="s">'washington d.c.'</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r'.*(san francisco|sf).*'</span><span class="p">,</span> <span class="s">'san francisco'</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r'.*(new york|nyc|ny|newyork).*'</span><span class="p">,</span> <span class="s">'new york'</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r'.*remote.*'</span><span class="p">,</span> <span class="s">'remote'</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>       
+                     <span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                     <span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+                     <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s">'city'</span><span class="p">})</span> 
+                    <span class="p">)</span>    
+        <span class="k">return</span> <span class="n">processed</span>
+        
+    
+    <span class="k">def</span> <span class="nf">clean_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">):</span>
+        <span class="n">add_date</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">company</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">sector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_sector</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">city</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_city</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">relocate</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+    <span class="c1">#     linkedin = res.contents[7].text
+</span>    <span class="c1">#     email = res.contents[8].text
+</span>        <span class="k">return</span> <span class="p">[</span><span class="n">add_date</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">company</span><span class="p">,</span> <span class="n">sector</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="n">relocate</span><span class="p">]</span>
+    
+    
+    <span class="o">@</span><span class="nb">staticmethod</span>
+    <span class="k">def</span> <span class="nf">clean_city</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">r','</span><span class="p">,</span> <span class="n">txt</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'washington\s?.*'</span><span class="p">,</span> <span class="s">'washington d.c.'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'.*(san francisco|sf).*'</span><span class="p">,</span> <span class="s">'san francisco'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'.*(new york|nyc|ny|newyork).*'</span><span class="p">,</span> <span class="s">'new york'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'.*(boston).*'</span><span class="p">,</span> <span class="s">'boston'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>        
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r'.*remote.*'</span><span class="p">,</span> <span class="s">'remote'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">new</span>
+
+
+    <span class="o">@</span><span class="nb">staticmethod</span>
+    <span class="k">def</span> <span class="nf">clean_sector</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">txt</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="s">'Unknown'</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">new</span> <span class="k">else</span> <span class="n">new</span>
+        <span class="k">return</span> <span class="n">new</span>
+    
+    
+    <span class="k">def</span> <span class="nf">close_browser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+    
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Scrape data from website
+</span><span class="n">url</span> <span class="o">=</span> <span class="s">'https://talentconnect.torchcapital.vc/browse/talent'</span>
+<span class="n">scraper</span> <span class="o">=</span> <span class="n">TorchConnectScraper</span><span class="p">()</span>
+<span class="n">scraper</span><span class="o">.</span><span class="n">open_browser</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">scraper</span><span class="o">.</span><span class="n">get_seekers</span><span class="p">()</span>
+<span class="n">scraper</span><span class="o">.</span><span class="n">close_browser</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="eda">EDA</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">scraper</span><span class="o">.</span><span class="n">df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">date</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">add_date</span><span class="p">)))</span>
+<span class="n">latest</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">Y/</span><span class="si">%</span><span class="s">m/</span><span class="si">%</span><span class="s">d"</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">"Number of job seekers: {df.shape[0]:,} (as of {latest})"</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Number of job seekers: 1,185 (as of 2020/05/25)
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>add_date</th>
+      <th>name</th>
+      <th>company</th>
+      <th>sector</th>
+      <th>title</th>
+      <th>city</th>
+      <th>relocate</th>
+      <th>date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>05/25/2020</td>
+      <td>Shahnaz Moz</td>
+      <td>EPIC Semiconductors</td>
+      <td>BD/Sales/Marketing</td>
+      <td>Marketing Director</td>
+      <td>Vancouver</td>
+      <td>yes</td>
+      <td>2020-05-25</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>05/24/2020</td>
+      <td>Lydia Chim</td>
+      <td>University of Southern California</td>
+      <td>Finance/Ops/Analytics</td>
+      <td>Student</td>
+      <td>Los Angeles</td>
+      <td>yes</td>
+      <td>2020-05-24</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Let’s check the distribution layoffs by the tech sectors.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sectors</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'sector'</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">sectors</span> <span class="o">=</span> <span class="n">sectors</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span><span class="s">'counts'</span><span class="p">})</span>
+<span class="n">sectors</span><span class="p">[</span><span class="s">'pct'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sectors</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">sectors</span><span class="o">.</span><span class="n">pct</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">sectors</span><span class="o">.</span><span class="n">sector</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s">'h'</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Percent of Total (</span><span class="si">%</span><span class="s">)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Sector'</span><span class="p">);</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="output_8_0.png" alt="png" /></p>
+
+<p><strong>~40% of the layoffs are in the areas of business development, sales, and marketing</strong>. This differs from AirBnB’s case, which laid off mostly workers in customer service, recruiting, and design. I think this strategy makes business sense, since in times of uncertainty companies will want to set stricter priorities and reduce spending by cutting expandable costs around new investments and advertisement. <strong>Engineering, product, design, and other roles associated with products comprise ~22% of the layoffs</strong>. Even though products are an essential part of any tech company, sadly those who are involved in actually making the products are not spared in times of crisis. The reality is that resource-strapped tech companies need to curtail innovation and conserve resources in order to survive the downturn. <strong>Finance/Ops/analytics comes in 3rd with ~20% of the total layoffs</strong>. These performs any company’s core functions by bringing in revenue, so it makes sense to see that they’re more resilient to layoffs. I wonder if this difference in sector layoffs applies to non-tech industry as well.</p>
+
+<p>Next, let’s qualitatively check the types of positions that are laid off with a word cloud.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Generate Text for Wordcloud
+</span><span class="n">titles</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">r'[\(\)/\|\\&amp;+,]'</span><span class="p">,</span> <span class="s">' '</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">text</span><span class="o">=</span> <span class="s">""</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="n">value</span> <span class="o">+</span> <span class="s">' '</span>
+    
+<span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">630</span><span class="p">,</span>
+                      <span class="n">max_font_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">collocations</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+<span class="c1">#                       color_func=lambda *args, **kwargs: (255,0,0),
+</span>                      <span class="n">colormap</span><span class="o">=</span><span class="s">'Blues'</span><span class="p">,</span> <span class="n">background_color</span><span class="o">=</span><span class="s">'white'</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">"bilinear"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">"off"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="output_10_0.png" alt="png" /></p>
+
+<p>Looks like a lot of senior personnel with <strong>director</strong>, <strong>manager</strong>, and <strong>marketing</strong> titles have been laid off, most likely from sales/BD/marketing. In times of crisis even people with seniority are not immune to job insecurity. I would bet this kind of economic downturn also gives companies a good reason to “restructure” by weeding out unproductive workers who have worked their way through the ranks by staying in the company. This brings up another harsh reality of the capitalistic society we live in: no one is truly indispensable to a company. The layoff pool also have a lot of <strong>engineers</strong>, <strong>operations</strong>, <strong>product</strong>, and <strong>analysts</strong> people, which constitute the production side of the company.</p>
+
+<p>Since we also have the dates of individual listings, we can see how the number of job seekers in each sector changed over time.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'date'</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">total</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span><span class="s">'counts'</span><span class="p">})</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">total</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">ndays</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">total</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">a</span><span class="p">:</span><span class="n">b</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">total</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndays</span><span class="p">))}</span>
+<span class="n">total</span><span class="p">[</span><span class="s">'total'</span><span class="p">]</span> <span class="o">=</span> <span class="n">total</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">total</span><span class="p">[</span><span class="s">'date_'</span><span class="p">]</span> <span class="o">=</span> <span class="n">total</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+
+
+<span class="n">day_by_sec</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'date'</span><span class="p">,</span> <span class="s">'sector'</span><span class="p">])</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">day_by_sec</span> <span class="o">=</span> <span class="n">day_by_sec</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'name'</span><span class="p">:</span><span class="s">'counts'</span><span class="p">})</span>
+<span class="n">day_by_sec</span> <span class="o">=</span> <span class="n">day_by_sec</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">day_by_sec</span><span class="p">[</span><span class="s">'date_'</span><span class="p">]</span> <span class="o">=</span> <span class="n">day_by_sec</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># scatter plot
+</span><span class="n">fig0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">tight_layout</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ax0</span> <span class="o">=</span> <span class="n">fig0</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">ax0</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">day_by_sec</span><span class="o">.</span><span class="n">counts</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">day_by_sec</span><span class="o">.</span><span class="n">date_</span><span class="p">,</span> 
+                <span class="n">style</span><span class="o">=</span><span class="n">day_by_sec</span><span class="o">.</span><span class="n">sector</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="n">day_by_sec</span><span class="o">.</span><span class="n">sector</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+                <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s">'hls'</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">6</span><span class="p">),</span>
+                <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span>
+               <span class="p">);</span>
+
+<span class="c1"># bar plot
+</span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">total</span><span class="o">.</span><span class="n">date_</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">total</span><span class="o">.</span><span class="n">total</span><span class="p">,</span> 
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span>
+           <span class="p">);</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndays</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">total</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">a, </span><span class="si">%</span><span class="s">b </span><span class="si">%</span><span class="s">d'</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndays</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Num. Seekers by Sector'</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Date'</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">u'both'</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">u'both'</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span> <span class="n">markerscale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Cumulative Sum'</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1200</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">u'both'</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s">u'both'</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="output_13_0.png" alt="png" /></p>
+
+<p>This time-dependent plot is interesting and deserves close study. On the first day the website was up (Apr. 5th) over 300 people shared their information on the website, with BD/Sales/Marketing making most of the pool. Then over the next 3 weeks there were varying influxes of new job seekers from different sectors that posted to the board. The total numbers added each day during those 3 weeks varied considerably from weekday to weekday, reflecting a few weeks of tumultuous scramble as companies rush to figure out a strategy for dealing with the economic downturn. We even see a big increase on Apr 17. Let’s see what that’s about.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">date</span> <span class="o">==</span> <span class="s">'2020-04-17'</span><span class="p">]</span><span class="o">.</span><span class="n">company</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Opendoor                                      64
+Clarify Health Solutions                       2
+International Institute of Tourism Studies     2
+Harvard Graduate School of Education           1
+Avery Dennison                                 1
+Name: company, dtype: int64
+</code></pre></div></div>
+
+<p><a href="https://www.opendoor.com/">Opendoor</a> is a SF-based real estate startup that <a href="https://techcrunch.com/2020/04/15/softbank-backed-opendoor-has-announced-a-massive-layoff-cutting-35-of-its-employees/">laid off 600 of its employees</a> (35% of its overall team) on April 15th. This explains the spike in new job seekers on the board on April 17th. Just out of curiosity, below are the 5 companies with the most layoffs on the job board.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'company'</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>company
+Opendoor        64
+Wonderschool    32
+Loftsmart       26
+Lola            16
+                12
+Name: name, dtype: int64
+</code></pre></div></div>
+
+<p>After 3 weeks, the number of new job seekers on Torch Connect decreased, and now the board averages less than 5 new additions per day. Lastly, let’s swtich up and check what cities those seekers are in.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">city</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">city</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+         <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'city'</span><span class="p">:</span><span class="s">'counts'</span><span class="p">,</span> <span class="s">'index'</span><span class="p">:</span><span class="s">'city'</span><span class="p">})</span>
+        <span class="p">)</span>
+<span class="n">city</span><span class="p">[</span><span class="s">'pct'</span><span class="p">]</span> <span class="o">=</span> <span class="n">city</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">city</span><span class="o">.</span><span class="n">pct</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city</span><span class="o">.</span><span class="n">city</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">orient</span><span class="o">=</span><span class="s">'h'</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Percent of Total (</span><span class="si">%</span><span class="s">)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'City'</span><span class="p">);</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="output_19_0.png" alt="png" /></p>
+
+<p>Let’s also show a map with the numbers.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get city coordinates 
+</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">=</span> <span class="s">'https://public.opendatasoft.com/api/records/1.0/search/?'</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">'dataset'</span><span class="p">:</span><span class="s">'1000-largest-us-cities-by-population-with-geographic-coordinates'</span><span class="p">,</span> 
+          <span class="s">'facet'</span><span class="p">:[</span><span class="s">'state'</span><span class="p">,</span> <span class="s">'city'</span><span class="p">],</span> 
+          <span class="s">'sort'</span><span class="p">:</span><span class="s">'-rank'</span><span class="p">,</span> <span class="s">'rows'</span><span class="p">:</span><span class="mi">500</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get new data frame with all data
+</span><span class="n">states</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'records'</span><span class="p">])</span>
+<span class="n">states</span> <span class="o">=</span> <span class="p">(</span><span class="n">states</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'datasetid'</span><span class="p">,</span> <span class="s">'recordid'</span><span class="p">,</span> <span class="s">'record_timestamp'</span><span class="p">,</span>
+                               <span class="s">'geometry.type'</span><span class="p">,</span> <span class="s">'fields.growth_from_2000_to_2013'</span><span class="p">])</span>
+          <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'fields.city'</span><span class="p">:</span><span class="s">'city'</span><span class="p">,</span> <span class="s">'fields.state'</span><span class="p">:</span><span class="s">'state'</span><span class="p">,</span> 
+                           <span class="s">'fields.rank'</span><span class="p">:</span><span class="s">'rank'</span><span class="p">,</span> <span class="s">'fields.growth_from_2000_to_2013'</span><span class="p">:</span><span class="s">'growth'</span><span class="p">,</span>
+                           <span class="s">'fields.population'</span><span class="p">:</span><span class="s">'pop'</span><span class="p">,</span> <span class="s">'fields.coordinates'</span><span class="p">:</span><span class="s">'coordinates'</span><span class="p">,</span>
+                           <span class="s">'geometry.coordinates'</span><span class="p">:</span><span class="s">'geo_coords'</span><span class="p">})</span>
+         <span class="p">)</span>
+<span class="n">states</span><span class="p">[[</span><span class="s">'lat'</span><span class="p">,</span> <span class="s">'lon'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">states</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">states</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">states</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'coordinates'</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c1"># states.head()
+</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">city</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">states</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s">'city'</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s">'city'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
+<span class="n">cities</span><span class="p">[</span><span class="s">'text'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cities</span><span class="o">.</span><span class="n">city</span> <span class="o">+</span> <span class="s">', '</span> <span class="o">+</span> <span class="n">cities</span><span class="o">.</span><span class="n">state</span>
+<span class="c1"># cities.head()
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># plot the map
+</span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">limits</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">51</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">"royalblue"</span><span class="p">,</span> <span class="s">"crimson"</span><span class="p">,</span> <span class="s">"lightseagreen"</span><span class="p">,</span> <span class="s">"orange"</span><span class="p">,</span> <span class="s">"lightgrey"</span><span class="p">]</span>
+
+<span class="n">scale</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">limits</span><span class="p">)):</span>
+    <span class="n">lim</span> <span class="o">=</span> <span class="n">limits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">sdf</span> <span class="o">=</span> <span class="n">cities</span><span class="p">[(</span><span class="n">cities</span><span class="o">.</span><span class="n">counts</span> <span class="o">&gt;</span> <span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">cities</span><span class="o">.</span><span class="n">counts</span> <span class="o">&lt;</span> <span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scattergeo</span><span class="p">(</span>
+        <span class="n">locationmode</span> <span class="o">=</span> <span class="s">'USA-states'</span><span class="p">,</span>
+        <span class="n">lon</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">[</span><span class="s">'lon'</span><span class="p">],</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">[</span><span class="s">'lat'</span><span class="p">],</span>
+        <span class="n">marker</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">[</span><span class="s">'counts'</span><span class="p">]</span><span class="o">/</span><span class="n">scale</span><span class="p">,</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="s">'rgb(40,40,40)'</span><span class="p">,</span>
+            <span class="n">line_width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">sizemode</span> <span class="o">=</span> <span class="s">'area'</span><span class="p">),</span>
+    <span class="n">customdata</span><span class="o">=</span><span class="n">sdf</span><span class="p">[[</span><span class="s">'text'</span><span class="p">,</span><span class="s">'counts'</span><span class="p">,</span> <span class="s">'pop'</span><span class="p">,</span> <span class="s">'pct'</span><span class="p">]],</span>
+    <span class="n">hovertemplate</span><span class="o">=</span><span class="s">'&lt;b&gt;</span><span class="si">%</span><span class="s">{customdata[0]}&lt;/b&gt;&lt;br&gt;# job seekers: </span><span class="si">%</span><span class="s">{customdata[1]:,}&lt;br&gt;Population: </span><span class="si">%</span><span class="s">{customdata[2]:,}&lt;br&gt;Pct total: </span><span class="si">%</span><span class="s">{customdata[3]:.1f}</span><span class="si">%</span><span class="s">'</span><span class="p">,</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">'{0} - {1}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+    
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+        <span class="n">title_text</span> <span class="o">=</span> <span class="s">'Job Seekers Across America&lt;br&gt;(Click legend to toggle traces)'</span><span class="p">,</span>
+        <span class="n">showlegend</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="n">geo</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">scope</span> <span class="o">=</span> <span class="s">'usa'</span><span class="p">,</span>
+            <span class="n">landcolor</span> <span class="o">=</span> <span class="s">'rgb(217, 217, 217)'</span><span class="p">,</span>          
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+        
+        
+            <div id="8f6925eb-b6db-434d-8b33-dfda519d0e8d" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <script type="text/javascript">
+                require(["plotly"], function(Plotly) {
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("8f6925eb-b6db-434d-8b33-dfda519d0e8d")) {
+                    Plotly.newPlot(
+                        '8f6925eb-b6db-434d-8b33-dfda519d0e8d',
+                        [{"customdata": [["Cambridge, Massachusetts", 4, 107289.0, 0.33755274261603374], ["Columbus, Ohio", 4, 822553.0, 0.33755274261603374], ["Columbus, Georgia", 4, 202824.0, 0.33755274261603374], ["Nashville, Tennessee", 4, 634464.0, 0.33755274261603374], ["St. Louis, Missouri", 3, 318416.0, 0.25316455696202533], ["Philadelphia, Pennsylvania", 3, 1553165.0, 0.25316455696202533], ["Irvine, California", 3, 236716.0, 0.25316455696202533], ["Evanston, Illinois", 3, 75570.0, 0.25316455696202533], ["Sacramento, California", 3, 479686.0, 0.25316455696202533], ["Oakland, California", 3, 406253.0, 0.25316455696202533], ["Jersey City, New Jersey", 3, 257342.0, 0.25316455696202533], [null, 3, null, 0.25316455696202533], [null, 2, null, 0.16877637130801687], ["Santa Clara, California", 2, 120245.0, 0.16877637130801687], [null, 2, null, 0.16877637130801687], [null, 2, null, 0.16877637130801687], ["Providence, Rhode Island", 2, 177994.0, 0.16877637130801687], [null, 2, null, 0.16877637130801687], ["Fremont, California", 2, 224922.0, 0.16877637130801687], ["Miami Beach, Florida", 2, 91026.0, 0.16877637130801687], ["Boulder, Colorado", 2, 103166.0, 0.16877637130801687], [null, 2, null, 0.16877637130801687], ["Charlotte, North Carolina", 2, 792862.0, 0.16877637130801687], [null, 2, null, 0.16877637130801687], [null, 2, null, 0.16877637130801687], ["Savannah, Georgia", 2, 142772.0, 0.16877637130801687], ["Baltimore, Maryland", 2, 622104.0, 0.16877637130801687], [null, 2, null, 0.16877637130801687], ["Hillsboro, Oregon", 2, 97368.0, 0.16877637130801687], [null, 2, null, 0.16877637130801687], ["Las Vegas, Nevada", 2, 603488.0, 0.16877637130801687], [null, 2, null, 0.16877637130801687], ["Cincinnati, Ohio", 2, 297517.0, 0.16877637130801687], ["Tampa, Florida", 2, 352957.0, 0.16877637130801687], [null, 2, null, 0.16877637130801687], [null, 2, null, 0.16877637130801687], [null, 2, null, 0.16877637130801687], [null, 2, null, 0.16877637130801687], [null, 2, null, 0.16877637130801687], [null, 2, null, 0.16877637130801687], ["San Mateo, California", 2, 101128.0, 0.16877637130801687], [null, 2, null, 0.16877637130801687], [null, 2, null, 0.16877637130801687], ["Minneapolis, Minnesota", 2, 400070.0, 0.16877637130801687], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Milwaukee, Wisconsin", 1, 599164.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Alameda, California", 1, 76419.0, 0.08438818565400844], ["Pittsburgh, Pennsylvania", 1, 305841.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Somerville, Massachusetts", 1, 78804.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Detroit, Michigan", 1, 688701.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Scottsdale, Arizona", 1, 226918.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Missoula, Montana", 1, 69122.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Peoria, Arizona", 1, 162592.0, 0.08438818565400844], ["Peoria, Illinois", 1, 116513.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Lakewood, Colorado", 1, 147214.0, 0.08438818565400844], ["Lakewood, California", 1, 81121.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Tacoma, Washington", 1, 203446.0, 0.08438818565400844], ["Oklahoma City, Oklahoma", 1, 610613.0, 0.08438818565400844], ["Salinas, California", 1, 155662.0, 0.08438818565400844], ["Carlsbad, California", 1, 110972.0, 0.08438818565400844], ["Newark, New Jersey", 1, 278427.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Long Beach, California", 1, 469428.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Quincy, Massachusetts", 1, 93494.0, 0.08438818565400844], ["Torrance, California", 1, 147478.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Virginia Beach, Virginia", 1, 448479.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Fort Lauderdale, Florida", 1, 172389.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Newport Beach, California", 1, 87273.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["San Ramon, California", 1, 74513.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Chattanooga, Tennessee", 1, 173366.0, 0.08438818565400844], ["Pasadena, Texas", 1, 152735.0, 0.08438818565400844], ["Pasadena, California", 1, 139731.0, 0.08438818565400844], ["Buena Park, California", 1, 82882.0, 0.08438818565400844], ["Corona, California", 1, 159503.0, 0.08438818565400844], ["Birmingham, Alabama", 1, 212113.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Berkeley, California", 1, 116768.0, 0.08438818565400844], ["Indianapolis, Indiana", 1, 843393.0, 0.08438818565400844], ["Spokane, Washington", 1, 210721.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Bellevue, Washington", 1, 133992.0, 0.08438818565400844], ["Auburn, Washington", 1, 74860.0, 0.08438818565400844], ["Mesa, Arizona", 1, 457587.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["St. Petersburg, Florida", 1, 249688.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Fort Worth, Texas", 1, 792727.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Redwood City, California", 1, 80872.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Arlington, Texas", 1, 379577.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Waterloo, Iowa", 1, 68366.0, 0.08438818565400844], ["Chandler, Arizona", 1, 249146.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Alexandria, Virginia", 1, 148892.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], ["Mountain View, California", 1, 77846.0, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844], [null, 1, null, 0.08438818565400844]], "hovertemplate": "<b>%{customdata[0]}</b><br># job seekers: %{customdata[1]:,}<br>Population: %{customdata[2]:,}<br>Pct total: %{customdata[3]:.1f}%", "lat": [42.3736158, 39.9611755, 32.4609764, 36.1626638, 38.6270025, 39.9525839, 33.6839473, 42.0450722, 38.5815719, 37.8043637, 40.7281575, null, null, 37.3541079, null, null, 41.8239891, null, 37.5482697, 25.790654, 40.0149856, null, 35.2270869, null, null, 32.0835407, 39.2903848, null, 45.5228939, null, 36.1699412, null, 39.1031182, 27.950575, null, null, null, null, null, null, 37.5629917, null, null, 44.977753, null, null, null, 43.0389025, null, null, null, null, null, null, null, null, null, null, null, null, 37.7652065, 40.4406248, null, 42.3875968, null, null, null, 42.331427, null, null, null, null, 33.4941704, null, 46.8787176, null, null, 33.5805955, 40.6936488, null, null, null, null, null, 39.7047095, 33.8536269, null, null, null, null, null, null, null, 47.2528768, 35.4675602, 36.6777372, 33.1580933, 40.735657, null, null, null, null, null, 33.7700504, null, null, null, null, null, null, null, 42.2528772, 33.8358492, null, null, null, null, null, 36.8529263, null, 26.1224386, null, 33.6189101, null, 37.7799273, null, 35.0456297, 29.6910625, 34.1477849, 33.8675143, 33.8752935, 33.5206608, null, null, 37.8715926, 39.768403, 47.6587802, null, null, null, 47.610377, 47.3073228, 33.4151843, null, null, null, 27.773056, null, null, null, null, null, null, null, null, 32.7554883, null, null, null, null, 37.4852152, null, null, null, 32.735687, null, null, null, null, null, 42.492786, 33.3061605, null, 38.8048355, null, 37.3860517, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "locationmode": "USA-states", "lon": [-71.1097335, -82.9987942, -84.9877094, -86.7816016, -90.1994042, -75.1652215, -117.7946942, -87.6876969, -121.4943996, -122.2711137, -74.0776417, null, null, -121.9552356, null, null, -71.4128343, null, -121.9885719, -80.1300455, -105.2705456, null, -80.8431267, null, null, -81.0998342, -76.6121893, null, -122.989827, null, -115.1398296, null, -84.5120196, -82.4571776, null, null, null, null, null, null, -122.3255254, null, null, -93.2650108, null, null, null, -87.9064736, null, null, null, null, null, null, null, null, null, null, null, null, -122.2416355, -79.9958864, null, -71.0994968, null, null, null, -83.0457538, null, null, null, null, -111.9260519, null, -113.996586, null, null, -112.2373779, -89.5889864, null, null, null, null, null, -105.0813734, -118.1339563, null, null, null, null, null, null, null, -122.4442906, -97.5164276, -121.6555013, -117.3505939, -74.1723667, null, null, null, null, null, -118.1937395, null, null, null, null, null, null, null, -71.0022705, -118.3406288, null, null, null, null, null, -75.977985, null, -80.1373174, null, -117.9289469, null, -121.9780153, null, -85.3096801, -95.2091006, -118.1445155, -117.9981181, -117.5664384, -86.80249, null, null, -122.272747, -86.158068, -117.4260466, null, null, null, -122.2006786, -122.2284532, -111.8314724, null, null, null, -82.64, null, null, null, null, null, null, null, null, -97.3307658, null, null, null, null, -122.2363548, null, null, null, -97.1080656, null, null, null, null, null, -92.3425775, -111.8412502, null, -77.0469214, null, -122.0838511, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "marker": {"line": {"color": "rgb(40,40,40)", "width": 0.5}, "opacity": 0.5, "size": [40.0, 40.0, 40.0, 40.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0], "sizemode": "area"}, "name": "0 - 5", "type": "scattergeo"}, {"customdata": [[null, 8, null, 0.6751054852320675], ["San Jose, California", 8, 998537.0, 0.6751054852320675], [null, 7, null, 0.5907172995780591], ["Orlando, Florida", 7, 255483.0, 0.5907172995780591], ["Houston, Texas", 7, 2195914.0, 0.5907172995780591], ["Miami, Florida", 7, 417650.0, 0.5907172995780591]], "hovertemplate": "<b>%{customdata[0]}</b><br># job seekers: %{customdata[1]:,}<br>Population: %{customdata[2]:,}<br>Pct total: %{customdata[3]:.1f}%", "lat": [null, 37.3382082, null, 28.5383355, 29.7604267, 25.7616798], "locationmode": "USA-states", "lon": [null, -121.8863286, null, -81.3792365, -95.3698028, -80.1917902], "marker": {"line": {"color": "rgb(40,40,40)", "width": 0.5}, "opacity": 0.5, "size": [80.0, 80.0, 70.0, 70.0, 70.0, 70.0], "sizemode": "area"}, "name": "6 - 10", "type": "scattergeo"}, {"customdata": [["Austin, Texas", 15, 885400.0, 1.2658227848101267], ["Denver, Colorado", 15, 649495.0, 1.2658227848101267], [null, 15, null, 1.2658227848101267], [null, 13, null, 1.0970464135021099], ["Phoenix, Arizona", 13, 1513367.0, 1.0970464135021099], [null, 12, null, 1.0126582278481013]], "hovertemplate": "<b>%{customdata[0]}</b><br># job seekers: %{customdata[1]:,}<br>Population: %{customdata[2]:,}<br>Pct total: %{customdata[3]:.1f}%", "lat": [30.267153, 39.7392358, null, null, 33.4483771, null], "locationmode": "USA-states", "lon": [-97.7430608, -104.990251, null, null, -112.0740373, null], "marker": {"line": {"color": "rgb(40,40,40)", "width": 0.5}, "opacity": 0.5, "size": [150.0, 150.0, 150.0, 130.0, 130.0, 120.0], "sizemode": "area"}, "name": "11 - 20", "type": "scattergeo"}, {"customdata": [["Boston, Massachusetts", 42, 645966.0, 3.5443037974683547], ["Atlanta, Georgia", 22, 447841.0, 1.8565400843881856]], "hovertemplate": "<b>%{customdata[0]}</b><br># job seekers: %{customdata[1]:,}<br>Population: %{customdata[2]:,}<br>Pct total: %{customdata[3]:.1f}%", "lat": [42.3600825, 33.7489954], "locationmode": "USA-states", "lon": [-71.0588801, -84.3879824], "marker": {"line": {"color": "rgb(40,40,40)", "width": 0.5}, "opacity": 0.5, "size": [420.0, 220.0], "sizemode": "area"}, "name": "21 - 50", "type": "scattergeo"}, {"customdata": [["New York, New York", 430, 8405837.0, 36.28691983122363], ["San Francisco, California", 157, 837442.0, 13.248945147679326], ["Los Angeles, California", 69, 3884307.0, 5.822784810126582]], "hovertemplate": "<b>%{customdata[0]}</b><br># job seekers: %{customdata[1]:,}<br>Population: %{customdata[2]:,}<br>Pct total: %{customdata[3]:.1f}%", "lat": [40.7127837, 37.7749295, 34.0522342], "locationmode": "USA-states", "lon": [-74.0059413, -122.4194155, -118.2436849], "marker": {"line": {"color": "rgb(40,40,40)", "width": 0.5}, "opacity": 0.5, "size": [4300.0, 1570.0, 690.0], "sizemode": "area"}, "name": "51 - 1000", "type": "scattergeo"}],
+                        {"geo": {"landcolor": "rgb(217, 217, 217)", "scope": "usa"}, "showlegend": true, "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "pie": [{"automargin": true, "type": "pie"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "zerolinewidth": 2}}}, "title": {"text": "Job Seekers Across America<br>(Click legend to toggle traces)"}},
+                        {"responsive": true}
+                    ).then(function(){
+                            
+var gd = document.getElementById('8f6925eb-b6db-434d-8b33-dfda519d0e8d');
+var x = new MutationObserver(function (mutations, observer) 
+}});
+
+    // Listen for the removal of the full notebook cells
+    var notebookContainer = gd.closest('#notebook-container');
+    if (notebookContainer) 
+
+    // Listen for the clearing of the current output cell
+    var outputEl = gd.closest('.output');
+    if (outputEl) 
+
+  })
+  };
+  });
+  </script>
+  </div>
+
+<p>About 1/3 of the job seekers are located in NY, probably because Torch Capital has more opportunity to promote this database there. SF and LA make up another 20%. There are also many job seekers from cities across the world, such as Hyderabad, Bristol, and Copenhagen, that I didn’t include in the map here.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>And there you have it. In this short project I explored a database of tech industry job seekers that have recently been laid off due to the Coronavirus pandemic. A large portion of the pool are in the business development, marketing and sales sector, in which there are a significant number of individuals with mid to senior level titles such as “director” and “manager”. Engineers, designers and programmers are also not spared in the layoffs. Lastly, I visualized the spread of job seekers across the states and found that ~50% are from the major tech hubs of NY, SF and LA, and a decent amount are coming from smaller cities such as Denver, Pheonix, and Austin.</p>
+
+<p>To wrap up, I want to point out that behind those numbers are individual stories of pain and disappointment caused by the economic crisis. I don’t want to dehumanize them by treating them as just another number, but I think this kind of analysis can be somewhat comforting in showing that no matter how bleak the job market looks in the foreseeable future, many tech workers in America are experiencing this “interesting” time together.</p>
+:ET

@@ -1,0 +1,32 @@
+I"ç<p>Following my previous 20% Project that analyzed AirBnB‚Äôs latest round of layoffs, in this latest installment I explored the bigger tech industry layoffs across America. <a href="https://talentconnect.torchcapital.vc/">Torch Capital</a>, a NY-based venture capital, created <a href="https://talentconnect.torchcapital.vc/">Torch Capital Talent Connect</a> database for tech workers that are laid off due to the pandemic to explore new opportunities. I scraped the information of job seekers who are listed in the databased to learn more about the details of tech job layoffs.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import time 
+import requests
+import os
+import requests
+
+import re
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+import datetime
+import matplotlib.dates as mdates
+
+# for scraping javascript rendered webpages
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from bs4 import BeautifulSoup as bs
+
+&lt;!-- from plotly import __version__ --&gt;
+&lt;!-- from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot --&gt;
+&lt;!-- import plotly.graph_objects as go --&gt;
+&lt;!-- init_notebook_mode(connected=False) --&gt;
+
+%matplotlib inline
+sns.set_style('whitegrid')
+plt.rcParams.update({'font.size':14})
+</code></pre></div></div>
+
+:ET

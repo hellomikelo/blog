@@ -1,8 +1,18 @@
-I"÷
+I"`
 <ul class="post-list">
 
   <h3 class="h3-post-title">Data-Science</h3>
     
+    <ul class="post-list">
+    	<span class="post-meta">May 25, 2020 | </span> 
+    	<a href="/data-science/2020/05/25/covid-tech-layoff-analysis.html">Numbers Behind Tech Job Layoffs Due to COVID-19</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<span class="post-meta">May 23, 2020 | </span> 
+    	<a href="/data-science/2020/05/23/gcp-quick-commands.html">GCP Quick-n-Dirty Commands</a>
+    </ul>
+  
     <ul class="post-list">
     	<span class="post-meta">May 10, 2020 | </span> 
     	<a href="/data-science/2020/05/10/numbers-behind-airbnb-recent-layoffs.html">The Numbers Behind AirBnB's Recent Layoffs</a>
@@ -37,16 +47,13 @@
     </ul>
   
 
-  <h3 class="h3-post-title">Guide</h3>
+  <h3 class="h3-post-title">Guides</h3>
     
     <ul class="post-list">
     	<span class="post-meta">Apr 23, 2020 | </span> 
-    	<a href="/guide/2020/04/23/step-by-step-GKE-deployment.html">Step-by-Step Streamlit App Deployment Via GKE</a>
+    	<a href="/guides/2020/04/23/step-by-step-GKE-deployment.html">Step-by-Step Streamlit App Deployment Via GKE</a>
     </ul>
   
-
-  <h3 class="h3-post-title">Guides</h3>
-    
     <ul class="post-list">
     	<span class="post-meta">Jul 30, 2018 | </span> 
     	<a href="/guides/2018/07/30/training-neural-networks-on-computing-clusters.html">Training Neural Networks on Computing Clusters</a>

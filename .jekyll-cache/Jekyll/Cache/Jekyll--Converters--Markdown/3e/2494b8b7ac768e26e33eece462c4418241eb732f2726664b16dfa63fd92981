@@ -1,0 +1,10 @@
+I"¦<h3 id="gcp-compute-engine-instance">GCP Compute Engine instance</h3>
+
+<p>Create instance: <code class="highlighter-rouge">gcloud compute instances create INSTANCE_NAME</code><br />
+Start instance: <code class="highlighter-rouge">gcloud compute instances start INSTANCE_NAME</code><br />
+List instances: <code class="highlighter-rouge">gcloud compute instances list</code><br />
+Stop instance: <code class="highlighter-rouge">gcloud compute instances stop INSTANCE_NAME</code><br />
+Delete instance: <code class="highlighter-rouge">gcloud compute instances delete INSTANCE_NAME</code></p>
+
+<p>*Commands can work with multiple instances by separating instance names by space</p>
+:ET

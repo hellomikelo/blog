@@ -5,7 +5,7 @@ title: Step-by-Step Streamlit App Deployment Via GKE
 description: 
 published: true
 excerpt_separator: <!--more-->
-categories: [Guide]
+categories: [Guides]
 
 ---
 
