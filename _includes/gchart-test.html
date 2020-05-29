@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script type="jquery.csv.js"></script>
+    <!-- <script src="jquery.csv.min.js"></script> -->
+
+    <script type="text/javascript">
+        // var csv = require('https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.js');
+        // load the visualization library from Google and set a listener
+        // google.load("visualization", "1", {packages:["corechart"]});
+        google.charts.load('current', {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        // google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // var opts = {sendMethod: 'auto'};
+            // Replace the data source URL on next line with your data source URL.
+            // var query = new google.visualization.Query('http://spreadsheets.google.com?key=123AB&...', opts);
+            var queryOptions = {
+                // csvColumns: ['Food', 'Counts' /* Or whatever the columns in the CSV file are */],
+                // csvHasHeader: true, /* This should be false if your CSV file doesn't have a header */
+                sendMethod: 'auto'
+            }            
+
+            var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1g1TZ3J4Rzwo3VAZfXbWVzelmOqCx80e6BSGhp2h991I/edit?usp=sharing', queryOptions);
+            query.setQuery('select A, B');
+            query.send(handleQueryResponse);
+        }
+
+        function handleQueryResponse(response) {
+            if (response.isError()) {
+                alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+                return;
+            }
+            
+            var data = response.getDataTable();
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+            // Draw your chart with the data table here.
+            chart.draw(data);
+        }
+
+        // function drawChart() {
+        //     // var data = new google.visualization.DataTable();
+        //     // data.addColumn('number', 'Topping');
+        //     // data.addColumn('number', 'Slices');
+        //     // data.addRows([
+        //     //   [5, 3],
+        //     //   [6, 1],
+        //     //   [7, 1],
+        //     //   [1, 1],
+        //     //   [9, 2]
+        //     // ]);
+        //     $.get("test.csv", function(csvString) {
+        //         // transform the CSV string into a 2-dimensional array
+        //         var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+        //         // this new DataTable object holds all the data    
+        //         var data = new google.visualization.arrayToDataTable(arrayData);
+        //         var view = new google.visualization.DataView(data);
+        //         view.setColumns([0,1]);
+            
+        //     var chart = new google.visualization.ScatterChart(document.getElementById('chart'));
+        //     // Draw your chart with the data table here.
+        //     chart.draw(view)
+
+        //     // });
+        // }
+
+    </script>
+  </head>
+  <body>
+    <div id="chart" style="width: '100%'; height: 500px; margin: 'auto';"></div>
+  </body>
+</html>

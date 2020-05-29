@@ -9,7 +9,10 @@ published: true
 
 ### PhD Research
 
-![jpg](/assets/images/phd-history.jpg){:width="100%"}
+What I did during my PhD (the chart is interactive!).
+
+<!-- ![jpg](/assets/images/phd-history.jpg){:width="100%"} -->
+{% include tree-test.html %}
 
 #### Publications
 
