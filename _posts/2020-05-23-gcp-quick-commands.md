@@ -41,9 +41,12 @@ Additional:
 
 Additional: 
 
-* List buckets (with additional info): `gsutil ls <bucket-name>`
+* List buckets: `gsutil ls gs://<bucket-name>`
+* List all objects in a bucket: `gsutil ls -r gs://<bucket-name>/**` ([ref](https://cloud.google.com/storage/docs/gsutil/addlhelp/HowSubdirectoriesWork))
 
 ### GCP Compute Engine instance
+
+Can also be used to start AI Platform Notebooks JupyterLab environment (an updated version of Datalab with end-to-end ML dev)
 
 1. Create instance: `gcloud compute instances create <instance-name>`  
 2. Start instance: `gcloud compute instances start <instance-name>`  

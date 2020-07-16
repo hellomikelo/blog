@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages:['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'From');
+        data.addColumn('string', 'To');
+        data.addColumn('number', 'Time');
+        data.addColumn({type: 'string', role: 'tooltip'});
+
+        data.addRows([
+          ['Pair', 'GKE', 20, 'Built, test, and improve image reconstruction algorithms'],
+          ['Pair', 'Data Analysis', 30, 'Cleaned, analyzed, and presented experimental results'],
+          ['Pair', 'Experiment', 20, 'Planned and executed 6 synchrotron radiation X-ray imaging experiments'],
+          ['Pair', 'Science communication', 20, 'Wrote journal articles and presented research findings at conferences'],
+          ['Pair', 'Teaching', 10, 'Taught undergraduate science courses, ranging from physics to biochemistry'],
+          ['Pair', 'Extracurricular', 10, 'Worked as a tech transfer analyst and also as a visiting scholar'],
+          
+          ['Algorithms', 'CryoEM', 2, 'Tested a new 3D reconstruction method for CryoEM'],
+          ['Algorithms', 'MRI', 2, 'Tested an iterative phase retrieval algorithm for MRI image reconstruction'],
+          ['Algorithms', 'CDI', 16, 'Conceptualized and implemented the in situ CDI technique'],
+
+          ['Data Analysis', 'CDI', 20, 'Processed a lot of coherent diffractive imaging and ptychography data'],
+          ['Data Analysis', 'Tomography', 10, 'Processed a lot of tomography data'],
+
+          ['Experiment', 'NSLS-II', 2, 'The first attempted X-ray in situ CDI experiment at CHX beamline'],
+          ['Experiment', 'APS', 2, 'Cryogenic 3D X-ray bioimaging experiment at the Bionanoprobe'],
+          ['Experiment', 'ALS', 14, 'Multiple X-ray imaging experiments at the 5.3.2.1 and 7.0.1.2 COSMIC beamlines'],
+          ['Experiment', 'UCF', 2, 'First attempt at demonstrating an exciting new ultrafast lensless X-ray imaging technique'],
+
+          ['Science communication', 'CDI', 14, 'Wrote 4 first-author papers on CDI and ptychography'],
+          ['Science communication', 'APS', 3, 'Advanced Light Source 2018 User Meeting'],
+          ['Science communication', 'STROBE', 3, ''],
+
+          ['Teaching', 'CDI', 3, 'Taught undergraduate biophysics laboratory on lensless imaging'],
+          ['Teaching', 'Biochemistry', 4, 'Taught CHEM 153A: Introduction to Structure, Enzymes, and Metabolism'],
+          ['Teaching', 'Physics', 3, 'Tutor for the UCLA Program for the Education and Enrichment of Relational Skills (PEERS)'],
+
+          ['Extracurricular', 'Tech Transfer', 2.5, 'Technology transfer fellow in the office of intellectual property'],
+          ['Extracurricular', 'Summer research', 2.5, 'JUACEP summer research in Nagoya, Japan'],
+          ['Extracurricular', 'STROBE', 5, 'Student-Postdoc Council'],          
+        ]);
+
+        // Sets chart options.
+        var colors = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
+                  '#cab2d6', '#ffff99', '#1f78b4', '#33a02c'];
+
+        var options = {
+          // height: 400,
+          sankey: {
+            node: {
+              colors: colors,
+              label: { 
+                fontName: 'Helvetica Neue', 
+                fontSize: 15,
+                color: 'white',
+              }
+            },
+            link: {
+              colorMode: 'gradient',
+              colors: colors
+            }
+          },
+          tooltip: {
+            textStyle: {
+              color: 'black',
+              fontName: 'Helvetica Neue',
+              fontSize: 15,
+            }, 
+            showColorCode: true
+          }, 
+        };
+
+        // Instantiates and draws our chart, passing in some options.
+        var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+        chart.draw(data, options);
+      }
+
+    </script>
+  </head>
+  <body>
+    <!-- <div id="sankey_basic" style="width: 800px; height: 500px; margin: 0 auto;"></div> -->
+    <div id="sankey_basic" style="width: 100%;
+    height: 100%;
+    /*overflow: auto;*/
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;">
+    </div>
+  </body>
+</html>

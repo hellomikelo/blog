@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Building Containerized Application with GCP</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="./dist/reset.css">
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="./plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-markdown
+				data-separator="^---"
+				data-separator-vertical="^--"
+				data-separator-notes="^Note:"
+				data-charset="iso-8859-15">
+					<textarea data-template>
+						### Building Scalable Data Applications With GCP
+
+						Mike Lo  
+						June 1st, 2020
+						---
+						## About me
+						* Dec 2019: PhD in BioE <!-- .element: class="fragment fade-in-then-semi-out" data-fragment-index="1" -->
+						* Jan 2020: 20A Insight AI Fellow  <!-- .element: class="fragment fade-in-then-semi-out" data-fragment-index="2" -->
+						* Now: Searching for opportunities <!-- .element: class="fragment fade-in-then-semi-out" data-fragment-index="3" -->				
+					</textarea>
+				</section>
+
+				<section>
+					<section>
+						<h2>My Insight Project</h2>
+						<p>I wanted to build a <u>personalized</u> <br>product recommender</p>
+					</section>
+					
+					<section data-background-iframe="https://www.google.com/">
+						<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+							<h3 style="color: white">Online shopping is hard!</h3>
+							<p>There are <u>so many choices</u>. How can we find what we want in a timely manner?</p>
+						</div>
+					</section>
+
+					<section data-background-iframe="https://bit.ly/pair-app">
+					<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+						<h3 style="color: white">That's why I built <u>Pair</u></h3>
+						<p>Pair is an image-based product recommender system that is scalable and personalizd.</p>
+					</div>
+					</section>
+				</section>
+
+				<section>
+					<h2>Inference Pipeline</h2>
+					<img class="plain" style="background: rgba(255,255,255,0.1);" width="1200" height="100%" data-src="static/imgs/pair-medium-img4.png" alt="Down arrow">
+				</section>
+
+				<section>
+					<section>
+						<h2>Deployment <br>Architecture</h2>
+					</section>
+
+					<section data-background='static/imgs/GCP.png' data-background-opacity=0.2 data-background-size=700px 100%>
+						<h3>1. Google Cloud Platforms (GCP)</h3>
+						<p>A set of globally-distributed computers, hard drives, and virtual resources that provide <span style="color: blue">compute</span>, <span style="color: blue">storage</span>, <span style="color: blue">big data</span> and <span style="color: blue">machine learning</span> services.</p>
+					</section>
+
+					<section data-background='static/imgs/docker.png' data-background-opacity=0.2 data-background-size=700px 100%>
+						<h3>2. Docker</h3>
+						<p>A standard unit of software that packages up code and all its dependencies so the application runs quickly, reliably, and is completely <span style="color: blue">independent of computing environment</span>.</p>
+					</section>
+
+					<section data-background='static/imgs/GKE.png' data-background-opacity=0.2 data-background-size=700px 100%>
+						<h3>3. Google Kubernetes Engine (GKE)</h3>
+						<p>A managed environment with clusters of multiple machines for <span style="color: blue">deploying</span>, <span style="color: blue">managing</span>, and <span style="color: blue">scaling</span> containerized applications using Google infrastructure.</p>
+						<aside class="notes">
+							AWS: Elastic Kubernetes Service, Azure: Azure Kubernetes Service, IBM: Cloud Kubernetes Service
+						</aside>
+					</section>
+
+					<section data-background='static/imgs/streamlit.png' data-background-opacity=0.2 data-background-size=700px 100%>
+						<h3>4. Streamlit</h3>
+						<p>An open-source app framework for quickly prototyping and deploying beautiful, performant apps in Python.</p>
+					</section>
+
+					<section data-background-iframe="https://hellomikelo.com/guides/2020/04/23/step-by-step-GKE-deployment.html">
+					<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+						<p>A step-by-step GCP guide on how I deployed Pair</p>
+					</div>
+					</section>
+
+				</section>
+
+				<section data-markdown
+				data-separator="^---"
+				data-separator-vertical="^--"
+				data-separator-notes="^Note:"
+				data-charset="iso-8859-15">
+					<textarea data-template>
+						## My priorities
+						|Main|Secondary|
+						|:---:|:---:|
+						|- Scalable |- Hyperparameter tuning |
+						|- Good UI |- Model optimization|
+						---
+						## GCP Pros & Cons
+						|Pros|Cons|
+						|:---:|:---:|
+						|- Great UX|- Younger than AWS|
+						|- Good documentation |- Used by fewer companies|
+						--
+						### Kubernetes Usage
+						![](https://blog.alcide.io/hs-fs/hubfs/WhatsApp%20Image%202020-05-06%20at%2009.35.50.jpeg?width=1448&name=WhatsApp%20Image%202020-05-06%20at%2009.35.50.jpeg)
+						
+						Note: GKE: 8/2015, AKS: 6/2018, EKS: 6/2018
+						--
+						### Upgrades & Maintenance
+						![](https://blog.alcide.io/hs-fs/hubfs/Screen%20Shot%202020-05-07%20at%209.27.22.png?width=711&name=Screen%20Shot%202020-05-07%20at%209.27.22.png)
+						---
+						## Thank you!
+						hellomikelo@gmail.com
+					</textarea>
+				</section>
+		
+				<!-- <section>
+					<h2>My PhD</h2>
+					<iframe data-src="static/charts/phd-history.html" width=70% height=400 marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" style="max-width: 100%; max-height: 100%;" allowfullscreen> </iframe>
+				</section> -->
+
+			</div>
+		</div>
+
+		<script src="./dist/reveal.js"></script>
+		<script src="./plugin/zoom/zoom.js"></script>
+		<script src="./plugin/notes/notes.js"></script>
+		<script src="./plugin/search/search.js"></script>
+		<script src="./plugin/markdown/markdown.js"></script>
+		<script src="./plugin/highlight/highlight.js"></script>
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				// markdown: {smartypants: true},
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+			});
+
+		</script>
+
+	</body>
+</html>
