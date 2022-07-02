@@ -14,14 +14,15 @@
 .site-title {
     font-size: 32px;
     font-weight: 300;
-    line-height: 56px;
-    color: $grey-color;
+    //line-height: 56px;
+    //line-height: $base-line-height;
+    color: $grey-color-light;
     letter-spacing: -1px;
     margin-bottom: 0;
     float: left;
 
     &:visited {
-        color: $grey-color;
+        color: $grey-color-light;
     }
 
     &:hover {
@@ -39,8 +40,8 @@
     }
 
     .page-link {
-        color: $grey-color;
-        line-height: $base-line-height;
+        color: $grey-color-light;
+        //line-height: $base-line-height;
 
         &:hover {
             color: $text-color;
@@ -279,6 +280,7 @@
 
     h2 {
         font-size: $base-font-size + 6;  //21px
+        //font-size: 20;
         font-weight: $title-font-weight;
         letter-spacing: $base-spacing;
         line-height: $heading-line-height;
@@ -326,8 +328,8 @@
     //margin: 1.5 * $spacing-unit 0;
 
     a {
-        font-weight: bold;
-        color: $grey-color;
+        //font-weight: 300;
+        color: $grey-color-light;
         margin-left: 5px;
         margin-right: 5px;
 
