@@ -7,4 +7,4 @@ published: true
 
 ---
 
-* [Insight Project Overview (2020-06-01)](slides/insight-ds-gke.html)
+June 1st, 2020 \| [Pair - Insight DS Project Overview](slides/insight-ds-gke.html)
