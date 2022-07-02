@@ -209,15 +209,29 @@
     list-style: none;
     padding-left: 0;
     letter-spacing: $base-spacing;
+
     > li {
         // margin-bottom: $spacing-unit;
         //line-height: $base-line-height; 
         //line-height: 1em;
     }
+    
     ul {
         margin: $spacing-unit/5 0;
         //margin-bottom: $spacing-unit;
         line-height: $post-line-height; 
+    }
+    
+    a {
+        color: $grey-color;
+
+        &:visited {
+            color: $grey-color;
+        }
+
+        &:hover {
+            color: $text-color;
+        }        
     }
 }
 
