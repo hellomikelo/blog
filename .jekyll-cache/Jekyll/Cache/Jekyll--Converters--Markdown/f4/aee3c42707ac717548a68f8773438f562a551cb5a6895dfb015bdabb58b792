@@ -1,10 +1,10 @@
-I"�<p>Recently I’ve been trying to outsource my neural network training onto a computing cluster (the Hoffman2 cluster at UCLA). Specifically, I’m trying to use Tensorflow’s implementation of the CNN model on CIFAR-10 dataset. Training the model interactively was not difficult. I just had to load the Anaconda module, install Tensorflow package and its associated modules, then train the model. However, to do it non-interactively, i.e. submit as a job to a remote node, it requires writing up a simple C shell script for submission. I’m posting the command file for job submission here for those who may be interested in implementing machine learning on a computing cluster.</p>
+I"<p>Recently I’ve been trying to outsource my neural network training onto a computing cluster (the Hoffman2 cluster at UCLA). Specifically, I’m trying to use Tensorflow’s implementation of the CNN model on CIFAR-10 dataset. Training the model interactively was not difficult. I just had to load the Anaconda module, install Tensorflow package and its associated modules, then train the model. However, to do it non-interactively, i.e. submit as a job to a remote node, it requires writing up a simple C shell script for submission. I’m posting the command file for job submission here for those who may be interested in implementing machine learning on a computing cluster.</p>
 
 <!--more-->
 
 <p>This part gives the <a href="https://en.wikipedia.org/wiki/Oracle_Grid_Engine">Sun Grid Engine</a> job scheduler some parameters for initiating a remote job, providing information on how much memory to request, how long to run the job for, etc.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/csh -f
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/csh -f
 #
 #$ -cwd
 #$ -o output/directory
@@ -19,7 +19,7 @@
 
 <p>Not sure what below lines do, but they apparently set the path to the files related to the training.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> unalias * # Remove all previous aliases
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> unalias * # Remove all previous aliases
  
  set qqversion =
  set qqapp = "job serial"
@@ -31,21 +31,21 @@
 
 <p>Change to the project directory and initiate the job scheduler.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cd /path/to/project/directory
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cd /path/to/project/directory
  source /u/local/bin/qq.sge/qr.runtime
  if ($status != 0) exit (1)
 </code></pre></div></div>
 
 <p>Load Anaconda and load Python environment.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> echo "Load modules..."
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> echo "Load modules..."
  source /u/local/Modules/default/init/modules.csh
          module load anaconda/python3-4.2
 </code></pre></div></div>
 
-<p>Activate TensorFlow conda environment. One caveat here is that there is a conflict for the command <code class="highlighter-rouge">source</code> in both C shell and conda (normally you would activate Tensorflow with <code class="highlighter-rouge">source activate tensorflow</code>), so you cannot directly call <code class="highlighter-rouge">source</code> to activate the tensorflow environment inside your csh script. Fortunately, someone has written a csh version of the <code class="highlighter-rouge">activate</code> command that is available on <a href="https://gist.github.com/mikecharles/f09486e884a0b41e1e8f">GitHub</a>, so you can activate the tensorflow environment by directly calling it in the script.</p>
+<p>Activate TensorFlow conda environment. One caveat here is that there is a conflict for the command <code class="language-plaintext highlighter-rouge">source</code> in both C shell and conda (normally you would activate Tensorflow with <code class="language-plaintext highlighter-rouge">source activate tensorflow</code>), so you cannot directly call <code class="language-plaintext highlighter-rouge">source</code> to activate the tensorflow environment inside your csh script. Fortunately, someone has written a csh version of the <code class="language-plaintext highlighter-rouge">activate</code> command that is available on <a href="https://gist.github.com/mikecharles/f09486e884a0b41e1e8f">GitHub</a>, so you can activate the tensorflow environment by directly calling it in the script.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> echo "Anaconda loaded"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> echo "Anaconda loaded"
  setenv CONDA_ENVS_PATH /path/to/conda/environments # Set path to search for Conda environments
  source /path/to/activate.csh tensorflow # Use CSH version of conda activate to change to tensorflow environment
  setenv PATH /path/to/tensorflow/conda/environment/bin:$PATH # Add Tensorflow env to beginning of search paths
@@ -55,7 +55,7 @@
 
 <p>Begin training the neural network! This also prints the output to a text file so you can check the progress as it goes along. Note that the output does not update instantaneously, so don’t freak out if you don’t see anything in the file right away.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> echo "Begin model training..."
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> echo "Begin model training..."
  python cifar10_train.py | tee -a train_cifar10.output.$JOB_ID
 
  source /u/local/bin/qq.sge/qr.runtime

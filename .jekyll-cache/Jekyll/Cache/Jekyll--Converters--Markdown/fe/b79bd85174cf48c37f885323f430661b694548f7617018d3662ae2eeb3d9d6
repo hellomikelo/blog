@@ -1,5 +1,13 @@
-I"`
+I"
 <ul class="post-list">
+
+  <h3 class="h3-post-title">Career</h3>
+    
+    <ul class="post-list">
+    	<span class="post-meta">Jun 5, 2022 | </span> 
+    	<a href="/diagrams/career/2022/06/05/general-problem-solving.html">A general problem solving mental model for tackling any problem</a>
+    </ul>
+  
 
   <h3 class="h3-post-title">Data-Science</h3>
     
@@ -47,6 +55,19 @@
     </ul>
   
 
+  <h3 class="h3-post-title">Diagrams</h3>
+    
+    <ul class="post-list">
+    	<span class="post-meta">Jun 5, 2022 | </span> 
+    	<a href="/diagrams/career/2022/06/05/general-problem-solving.html">A general problem solving mental model for tackling any problem</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<span class="post-meta">May 11, 2022 | </span> 
+    	<a href="/diagrams/web3/2022/05/11/web3.html">Web3 Ecosystem Deconstruction</a>
+    </ul>
+  
+
   <h3 class="h3-post-title">Guides</h3>
     
     <ul class="post-list">
@@ -90,6 +111,14 @@
     <ul class="post-list">
     	<span class="post-meta">Jul 17, 2019 | </span> 
     	<a href="/research/2019/07/17/LaTex-for-UCLA-dissertation.html">LaTex Formatting for UCLA Dissertation Using uclathe</a>
+    </ul>
+  
+
+  <h3 class="h3-post-title">Web3</h3>
+    
+    <ul class="post-list">
+    	<span class="post-meta">May 11, 2022 | </span> 
+    	<a href="/diagrams/web3/2022/05/11/web3.html">Web3 Ecosystem Deconstruction</a>
     </ul>
   
 

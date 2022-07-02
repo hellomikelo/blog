@@ -1,17 +1,17 @@
-I"�<p>Quick tip: If you are ever in a situation where you want to search for a keyword in every file of a directory (or even the entire computer), a very useful command line tool is <code class="highlighter-rouge">grep</code> (<a href="https://linux.die.net/man/1/grep">manual</a>), which print lines of any file names, or any lines of text inside a file, that matches a defined pattern. Sample usage is as follows:</p>
+I"n<p>Quick tip: If you are ever in a situation where you want to search for a keyword in every file of a directory (or even the entire computer), a very useful command line tool is <code class="language-plaintext highlighter-rouge">grep</code> (<a href="https://linux.die.net/man/1/grep">manual</a>), which print lines of any file names, or any lines of text inside a file, that matches a defined pattern. Sample usage is as follows:</p>
 
 <!--more-->
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grep -rnw '/path/to/somewhere/' -e 'word pattern'
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grep -rnw '/path/to/somewhere/' -e 'word pattern'
 </code></pre></div></div>
 
 <p>where</p>
 
 <ul>
-  <li><code class="highlighter-rouge">-r</code> or <code class="highlighter-rouge">-R</code> is recursive search</li>
-  <li><code class="highlighter-rouge">-n</code> is show line number of matches</li>
-  <li><code class="highlighter-rouge">-w</code> is find match for the whole word</li>
-  <li><code class="highlighter-rouge">-e</code> is the word pattern you’d like to search</li>
+  <li><code class="language-plaintext highlighter-rouge">-r</code> or <code class="language-plaintext highlighter-rouge">-R</code> is recursive search</li>
+  <li><code class="language-plaintext highlighter-rouge">-n</code> is show line number of matches</li>
+  <li><code class="language-plaintext highlighter-rouge">-w</code> is find match for the whole word</li>
+  <li><code class="language-plaintext highlighter-rouge">-e</code> is the word pattern you’d like to search</li>
 </ul>
 
 :ET

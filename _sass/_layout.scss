@@ -198,7 +198,7 @@
 
 .post-link {
     display: block;
-    font-size: 21px;
+    font-size: $base-font-size + 6;  //before: 21px;
     font-weight: $title-font-weight;
     letter-spacing: $base-spacing;
 }
@@ -210,12 +210,13 @@
     letter-spacing: $base-spacing;
     > li {
         // margin-bottom: $spacing-unit;
-        // line-height: $base-line-height; 
+        //line-height: $base-line-height; 
+        //line-height: 1em;
     }
     ul {
         margin: $spacing-unit/5 0;
         //margin-bottom: $spacing-unit;
-        //line-height: $list-line-height; 
+        line-height: $post-line-height; 
     }
 }
 
@@ -277,7 +278,7 @@
     }
 
     h2 {
-        font-size: 21px;
+        font-size: $base-font-size + 6;  //21px
         font-weight: $title-font-weight;
         letter-spacing: $base-spacing;
         line-height: $heading-line-height;
@@ -288,7 +289,7 @@
     }
 
     h3 {
-        font-size: 18px;
+        font-size: $base-font-size + 3;  //18px
         font-weight: $title-font-weight - 50;
         letter-spacing: $base-spacing;
         line-height: $heading-line-height;
@@ -299,7 +300,7 @@
     }
 
     h4 {
-        font-size: 15px;
+        font-size: $base-font-size;  //15px
         font-weight: $title-font-weight - 100;
         letter-spacing: $base-spacing;
         line-height: $heading-line-height;

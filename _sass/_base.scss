@@ -85,14 +85,16 @@ ul, ol {
 li {
     > ul,
     > ol {
-         margin-bottom: 0;
+         //margin-bottom: 0;
     }
     //display: block;
 }
 
 ul, ol, li {
-    //line-height: 1em;
 }
+
+
+
 
 /**
  * Headings
@@ -107,17 +109,18 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-    color: $grey-color;
+    color: $grey-color-light;
     text-decoration: none;
+    //text-decoration: underline;
 
     &:visited {
-        //color: darken($brand-color, 25%);
-        color: $grey-color;
+        color: $grey-color-light;
     }
 
     &:hover {
         color: $text-color;
-        // text-decoration: underline;
+        //text-decoration: none;
+        //text-decoration: underline;
     }
 
 }
@@ -129,9 +132,9 @@ a {
  */
 blockquote {
     color: $grey-color;
-    border-left: 4px solid $grey-color-light;
+    border-left: 2px solid $grey-color-light;
     padding-left: $spacing-unit / 2;
-    font-size: $base-font-size;
+    font-size: $quote-font-size;
     letter-spacing: $base-spacing;
     font-style: italic;
 
@@ -145,13 +148,11 @@ blockquote {
 /**
  * Code formatting
  */
-pre,
-code {
-    font-size: $base-font-size;
+pre, code {
+    font-size: $code-font-size;
     border: 1px solid $grey-color-light;
     border-radius: $corner-radius;
-    // background-color: #eef;
-    background-color: $code-background-color;
+    background-color: $code-background-color;  //#eef;
     line-height: $code-line-height;
     text-align: left;
     padding: 1px 5px;
