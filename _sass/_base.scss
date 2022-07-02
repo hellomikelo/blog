@@ -108,26 +108,20 @@ h1, h2, h3, h4, h5, h6 {
 /**
  * Links
  */
-
 a {
-    h1 {
-        color: $grey-color;
-    }
-}
-
-a {
-    color: $grey-color-light;
+    color: $grey-color;
+    font-weight: $base-font-weight;
     text-decoration: none;
-    //text-decoration: underline;
-
+    
     &:visited {
-        color: $grey-color-light;
+        color: $grey-color;
     }
 
     &:hover {
+        
         color: $text-color;
         //text-decoration: none;
-        //text-decoration: underline;
+        text-decoration: underline;
     }
 
 }
