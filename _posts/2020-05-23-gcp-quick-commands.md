@@ -4,7 +4,7 @@ layout: post
 title: GCP Quick-n-Dirty Commands
 description: A list of useful gcloud and gutil commands for using Google Cloud Platforms services
 published: true
-categories: [Data-Science]
+categories: [Data Science]
 tags: [ds]
 excerpt_separator: <!--more-->
 

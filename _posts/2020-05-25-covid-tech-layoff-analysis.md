@@ -4,7 +4,7 @@ layout: post
 title: Numbers Behind Tech Job Layoffs Due to COVID-19 
 description: I analyzed the Torch Capital Talent Connect database to understand the surge in tech job layoffs due to Coronavirus
 published: true
-categories: [Data-Science]
+categories: [Data Science]
 tags: [ds]
 excerpt_separator: <!--more-->
 

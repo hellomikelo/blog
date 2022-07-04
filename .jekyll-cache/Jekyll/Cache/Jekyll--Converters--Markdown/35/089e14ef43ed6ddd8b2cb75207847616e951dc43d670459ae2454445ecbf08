@@ -1,0 +1,22 @@
+I"º<style>
+img {
+    /*border-radius: 10%;*/
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+<p><img src="/assets/images/mike-avatar.png" alt="notion avatar" width="25%" /></p>
+
+<p>Hello there! This is my personal blog, where I write about <strong>problem solving techniques</strong>, <strong>machine learning</strong>, <strong>AI</strong>, and <strong>product management</strong>. Iâ€™m interested in employing structured mental models to tackling problems I encounter in life, work, and everything in between. This often means</p>
+
+<ol>
+  <li>Digging deep into the root of the problem</li>
+  <li>Dissecting it into more tractable sub-problems</li>
+  <li>Prioritizing sub-problems based on impact</li>
+  <li>Choosing the appropriate techniques to solve the most important sub-problems</li>
+  <li>Establishing the suitable cadence to follow up on the solutions.</li>
+</ol>
+
+<p>In my previous life as an academic, I contributed to research in state-of-the-art synchrotron radiation X-ray nanoscopy techniques and 3D image reconstruction algorithms. If you are interested, then check out my <a href="https://scholar.google.com/citations?user=L_oHzBUAAAAJ&amp;hl=en" target="_blank">Google Scholar page</a>.</p>
+:ET

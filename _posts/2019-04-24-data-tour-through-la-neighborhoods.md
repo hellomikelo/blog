@@ -4,7 +4,7 @@ layout: post
 title: A Data Tour Through Los Angeles Neighborhoods 
 published: true
 excerpt_separator: <!--more-->
-categories: [Data-Science]
+categories: [Data Science]
 
 ---
 
