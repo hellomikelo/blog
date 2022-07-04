@@ -1,10 +1,8 @@
 ---
-
 layout: page
 title: "Blog"
 permalink: /blog
 published: false
-
 ---
 
 {% assign total = 0 %}

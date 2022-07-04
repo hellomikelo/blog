@@ -1,10 +1,9 @@
 ---
-
 layout: page
 title: Archive
 permalink: /archive
-
 ---
+
 {% assign total = 0 %}
 {% for post in site.posts %}
   {% assign total = total | plus: 1 %}
