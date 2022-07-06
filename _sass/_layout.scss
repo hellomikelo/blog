@@ -119,14 +119,24 @@
  * Site footer
  */
 
+.views {
+    display: flex;
+    align-items: left;
+}
+
+
+/**
+ * Site footer
+ */
+
 .site-footer {
-    // border-top: 1px solid $grey-color-light;
-    padding: $spacing-unit 0;
+    //border-top: 1px solid $grey-color-light;
+    //padding: $spacing-unit 0;
 }
 
 .footer-heading {
-    font-size: 18px;
-    margin-bottom: $spacing-unit / 2;
+    //font-size: 18px;
+    //margin-bottom: $spacing-unit / 2;
 }
 
 .contact-list,
@@ -137,7 +147,7 @@
 }
 
 .footer-col-wrapper {
-    font-size: 15px;
+    font-size: $footer-font-size;
     color: $grey-color;
     margin-left: -$spacing-unit / 2;
     @extend %clearfix;
@@ -344,6 +354,7 @@
  */
 
 .share-page {
+    clear: left;
     // margin-top: $spacing-unit*5;
     text-align: left;
     //background: $secondary-color;

@@ -13,6 +13,7 @@ $base-font-size:   18px;  //15px
 $table-font-size:  16px;  //13px
 $code-font-size: 16px;
 $quote-font-size: 16px;
+$footer-font-size: 16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-font-family: "Helvetica Neue", Arial, sans-serif;  //Verdana, Geneva, sans-serif;
 
@@ -205,3 +206,64 @@ table tr th :first-child, table tr td :first-child {
   margin-top: 0; }
 table tr th :last-child, table tr td :last-child {
   margin-bottom: 0; }
+
+/*
+Search bar
+*/
+#search-bar {
+  border: 1px solid $grey-color;
+  border-radius: 20px;
+  padding: 0 20px;
+  position: relative;
+
+  & #search {
+    width: calc(100% - 30px);
+    border: none;
+    //line-height: 44px;
+    line-height: $base-font-size * 2;
+    outline: none;
+    border-style: none;
+  }
+
+  & #search-result {
+    padding: 4px;
+    display: none;
+    position: absolute;
+    top: 48px;
+    width: 93%;
+    max-height: 325px;
+    overflow-y: auto;
+    background-color: white;
+    box-shadow: 0px 4px 8px 0 #ccc;
+    z-index: 99999;
+
+    & .result-item {
+      display: block;
+      padding: 8px 16px;
+      text-decoration: none;
+
+      & .title,
+      .description {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      & .title {
+        color: $text-color;
+        //padding-bottom: 4px;
+        font-size: $table-font-size;
+      }
+
+      & .description {
+        color: $grey-color;
+        font-size: $table-font-size;
+      }
+
+      &:hover {
+        background-color: lighten($grey-color, 40%);
+      }
+    }
+  }
+}

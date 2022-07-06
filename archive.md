@@ -4,6 +4,7 @@ title: Archive
 permalink: /archive
 ---
 
+{% include searchbar.html %} 
 {% assign total = 0 %}
 {% for post in site.posts %}
   {% assign total = total | plus: 1 %}

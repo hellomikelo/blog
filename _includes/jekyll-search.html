@@ -1,0 +1,24 @@
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search'),
+      resultsContainer: document.getElementById('search-result'),
+      json: '/search.json',
+      // searchResultTemplate: '<a class="result-item" href="https://hellomikelo.com{url}"><div class="title">{title}'+
+      //         '</div><div class="description">{description}</div></a>'
+      searchResultTemplate: '<a class="result-item" href="{url}"><div class="title">{title}'+
+              '</div><div class="description">{description}</div></a>'
+    });
+    
+    document.querySelector('#search').addEventListener('keyup', function () {
+      var keyword = this.value.toLowerCase();
+
+      sjs.search(keyword);
+
+      if (keyword.length > 0) {
+        document.querySelector('#search-result').style.display = 'block';;
+      } else {
+        document.querySelector('#search-result').style.display = 'none';;
+      }
+    })
+</script>
