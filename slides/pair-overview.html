@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Pair overview</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="./dist/reset.css">
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="./plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h3><u>Pair</u>: An Image-based <br>Product Recommender</h3>
+					<p>Mike Lo</p>
+					<aside class="notes">
+						This is a project I worked on for over 3 weeks earlier this year
+					</aside>
+				</section>
+
+				<section>				
+					<section data-background-iframe="https://www.google.com/">
+						<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+							<h3 style="color: white">Online shopping is hard!</h3>
+							<p>We have <em>so many choices</em>. How can we find matching products in a personalized and timely manner?</p>
+							<aside class="notes">
+								Got this inspiration when I moved into my new place and was shopping for furniture online. It was frustrating to find a collection of furniture that look good together in a sea of choices.
+							</aside>
+						</div>
+					</section>
+
+					<section data-background-iframe="https://bit.ly/pair-app">
+						<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+							<h3 style="color: white">That's why I built <u>Pair</u>: </h3>
+							<p>It's a scalable, AI-powered recommender system for suggesting stylistically similar furniture. <br><br>Live at <a href="https://bit.ly/pair-app">bit.ly/pair-app</a></p>
+							<aside class="notes">
+								Content-based filtering approach. It's a web application that takes in a product image from a user, analyzes its design, and returns products from other categories that match stylistically. Can drive up product conversion rate.
+							</aside>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Inference<br>Pipeline</h2>
+					</section>
+					<section>
+						<img class="plain" style="background: rgba(255,255,255,0.1);" width="1200" height="100%" data-src="static/imgs/pair-medium-img4.png" alt="Down arrow">
+						<aside class="notes">
+							* Pair takes in a collection of furniture images from the same category as input into the CNN
+							<br>* CNN (VGG16) uses the embedding layers to generate feature maps, or “design filters”
+							<br>* The feature maps are then used to compute Gram matrices, which measure correlations between feature maps to find the most salient design elements
+							<br>* Finally, Gram matrices undergo dimensionality reduction using PCA to generate a design feature library that can be saved as embedding databases
+							<br>* When new query image comes in, it’s processed through the same pipeline to generate a design feature vector
+						</aside>
+					</section>
+					<section>
+						<img class="plain" style="background: rgba(255,255,255,0.1);" width="1200" height="100%" data-src="static/imgs/pair-medium-img5.png" alt="Down arrow">
+					</section>
+				</section>
+
+				<section data-markdown
+				data-separator="^---"
+				data-separator-vertical="^--"
+				data-separator-notes="^Note:"
+				data-charset="iso-8859-15">
+					<textarea data-template>
+						## Model evaluation <br>with <u>Hit Rate @ N</u>
+						--
+						Use <u>interior design scenes</u> with different furniture to evaluate recommendation performance
+						<img class="plain" style="background: rgba(255,255,255,0.1);" width="700" height="100%" data-src="static/imgs/ikea-display-all-your-memorabilia-and-more__1364319313408-s4.jpg" alt="Down arrow">
+						Note: ideally would perform A/B testing. Assume furniture that are in the same scene are considered "good" matches. 
+						--
+						<img class="plain" style="background: rgba(255,255,255,0.1);" width="1200" height="100%" data-src="static/imgs/pair-medium-img7.png" alt="Down arrow">
+						Note: I used a metric called HR@n, which measures how closely Pair matches different furniture in the same room scene. So hit rate +1 every time a top-n recommendation matches an item in a room. For example, if the brown chair (green) returns the coffee table in the same room as one of the top-5 choices (red), then that’s a hit at 5
+						--
+						In <u>30%</u> of the cases, Pair achieved HR@5 when choosing from 100+ furniture choices
+						--
+						<h3>Sample result</h3>
+						<img class="plain" style="background: rgba(255,255,255,0.1);" width="1200" height="100%" data-src="static/imgs/pair-medium-img6.png" alt="Down arrow">
+						--
+						<h3>Sample result</h3>
+						<img class="plain" style="background: rgba(255,255,255,0.1);" width="1200" height="100%" data-src="static/imgs/pair-medium-img8.png" alt="Down arrow">
+						---
+						<h2>Deployment<br>Architecture</h2>
+						--
+						<h3>Workflow</h3>
+						<ol>
+							<li class="fragment fade-in-then-semi-out">Built as a <u>Tensorflow/Keras</u> model</li>
+							<li class="fragment fade-in-then-semi-out">Packaged as a <u>Docker container</u></li>
+							<li class="fragment fade-in-then-semi-out">Deployed as a <u>Kubernetes cluster</u> via GKE</li>
+							<li class="fragment fade-in-then-semi-out">Served as a <u>Streamlit</u> application</li>
+						</ol>
+						--
+						<img class="plain" style="background: rgba(255,255,255,0.1);" width="600" height="100%" data-src="static/imgs/pair-medium-img3.png" alt="Down arrow">
+						---
+						## Future directions
+						<ol>
+							<li class="fragment fade-in-then-semi-out">Solve cold start problem with user metadata</li>
+							<li class="fragment fade-in-then-semi-out">Transfer learning to improve model performance</li>
+						<ol>					
+						---
+						## Thank you!		
+						Note: This is just a short snippet of what I can do in a short amount of time >> I am a quick learner >> Passionate about Zoom's product and what you guys are working on
+					</textarea>
+				</section>
+
+				<section>
+					<section>
+						<h2>Other Projects</h2>
+					</section>
+
+					<section data-background-iframe="http://bit.ly/cov19-tracker">
+						<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+							<h3><span style='color:white'>COVID-19 Case Tracker</span></h3>
+							<p>Created an interactive dashboard to visualize the latest COVID-19 numbers, built using <u>Python</u>, <u>Kubernetes</u>, and <u>Streamlit.</u><br><br>Live at <a href="http://bit.ly/cov19-tracker">bit.ly/cov19-tracker</a></p>
+						</div>
+					</section>
+
+					<section data-background-iframe="https://hellomikelo.com/data%20science/2019/04/24/data-tour-through-la-neighborhoods.html">
+						<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+							<h3><span style='color:white'>A data tour of Los Angeles</span></h3>
+							<p>Performed K-means clustering of LA neighborhoods using features engineered from public data on crime rates, rental prices, and venues.<br><br>Read more at <a href="http://bit.ly/la-data-tour">bit.ly/la-data-tour</a></p>
+						</div>
+					</section>
+
+					<section data-background-iframe="https://hellomikelo.com/data%20science/2019/08/29/dncnn-em-images-denoising.html">
+						<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+							<h3><span style='color:white'>Image processing with denoising CNN</span></h3>
+							<p>Trained a denoising CNN to process noisy experimental projection images in electron tomography. <br><br>Read more at <a href="http://bit.ly/dncnn-em">bit.ly/dncnn-em</a></p>
+						</div>
+					</section>	
+				</section>
+
+				<section>
+					<section>
+						<h2>Appendix</h2>
+					</section>
+					
+					<section>
+						<h3>Gram Matrix</h3>
+						<img class="plain" style="background: rgba(255,255,255,0.1);" width="1200" height="100%" data-src="static/imgs/pair-medium-img10.png" alt="Down arrow">
+					</section>	
+				</section>			
+				
+				
+
+			</div>
+		</div>
+
+		<script src="./dist/reveal.js"></script>
+		<script src="./plugin/zoom/zoom.js"></script>
+		<script src="./plugin/notes/notes.js"></script>
+		<script src="./plugin/search/search.js"></script>
+		<script src="./plugin/markdown/markdown.js"></script>
+		<script src="./plugin/highlight/highlight.js"></script>
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				// markdown: {smartypants: true},
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+			});
+
+		</script>
+
+	</body>
+</html>
