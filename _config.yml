@@ -13,10 +13,10 @@ url: "http://www.hellomikelo.com" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog
 # site_url: 
 
-# twitter_username: hellomikelo
-github_username:  yuanhunglo
-linkedin_username: mikeylo 
+github_username: hellomikelo
+linkedin_username: hellomikelo
 email: hellomikelo@gmail.com
+twitter_username: hellomikelo_
 
 # Build settings
 # markdown: kramdown
