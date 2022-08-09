@@ -26,7 +26,7 @@ You can edit style sheets __css__ and __scss__ at:
 
 If you make changes to the configuration or CSS, remember to do `jekyll build`. Before pushing to Github, or else the changes won't be reflected online.
 
-### Test out changes before publishing
+### Preview changes before publishing
 
 1. Go to blog home directory
 2. Do `bundle exec jekyll serve`

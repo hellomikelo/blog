@@ -1,0 +1,254 @@
+I"�s<p>In my experience working as a Machine Learning Engineer (MLE), I never really associated data science and machine learning with good developer experience. At least for me, when I hear ML or deep learning, I picture code-heavy projects with workflows that are mostly managed through the command prompt. At best, Jupyter notebooks and IDEs like PyCharm can help smooth out the rough edges of the development process, but the developer experience leaves much to be desired. With that mindset, I never imagined ML engineering can be carried out in an intuitive, low-code UI with drag-and-drop functionality – that is, until I came across Apple’s Core ML and Create ML framework.<!--end--></p>
+
+<p><a href="https://developer.apple.com/machine-learning/">Core ML</a> is a ML development framework that brings on-device machine learning capabilities, like object detection in images and video, language analysis, and sound classification, to Apple devices with just a few lines of code. It delivers a seamless developer experience for ML practitioners and helps streamline model lifecycle management, from model training to evaluation, tuning, and deployment.</p>
+
+<p>At Core ML’s introduction in <a href="https://devstreaming-cdn.apple.com/videos/wwdc/2017/703muvahj3880222/703/703_introducing_core_ml.pdf">WWDC17</a>, the Core ML team didn’t start their presentation with an exhaustive features list of Core ML’s capabilities like other tech product showcases often do. Instead, they emphasized the guiding principle of allowing developers to “focus on the experience they are trying to enable.” This kind of user-centered design thinking applied in the context of ML engineering was very refreshing to me, and it casually revealed the “secret sauce” behind Apple’s wild success in consumer electronics.</p>
+
+<p><img src="../assets/images/meme-focus-on-end-user-experience.jpg" alt="meme-focus-on-end-user-experience.jpg" title="Focus on end user experience" /></p>
+
+<p>So what does it mean to apply user-centered design to ML development? To me, it means introducing structure to the model development workflow while abstracting away as much of the underlying engineering as possible. This allows creators to spend less time on developing the ML functionalities, and more time on creating machine intelligence into their applications to enhance the user experience. In Core ML’s presentation, the team listed some of Core ML’s core design principles:</p>
+
+<ul>
+  <li><strong>Simple:</strong> The tool should provide unified inference API and Xcode integration to enable a seamless end-to-end developer experience.</li>
+  <li><strong>Performant:</strong> The output inference engines should be fine tuned to have reduced artifact size, improved accuracy, and decrease prediction times.</li>
+  <li><strong>Compatible:</strong> The framework should support popular training libraries and public model formats.</li>
+</ul>
+
+<p>On performance, the Core ML team further explained their approach to ensuring the model is performant by default:</p>
+
+<ul>
+  <li><strong>Strict user privacy:</strong> The model should run solely on the user’s device without needing network connection so that user data remains private.</li>
+  <li><strong>Always available:</strong> The model should live on the user’s device so that it’s always available as long as the device is operational.</li>
+  <li><strong>Reduced data cost:</strong> The model should leverage transfer learning with pre-trained neural networks to minimize the data needed to create new models.</li>
+</ul>
+
+<p>The design principles certainly made sense, and the framework definitely helped streamline the developer experience. But as developer-friendly as Core ML is, it still involved a few lines of code.</p>
+
+<p id="gdcalert2"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image2.jpg). Store image on your image server and adjust path/filename/extension if necessary. </span><br />(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br /><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+
+<p><img src="images/image2.jpg" alt="alt_text" title="image_tooltip" /></p>
+
+<p>If you think about it, many parts of the development workflow can actually do away with code altogether. That process could evolve to become more like an interactive experimentation akin to “playing” with data and models rather than “coding” them. Apple understood this idea, so at WWDC19 they introduced <a href="https://developer.apple.com/videos/play/wwdc2019/430/">Create ML</a>, a desktop app built on top of Core ML that provided an intuitive and interactive workflow for creating deep learning models via an easy-to-use UI. By using Create ML, the developer simply defines the model inputs and outputs, and the app takes care of training, evaluating, and testing. The structured development workflow provided by Core ML, combined with Create ML’s intuitive UI, greatly simplifies the ML development lifecycle and enables continuous model improvement and experimentation.</p>
+
+<p id="gdcalert3"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br />(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br /><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+
+<p><img src="images/image3.png" alt="alt_text" title="image_tooltip" /></p>
+
+<h3 id="competitors">COMPETITORS</h3>
+
+<p>Of course, Apple is not the only tech company working to streamline engineering of deep learning applications for app developers and everyday creators.</p>
+
+<p>In late 2016, Facebook announced <a href="https://code.facebook.com/posts/196146247499076/delivering-real-time-ai-in-the-palm-of-your-hand/">Caffe2Go</a>, a lightweight framework for doing real time style-transfer that adds art-like filters to mobile phones. However, that project seems to be inactive now, as a Google search of the name links to a <a href="https://caffe2go.com/">Dutch portable coffee maker</a> (!?). Then in 2017, Google announced <a href="https://techcrunch.com/2017/05/17/googles-tensorflow-lite-brings-machine-learning-to-android-devices/?guccounter=1&amp;guce_referrer=aHR0cHM6Ly93d3cuaW5mb3EuY29tLw&amp;guce_referrer_sig=AQAAAErWgrBfqkmGT72qYR3O7CYigMHRrCXYbCXkk1NNW4cZj5zZSuUYiNfxLXI_c691vENnCoum1ttrm2ZWVwsRjvfSSWftt2Pc5SxklnM6v4HR-GGGXonUqnxgfSqr-4mSzoqzZyxzr2F_yL50sJidqPUpJYBx-78xC8JH6SVRKQnN">Tensorflow Lite</a>, a neural network library for mobile phones. It provides a similar framework as Core ML, but instead focused on the Tensorflow ecosystem. While TFLite is compatible with iOS, Android, web, microcontrollers, Raspberry Pi, Linux, Windows, and Mac for multi-platform deployment, the developer experience isn’t as smooth as what Create ML offers.</p>
+
+<h3 id="what-i-like">WHAT I LIKE</h3>
+
+<p>Apple’s softwares, like its hardwares, is always made with heavy emphasis on design and user experience. The user interface of all of its softwares is so intuitive that anyone can use it to perform sophisticated tasks like making movies (iMovies) and recording music (GarageBand) with relative ease. And Core ML and Create ML are no exceptions. I especially like some of the <a href="https://pair.withgoogle.com/guidebook/patterns">AI design patterns</a> that are used to enhance the overall developer experience:</p>
+
+<ul>
+  <li><strong>Explain the benefit, not the technology</strong>. Rather than focusing on the technical details of the deep learning models and MLOps workflows, Create ML emphasizes how its pre-built learning algorithms can perform transfer learning (<a href="https://developer.apple.com/machine-learning/models/">list of available pre-trained models</a>) to enable complex computer vision and natural language tasks.</li>
+  <li><strong>Set the right expectations.</strong> Create ML sets clear rules and visual boundaries within the development environment to define 3 phases of the model creation process: input, training, and output. With a clear structure, users are better guided in their ML journey and are less likely to get lost along the way. This is a non-trivial design achievement as ML development steps can oftentimes be complex.</li>
+  <li><strong>Anchor on familiarity</strong>. The UI is fully WYSIWYG, and the interactive visual elements in the interface are full of affordances that invite users to interact with them. Actions like drag and drop of new data for training, or interactively filtering tables to slice the metrics and better understand the model’s performance. This familiarity in interface reduces friction when setting up experiments, visualizing model performance, and saving and sharing models.</li>
+</ul>
+
+<p id="gdcalert4"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br />(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br /><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+
+<p><img src="images/image4.png" alt="alt_text" title="image_tooltip" /></p>
+
+<h3 id="open-questions">OPEN QUESTIONS</h3>
+
+<p>Here are some of the questions I have as I learned about Core ML and Create ML.</p>
+
+<ul>
+  <li><strong>How well do the models really perform?</strong> The live demos shown in the talk suggested that only a few tens of images and a few minutes of training are needed to create models that can perform non-trivial tasks like classify flower types, but can the models perform well out in the wild? The demo gave off a “too good to be true” vibe, so I’m a bit skeptical about that.</li>
+  <li><strong>Can Create ML be the gateway to widespread use of state-of-art AI?</strong> We keep hearing about the emergence of new deep neural networks, such as DALL-E-2 or GPT-3, that can perform wildly creative tasks like art generation (e.g. <a href="https://www.pocket-lint.com/apps/news/161649-incredible-dall-e-2-images">Leonardo entering the metaverse</a>) but are huge models trained with billions of parameters. Is it possible that those fancy models can eventually be packaged as a pre-trained Create ML model that can be easily used by developers? A BERT model is already available in the <a href="https://developer.apple.com/machine-learning/models/">Core ML model library</a>, so I can foresee those very large models eventually making their way to Core ML for mass consumption. If so, Core ML and Create ML can become a gateway for the masses to adopt state-of-art AI.</li>
+  <li>**Where does Core/Create ML fit in the overall MLOps landscape? **This study of Create ML raises an interesting potential implication about the future of MLOps: Will low- to no-code enterprise ML platforms like Databricks, H2O.ai, Alteryx, Abacus.ai, and Dataiku eventually abstract away MLOps to a point that ML engineering becomes fully automated and “commoditized”? In other words, can good design and well-orchestrated framework make ML engineering (e.g. feature store, model training, evaluation, deployment, monitoring) a turnkey solution that even non-technical users can apply with ease?</li>
+</ul>
+
+<h3 id="conclusion">CONCLUSION</h3>
+
+<p>MLOps is a hot topic nowadays as companies begin to understand that solid ML operation is the key to maximizing ROI, and many enterprise low-code and no-code ML platforms have emerged to capitalize on this opportunity. While Create ML (and Core ML) is not considered an enterprise ML platform as it targets very different end users and serves smaller use cases, both classes of tools are trying to achieve essentially the same thing, and that is to offer an intuitive approach to create and use ML models.</p>
+
+<p>I think Core ML and Create ML introduce an interesting new paradigm for ML engineering, and Apple executed it well by drastically simplifying the cumbersome work of model lifecycle management. I really like Core ML and Create ML’s user-centered approach to creating a ML platform for enabling continuous model experimentation, and I’m excited to see how they continue to evolve.</p>
+
+<p><del>Core ML, first introduced in, is a ML development framework created by Apple to allow app developers to train, fine-tune and deploy advanced computer vision and natural language processing models on a single machine. Once deployed to edge devices such as iPhones, Core ML optimizes the models for on-device performance by leveraging the CPU, GPU, and Neural Engine while minimizing its memory footprint and power consumption. Also, since the model runs strictly on the user’s device without any need for a network connection, the user’s data remains private and the app responsive.</del></p>
+
+<h3 id="current-state-of-ai-development">Current state of AI development</h3>
+
+<p><del>When you hear the term “deep learning”, what thoughts pop into your mind? Do you imagine endless racks of servers in the cloud that are capable of taking in terabytes of data points and training on hundreds of billions of machine learning parameters, like GPT-3 or DALL-E? Do you sense it’s a very abstract and unrelatable concept that is out of reach of most people, and is only applicable to people with very specialized machine learning (ML), data science (DS), or software engineering (SWE) skills? That may used to be the case, but now I’m noticing a trend to democratize the power of artificial intelligence (AI) to enable everyday makers and tinkerers to experiment and apply AI in their own projects. There are several solutions out there today, but here I want to highlight Apple Core ML.</del></p>
+
+<h3 id="pain-points">Pain points</h3>
+
+<p>Traditionally, ML developments happen in high-code IDEs or Jupyter notebooks, with long-running computations for training and optimization which have been designed mostly for centralized architectures, and are mostly done by people with specialized ML or DS knowledge in ML libraries, programming languages, etc. This requirement for specialized knowledge creates a high barrier to entry for creators who just want to use good-enough AI as a compact tool for their own independent applications, rather than develop state-of-the-art models that require expensive compute and maintenance.</p>
+
+<h3 id="what-is-core-ml">What is Core ML?</h3>
+
+<p>First introduced at WWDC17, Core ML is an Apple framework to integrate compact ML and DL models into apps. It provides a unified representation for all models, and provides Core ML APIs and user data to make predictions, and to fine-tune models, all on the user’s device. Core ML optimizes on-device performance by leveraging the CPU, GPU, and Neural Engine while minimizing its memory footprint and power consumption. Running a model strictly on the user’s device removes any need for a network connection, which helps keep the user’s data private and your app responsive. Some of Core ML and Create ML’s functionalities include:</p>
+
+<ul>
+  <li>Core functionalities Core ML and Create ML (<a href="https://developer.apple.com/machine-learning/models/">list of available pre-trained models</a>) *Show screenshots</li>
+  <li>In WWDC22, they introduced Interactive evaluation and live previews in the Create ML app, which lets you dive deeper into understanding the models you train. The Create ML framework adds tvOS support, repetition counting, and has expanded to give you access to a rich set of underlying components to help you build models highly customized to your app needs.</li>
+  <li>Check out some of the WWDC22 talks: <a href="https://developer.apple.com/videos/play/wwdc2022/10019/">Get to know Create ML Components</a>, <a href="https://developer.apple.com/videos/play/wwdc2022/110332/">What’s new in Create ML</a>.</li>
+</ul>
+
+<h3 id="value-proposition">Value proposition</h3>
+
+<p>“Focus on the experience you are trying to enable.” Bring on-device machine learning features, like object detection in images and video, language analysis, and sound classification, to your app with just a few lines of code. The team laid out their design principles:</p>
+
+<ul>
+  <li><strong>Simple:</strong> Unified inference API, Xcode integration</li>
+  <li><strong>Performant:</strong> Fine tuned inference engines, Built on Accelerate and Metal (Reduce size Improve accuracy Decrease prediction times)</li>
+  <li><strong>Compatible:</strong> Public model format Support for popular training libraries</li>
+  <li>Correctness, Performance, Energy Efficiency</li>
+</ul>
+
+<p>Yes: User Privacy, Always Available, No: Data Cost, Server Cost</p>
+
+<p>As sa result, I noticed some of their design patterns that enhanced user experience:</p>
+
+<ul>
+  <li><strong>Let users supervise automation</strong>. Creating a simple and intuitive user interface (UI) in Create ML to train and fine-tune models without code (*show screenshot or video).</li>
+  <li><strong>Set the right expectations, and invest early in good data practices.</strong> Constraining the model development environment and workflow to limit what developers can and cannot do within the tool (*show example). Explain the benefit, not the technology</li>
+  <li><strong>Explain the benefit, not the technology</strong>. Package pre-built learning algorithms (<a href="https://developer.apple.com/machine-learning/models/">list of available pre-trained models</a>) to support transfer learning to streamline model training flow</li>
+  <li><strong>Automate more when risk is low</strong>. Seamlessly package the entire ML dev lifecycle into MacOS, XCode to create models (as .mlmodel files) that are small, low latency, and use low power consumption.</li>
+  <li><strong>Anchor on familiarity, and Automate in phases</strong>. Creating a frictionless model deployment workflow to integrate trained models into apps that are then used in Apple devices (iPhones, iWatch, TV)</li>
+</ul>
+
+<p>Apple is not alone in this effort to democratize DL to app developers. Google and Meta have their respective competing offerings:</p>
+
+<ul>
+  <li><a href="https://www.infoq.com/news/2017/05/google-tensorflow-lite/">Tensorflow Lite</a>, <a href="https://blog.tensorflow.org/2022/05/ai-and-machine-learning-io-recap.html">AI and Machine Learning @ I/O Recap</a></li>
+  <li>In November 2016 <a href="https://code.facebook.com/posts/196146247499076/delivering-real-time-ai-in-the-palm-of-your-hand/">Facebook already announced its own framework: Caffe2Go</a>. This framework has been used for real time style-transfer: adding art-like filters to your mobile phone.</li>
+  <li><a href="https://databricks.com/blog/2022/07/07/introducing-spark-connect-the-power-of-apache-spark-everywhere.html">Spark Connect</a>. a similar trend in the big data world to push powerful big data analytics and ML</li>
+</ul>
+
+<h3 id="what-i-like-1">WHAT I LIKE</h3>
+
+<ul>
+  <li>This is interesting as a new paradigm/layer in ML application development (simple yet non-trivial functions), and can help to spill ML dev over to the masses (although still limited to app developers)</li>
+  <li>The platform created by CoreML and Create ML are extensible, so the possibility of adding increasingly sophisticated ML models into the platform for diverse use cases is endless (<a href="https://github.com/juanmorillios/List-CoreML-Models">list of Core ML models</a>). Sky’s the limit! Excited to see what’s ahead!</li>
+  <li>Explain the benefit, not the technology</li>
+</ul>
+
+<h3 id="unknownsrisks">UNKNOWNS/RISKS:</h3>
+
+<ul>
+  <li>How do these models compare to other fancy state-of-the-art models trained with billions of parameters? Can they both exist? Or will the fancy models eventually be productized into much more easily digestible formats that can be used as part of Core ML?</li>
+  <li>Will Core ML eventually make DS and MLE obsolete? In other words, can great designs, well architected APIs and streamlined development workflows replace what many DS and MLEs toil over in their daily work?</li>
+  <li>Trend: ML at the edge. Similar to Spark Connector, which seeks to bring big data to edge devices such as mobile devices and microprocessors like Raspberry Pi.</li>
+</ul>
+
+<p><em>Summary…</em></p>
+
+<p>I think the days where creators and tinkers – those without specialized knowledge in ML –  can harness the power of AI are upon us. The movement is happening in the background and isn’t attracting a lot of media attention, but</p>
+
+<hr />
+
+<h2 id="scratch">Scratch</h2>
+
+<p><a href="https://developer.apple.com/documentation/coreml">Core ML</a> is an Apple framework to integrate machine learning models into your app. Core ML provides a unified representation for all models. Your app uses Core ML APIs and user data to make predictions, and to fine-tune models, all on the user’s device. Core ML optimizes on-device performance by leveraging the CPU, GPU, and Neural Engine while minimizing its memory footprint and power consumption. Running a model strictly on the user’s device removes any need for a network connection, which helps keep the user’s data private and your app responsive.</p>
+
+<p>CoreML is Apple’s machine learning framework for doing on device inference. When you’re doing on device inference, you want to be especially considerate of creating a model that is small, low latency, and uses low power consumption. CoreML allows you to easily have a model file – known as a .mlmodel file in the Apple ecosystem– to deploy to iPhones and Apple devices. The model format is optimized to make use of Apple’s Neural Engine, so that the models run faster, with lower power consumption.</p>
+
+<p><a href="https://www.zerone-consulting.com/apples-new-core-ml-2-is-a-gold-mine-worth-exploring/">https://www.zerone-consulting.com/apples-new-core-ml-2-is-a-gold-mine-worth-exploring/</a></p>
+
+<h3 id="why-is-it-interesting">Why is it interesting?</h3>
+
+<h3 id="trend-ml-at-the-edge">Trend: ML at the edge</h3>
+
+<p>Similar to Spark Connector, which seeks to bring big data to edge devices such as mobile devices and microprocessors like Raspberry Pi.</p>
+
+<hr />
+
+<h2 id="outline">Outline</h2>
+
+<ul>
+  <li><strong>STATUS QUO:</strong>
+    <ul>
+      <li><strong>CURRENT STATE:</strong> Convention ML developments happen in high-code IDEs or Jupyter notebooks, with long-running computations for training and optimization which have been designed mostly for centralized architectures, and are mostly done by people with specialized ML or DS knowledge (ML libraries, programming languages, etc).</li>
+      <li><strong>PAIN POINTS:</strong> This requirement for specialized knowledge creates a high barrier to entry for creators who want to do the bare minimum to train ML models and use it as a tool, rather than develop state-of-the-art models from scratch.</li>
+    </ul>
+  </li>
+  <li><strong>PRODUCT:</strong>
+    <ul>
+      <li><strong><del>BUSINESS OBJECTIVE:</del></strong></li>
+      <li><strong>VALUE PROPOSITION:</strong> “Focus on the experience you are trying to enable.” Bring on-device machine learning features, like object detection in images and video, language analysis, and sound classification, to your app with just a few lines of code.
+        <ul>
+          <li>Apple’s design principles
+            <ul>
+              <li><strong>Simple:</strong> Unified inference API, Xcode integration</li>
+              <li><strong>Performant:</strong> Fine tuned inference engines, Built on Accelerate and Metal (Reduce size Improve accuracy Decrease prediction times)</li>
+              <li><strong>Compatible:</strong> Public model format Support for popular training libraries</li>
+              <li>Correctness, Performance, Energy Efficiency</li>
+              <li>Yes: User Privacy, Always Available</li>
+              <li>No: Data Cost, Server Cost</li>
+            </ul>
+          </li>
+          <li>Core ML democratizes ML to widespread use cases by productizing ML development into an easy-to-use program, allowing app developers to easily train and integrate sophisticated ML models into a wide variety of apps with little-to-no code.</li>
+          <li>The team at Apple achieves this by (see <a href="https://pair.withgoogle.com/guidebook/">MLUX PAIR guidebook</a>; flowchart this? <a href="https://flowchart.js.org/">https://flowchart.js.org/</a>, <a href="https://github.com/adrai/flowchart.js">Github</a>):
+            <ul>
+              <li>(Let users supervise automation) Creating a simple and intuitive user interface (UI) in Create ML to train and fine-tune models without code (*show screenshot or video).</li>
+              <li>(Set the right expectations, Invest early in good data practices) Constraining the model development environment and workflow to limit what developers can and cannot do within the tool (*show example). Explain the benefit, not the technology</li>
+              <li>(Explain the benefit, not the technology) Package pre-built learning algorithms (<a href="https://developer.apple.com/machine-learning/models/">list of available pre-trained models</a>) to support transfer learning to streamline model training flow</li>
+              <li>(Automate more when risk is low) Seamlessly package the entire ML dev lifecycle into MacOS, XCode to create models (as .mlmodel files) that are small, low latency, and use low power consumption.</li>
+              <li>(Anchor on familiarity, Automate in phases) Creating a frictionless model deployment workflow to integrate trained models into apps that are then used in Apple devices (iPhones, iWatch, TV)
+                <ul>
+                  <li></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong><del>USERS:</del></strong></li>
+      <li>**FUNCTIONALITIES: **
+        <ul>
+          <li>Core functionalities Core ML and Create ML (<a href="https://developer.apple.com/machine-learning/models/">list of available pre-trained models</a>) *Show screenshots</li>
+          <li>In WWDC22, they introduced Interactive evaluation and live previews in the Create ML app, which lets you dive deeper into understanding the models you train. The Create ML framework adds tvOS support, repetition counting, and has expanded to give you access to a rich set of underlying components to help you build models highly customized to your app needs.</li>
+          <li>Check out some of the WWDC22 talks: <a href="https://developer.apple.com/videos/play/wwdc2022/10019/">Get to know Create ML Components</a>, <a href="https://developer.apple.com/videos/play/wwdc2022/110332/">What’s new in Create ML</a>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>TRENDS &amp; THE FUTURE:</strong>
+    <ul>
+      <li>**COMPETITORS (direct/indirect/potential/substitute): **
+        <ul>
+          <li><a href="https://www.infoq.com/news/2017/05/google-tensorflow-lite/">Tensorflow Lite</a>, <a href="https://blog.tensorflow.org/2022/05/ai-and-machine-learning-io-recap.html">AI and Machine Learning @ I/O Recap</a></li>
+          <li>In November 2016 <a href="https://code.facebook.com/posts/196146247499076/delivering-real-time-ai-in-the-palm-of-your-hand/">Facebook already announced its own framework: Caffe2Go</a>. This framework has been used for real time style-transfer: adding art-like filters to your mobile phone.</li>
+          <li><a href="https://databricks.com/blog/2022/07/07/introducing-spark-connect-the-power-of-apache-spark-everywhere.html">Spark Connect</a>. a similar trend in the big data world to push powerful big data analytics and ML</li>
+        </ul>
+      </li>
+      <li><strong>~~SUPPORTING METRICS: ~~</strong></li>
+    </ul>
+  </li>
+  <li><strong>THOUGHTS &amp; LESSONS:</strong>
+    <ul>
+      <li><strong>WHAT I LIKE:</strong>
+        <ul>
+          <li>This is interesting as a new paradigm/layer in ML application development (simple yet non-trivial functions), and can help to spill ML dev over to the masses (although still limited to app developers)</li>
+          <li>CoreML and Create ML are extensible, so the possibility of adding increasingly sophisticated ML models into the platform for diverse use cases is endless (<a href="https://github.com/juanmorillios/List-CoreML-Models">list of Core ML models</a>). Sky’s the limit! Excited to see what’s ahead!</li>
+        </ul>
+      </li>
+      <li>**UNKNOWNS/RISKS: **
+        <ul>
+          <li>How do these models compare to other fancy state-of-the-art models trained with billions of parameters? Can they both exist? Or will the fancy models eventually be productized into much more easily digestible formats that can be used as part of Core ML?</li>
+          <li>Will Core ML eventually make DS and MLE obsolete? In other words, can great designs, well architected APIs and streamlined development workflows replace what many DS and MLEs toil over in their daily work?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>SUMMARY:</strong> *use the outline</li>
+  <li><strong>REFERENCES:</strong>
+    <ul>
+      <li><a href="https://devstreaming-cdn.apple.com/videos/wwdc/2017/703muvahj3880222/703/703_introducing_core_ml.pdf">Introducing Core ML PDF</a> (Gaurav Kapoor)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>References</p>
+
+<ul>
+  <li><a href="https://www.bmc.com/blogs/ai-as-a-service-aiaas/">https://www.bmc.com/blogs/ai-as-a-service-aiaas/</a></li>
+  <li><a href="https://levity.ai/blog/aiaas-guide">https://levity.ai/blog/aiaas-guide</a></li>
+</ul>
+:ET
