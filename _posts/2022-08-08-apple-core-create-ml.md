@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Core/Create ML - When good design meets ML engineering
+title: When user-centered design meets ML engineering
 description: Study of Core ML and Create ML, a user-centered design in ML engineering
 published: true
 categories: [Data Science, Design] # choose from [Career, Data-Science, Design, Diagrams, Guides, Research, Web3]
