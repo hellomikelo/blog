@@ -1,6 +1,6 @@
 ---
 layout: post
-title: When user-centered design meets ML engineering
+title: When ML engineering meets user-centered design
 description: Study of Core ML and Create ML, a user-centered design in ML engineering
 published: true
 categories: [Data Science, Design] # choose from [Career, Data-Science, Design, Diagrams, Guides, Research, Web3]
