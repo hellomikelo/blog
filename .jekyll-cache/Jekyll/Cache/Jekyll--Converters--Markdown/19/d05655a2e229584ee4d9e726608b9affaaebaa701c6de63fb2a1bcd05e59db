@@ -1,0 +1,81 @@
+I"s<<h1 id="can-zoom-be-the-one-app-to-rule-them-all">Can Zoom be the one app to rule them all?</h1>
+
+<p>Disclaimer: The views and opinions expressed in this post are my own, and do not necessarily reflect the views or positions of Zoom.</p>
+
+<h2 id="zooms-push-to-build-a-unified-communication-platform">Zoom’s push to build a unified communication platform</h2>
+
+<p>No longer just a video conferencing company, Zoom’s next play is in the unified communication as a service (<a href="https://www.gartner.com/en/information-technology/glossary/unified-communications-service-ucaas">UCaaS</a>) space, where it’ll try to <strong>own the entire virtual collaboration life cycle, from pre- to in- to post-collaboration workflows, by offering an integrated and seamless communication experience, from telephony, messaging, conferencing, collaboration, to reporting and analytics.</strong> This move is evident in the recent Zoomtopia 2022 product releases and platform enhancements. <!--end-->You can read about Zoomtopia’s recap <a href="https://blog.zoom.us/zoomtopia-2022-recap/">here</a>.</p>
+
+<p>The main pain point Zoom aims to solve is seldomly talked about, but is actually quite ubiquitous and experienced by all modern knowledge workers – the problem of <a href="https://reclaim.ai/blog/context-switching">context switching fatigue</a>. A recent study suggests that a single employee toggles between apps and windows more than <em>3,600 times</em> on an average day (See “<a href="https://hbr.org/2022/08/how-much-time-and-energy-do-we-waste-toggling-between-applications">How Much Time and Energy Do We Waste Toggling Between Applications?</a>”). This repeated payment of “toggle tax” throughout the day builds up fatigue, wastes time, and reduces productivity. Modern knowledge work is sprinkled with these imperceptible frictions, and Zoom is trying to alleviate those frictions by building an integrated work and collaboration platform that’ll reduce the amount of application switching one has to do in their daily work.</p>
+
+<h2 id="new-product-releases-and-enhancements">New product releases and enhancements</h2>
+
+<p>These are the new products and feature enhancements that were announced at Zoomtopia 2022. I grouped them into pre-, in-, and post-collaboration products/features, and also included other enterprise level products and platform ecosystem buildup (for more detail, see Zoom’s <a href="https://blog.zoom.us/platform-enhancements-zoomtopia-2022/">platform enhancements blog post</a>).</p>
+
+<p><strong>Pre-collaboration</strong> products and enhancements:</p>
+<ul>
+  <li>Zoom’s native and integrated <strong>email and calendar</strong> services to seamlessly transition from email or calendar to a video meeting without leaving the Zoom app.</li>
+  <li>Zoom <strong>Workspace Reservation</strong> with <strong>Smart Suggestions</strong> to help you decide where to sit and what days to come into the office based on whom you have been working with, where you normally sit, and where your team sits.</li>
+  <li><strong>Team Chat</strong> and <strong>In-Meeting Chat</strong> connectivity for all Zoom chats to come together in one place so that conversations during and after meetings have a nice continuity.</li>
+  <li><strong>Video clips/messages</strong> to share with teammates and communicate asynchronously  on projects, and have them stored centrally for future reference.</li>
+  <li><strong>Meeting templates</strong> to configure the right settings for your meetings.</li>
+</ul>
+
+<p><strong>In-collaboration</strong> products and enhancements:</p>
+<ul>
+  <li><strong>Zoom Phone</strong> integration with Zoom Team Chat to enable continuous collaborations throughout the day, e.g. users can also use one-click chat messages when they’re unable to answer calls.</li>
+  <li><strong>Zoom Rooms</strong> with <strong>Intelligent Director</strong> that uses multiple in-room cameras to select the best video stream of participants to share in the meeting.</li>
+  <li><strong>Zoom Companion Whiteboard</strong> integration into Zoom Rooms for in-meeting brainstorming.</li>
+  <li><strong>Zoom Meetings avatars</strong> with animal, human, and even meta avatars to spice up the virtual you in meetings.</li>
+</ul>
+
+<p><strong>Post-collaboration</strong> products and enhancements:</p>
+<ul>
+  <li><strong>Zoom Whiteboard</strong> for post-meeting references and asynchronous collaboration.</li>
+  <li><strong>Smart Recordings</strong> makes meeting recordings more consumable with summaries, next steps, and smart chapters, so you can quickly jump to the moments that matter and take action.</li>
+  <li><strong>Zoom email and calendar</strong> services for post-meeting followup.</li>
+  <li><strong>Team Chat</strong> with updates to enhance post-meeting followup discussions.</li>
+  <li><strong>Zoom Spots</strong> as a virtual coworking space, designed to foster inclusive discussions, bringing the fluid interactions of in-person work to distributed, hybrid teams throughout their work day.</li>
+</ul>
+
+<p><strong>Enterprise</strong> offerings:</p>
+<ul>
+  <li><strong>Zoom IQ for Sales</strong> with sales coaching capabilities that condense sales calls into the most salient talking points and analyze speech behaviors to hone sales pitches and offer feedback.</li>
+  <li><strong>Zoom Contact Center</strong> with <strong>Virtual Agent</strong> that interprets customer questions using NLU and provides instant responses to guide customers to the right resolution.</li>
+  <li><strong>Zoom Events</strong> and <strong>Webinars</strong> to produce branded and professional hybrid events.</li>
+</ul>
+
+<p>Behind the scenes, Zoom’s building up its <strong>developer ecosystem</strong> with:</p>
+<ul>
+  <li><strong>Zoom Apps SDK</strong> encourages development of collaborative softwares that integrates directly into the meeting experience.</li>
+  <li><strong>Zoom Meeting SDK</strong> pushes for developers to build 3rd party services on top of Zoom’s video technologies via the video SDK.</li>
+  <li><strong>Zoom App Marketplace</strong> to promote <a href="https://online.hbs.edu/blog/post/what-are-network-effects">network effect</a> (think Apple App Store or Google Play Store).</li>
+</ul>
+
+<h2 id="what-does-the-future-hold-for-zoom">What does the future hold for Zoom?</h2>
+
+<p>All those new product releases and enhancements are great and all, but what’s Zoom’s end game here? What is Zoom’s wildly important goal? How will this affect the way you or I work in the future? Well, imagine if the Zoom app replaces the web browser and other softwares you use when you work (think “one app to rule them all”), so that all the tools you need to do your work–knowledge search, documentation, brainstorming, asynchronous messaging, real time communication / collaborate–live in one integrated client, all with a consistent user experience, so you can easily switch from one tool to the next without having to remember different workflows, hot keys, <a href="https://xd.adobe.com/ideas/principles/web-design/what-is-affordance-design/">affordances</a>, file location, etc. With that mental overhead out of the way, you can get into the <a href="https://en.wikipedia.org/wiki/Flow_(psychology)">flow</a> and get your work done. Now who wouldn’t want that, eh?</p>
+
+<p>Also, note that the UCaaS market landscape is rapidly evolving, and is very diverse and global, with organizations ranging from large enterprises to small and midsize businesses (SMB), and encompassing verticals in banking, financial services, IT and telecommunications, education, government, healthcare, and media, entertainment, etc. So Zoom’s UCaaS product line can be further verticalized with more industry-specific features down the road. In other words, there are a lot of new and exciting opportunities to explore based on market demand and the evolution of modern work.</p>
+
+<h2 id="what-am-i-excited-about">What am I excited about?</h2>
+<p>As someone working in the machine learning space, I’m mostly excited for the new AI-enabled capabilities that will streamline collaboration and increase productivity. On the productivity front, one area that holds a lot of potential is <strong>Smart Recordings</strong>. Folks like to record meetings, but most actually don’t go back and view them, simply because people–myself included–don’t want to manually go through hours of content just to find a few nuggets of valuable information and ideas. Recordings that are neatly transcribed and intelligently summarized into the most salient points will be immensely useful. I also think Smart Recordings is a nice convergence of various NLP technologies that encompasses machine transcription/translation, text summarization, and natural language understanding. As this feature continues to grow, it can really elevate productivity and provide great value to the end users.</p>
+
+<p>Another interesting area I’ll be watching is <strong>Zoom IQ for Sales</strong> and <strong>Zoom Contact Center</strong>. I like the interactive and supportive role that AI is playing here in helping workers solve real business problems. It really echoes the notion that <a href="https://hbr.org/2021/03/ai-should-augment-human-intelligence-not-replace-it">AI should augment human intelligence, not replace it</a>, and it exemplifies the way AI should be used in the business setting to help humans do their best work. While those two products mostly cater to sales teams and customer service representatives, respectively, the underpinning technologies, design, and learnings can be applied to develop other similar products that aim to support and enhance human collaborations. The conversational AI space is crowded and evolving quickly, and I’m excited to follow how Zoom’s product lines evolve in the sector.</p>
+
+<p>On a less serious note, I’ve also had a lot of fun using <strong>Zoom Meetings animal avatars</strong>. Sometimes at the end of the day you just want to show up to a meeting as a panda in a sweater, you know what I mean? While these avatars/filters aren’t as wild as the ones offered by <a href="https://snapcamera.snapchat.com/">Snap Camera</a>, I do think Zoom avatars have the potential to provide user delight in various use cases. For instance, in the future users may be able to use <a href="https://www.sequoiacap.com/article/generative-ai-a-creative-new-world/">generative AI</a> to create their own unique avatars and use them to attend virtual Zoom Events as an alter ego. Furthermore, artists could even create and mint those avatars as NFTs and sell them on Zoom App Marketplace. Avatars can be especially useful in situations where users want to maintain anonymity in the virtual world but still want to enjoy an immersive user experience. Maybe I’m getting ahead of myself, and the value created by those features may not justify the development costs, but as the Zoom platform continues to evolve, I can definitely see plenty of opportunities in this area.</p>
+
+<p>But despite all the interesting new communication products and AI-driven features released by Zoom in its foray into UCaaS, I would be remiss to overlook the fact that, in the grand scheme of things, UCaaS solutions are merely tools to aid collaboration. From the end user’s perspective, Zoom is a means to an end, and without good habits and organizational processes, even the best collaboration tool will frustrate its end users. From the COVID pandemic till now, the term “<a href="https://en.wikipedia.org/wiki/Zoom_fatigue">Zoom fatigue</a>” has been floating around a lot; it describes the burnout associated with the overuse of virtual platforms of communication. I’ve always felt the term is unfairly attributed to Zoom, because it isn’t really a Zoom problem, but rather a work process and project management problem. Just like how a reckless driver shouldn’t blame their car for causing accidents, one shouldn’t blame Zoom for causing Zoom fatigue. After all, Zoom is only a set of tools and should be used as such, rather than treating it as the centerpiece of any collaborative endeavor.</p>
+
+<p>…or should it?</p>
+
+<p>What if Zoom evolves into a tool that can <em>solve</em> Zoom fatigue? What if the Zoom platform becomes intelligent enough that it not only provides virtual communication capabilities, but can also understand the nuances associated with cognitively demanding work and help the end users focus outside of virtual communication? The modern knowledge economy requires workers to have periods of full concentration to produce at an elite level, or what Cal Newport calls “<a href="https://www.calnewport.com/books/deep-work/">deep work</a>.” This kind of deep work actually suffers from the hyperactive communication Zoom provides due to the technology’s ease of use. But while deep work with Zoom may seem like an oxymoron at first glance, they actually don’t have to be mutually exclusive.</p>
+
+<p>In fact, when designed with care and implemented with artificial intelligence, I believe Zoom can actually empower deep work by safeguarding precious time blocks needed for cognitively demanding work and reducing the friction faced in reaching full concentration. Such a goal is feasible through a combination of good <a href="https://www.optimizely.com/optimization-glossary/user-flow/">user flow</a> design, <a href="https://blog.hubspot.com/website/event-driven-architecture">event-driven backend architecture</a>, and <a href="https://www.databricks.com/blog/2021/09/01/infrastructure-design-for-real-time-machine-learning-inference.html">real-time machine learning</a>. Together, they can produce a personalized experience tailored to individual user’s working habits. Such a system can understand what work you want to do, and when and how you want to focus on it. Instead of writing human-defined rules that determine how you should interact with the application, ML models will analyze your usage patterns from the past and come up with rules on its own. It can then use those rules to dynamically respond to your latest interactions with the application and nudge you toward the most productive use of your time, whether it’s setting boundaries for focused work, or enforcing a structured process for collaboration to ensure fruitful collaborations. If properly designed and implemented, this Zoom assistant can be a significant product differentiator that provides endless user delight!</p>
+
+<h1 id="takeaways">Takeaways</h1>
+
+<p>In conclusion, Zoom just announced loud and clear that it’s entering the UCaaS platform space, and with it came a slew of new products and features that aims to help enterprises and knowledge workers up their collaboration game. Those new products and feature enhancements span the pre-, in-, and post-collaboration stages of work. In addition, new enterprise AI offerings (Zoom IQ for Sales and Zoom Contact Center), as well as Meeting and Apps SDKs, were introduced to strengthen Zoom’s UCaaS platform position.</p>
+
+<p>Going forward, I think AI will play important roles at both the product level (e.g. deep learning applications like chatbot, machine translation, avatars, etc) and at the workflow level (e.g. responsive and personalized user flow design); both have the potential to greatly enhance productivity and transform the way modern knowledge workers get things done. Looking forward to seeing how this all plays out!</p>
+:ET
