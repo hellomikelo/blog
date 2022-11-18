@@ -3,7 +3,7 @@ layout: post
 title: Can Zoom be the one app to rule them all?
 description: Thoughts on Zoom's push to build a unified communication platform
 published: true
-categories: [Design, Data Science] # choose from [Career, Data-Science, Design, Diagrams, Guides, Research, Web3]
+categories: [Product] # choose from [Career, Data-Science, Design, Diagrams, Guides, Product Research, Web3]
 tags: [thoughts, products] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
 excerpt_separator: <!--end-->
 ---
