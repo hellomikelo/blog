@@ -42,7 +42,7 @@ $brand-color:      #2a7ae2;
 
 // Spacing
 $base-spacing:     0.2px;
-$spacing-unit:     30px;
+$spacing-unit:     0px; //30px;
 //$list-line-height: $base-font-size;
 
 // Width of the content area
@@ -83,8 +83,11 @@ $on-laptop:        850px;
         "syntax-highlighting"
 ;
 
+h1, h2, h3, h4, h5, h6,
 p, blockquote, pre {
-  margin: $base-font-size 0; 
+  //margin: $base-font-size 0; 
+  margin: $base-font-size 0;
+  //line-height: $post-line-height;
 }
 
 ul, ol, dl, li, table {
@@ -215,6 +218,7 @@ Search bar
   border-radius: 20px;
   padding: 0 20px;
   position: relative;
+  margin: $base-font-size 0;
 
   & #search {
     width: calc(100% - 30px);

@@ -1,4 +1,4 @@
-I"*<div id="search-bar">
+I"l<div id="search-bar">
     <i class="fa fa-search" aria-hidden="true"></i>
     <input id="search" type="text" autocomplete="off" placeholder="Search me!" />
     <div id="search-result"></div>
@@ -16,11 +16,6 @@
 
   <h3 class="h3-post-title">Data Science</h3>
     
-    <ul class="post-list">
-    	<span class="post-meta">Nov 17, 2022 | </span> 
-    	<a href="/data%20science/design/2022/11/17/zoom-one-app-to-rule-them-all.html">Can Zoom be the one app to rule them all?</a>
-    </ul>
-  
     <ul class="post-list">
     	<span class="post-meta">Aug 8, 2022 | </span> 
     	<a href="/data%20science/design/2022/08/08/apple-core-create-ml.html">When ML engineering meets user-centered design</a>
@@ -69,11 +64,6 @@
 
   <h3 class="h3-post-title">Design</h3>
     
-    <ul class="post-list">
-    	<span class="post-meta">Nov 17, 2022 | </span> 
-    	<a href="/data%20science/design/2022/11/17/zoom-one-app-to-rule-them-all.html">Can Zoom be the one app to rule them all?</a>
-    </ul>
-  
     <ul class="post-list">
     	<span class="post-meta">Aug 8, 2022 | </span> 
     	<a href="/data%20science/design/2022/08/08/apple-core-create-ml.html">When ML engineering meets user-centered design</a>
@@ -128,6 +118,14 @@
     <ul class="post-list">
     	<span class="post-meta">Oct 13, 2017 | </span> 
     	<a href="/guides/2017/10/13/exploding-text-in-lithographic-mask-design-using-autocad-and-inkscape.html">Exploding Text in Lithographic Mask Design Using AutCAD and Inkscape</a>
+    </ul>
+  
+
+  <h3 class="h3-post-title">Product</h3>
+    
+    <ul class="post-list">
+    	<span class="post-meta">Nov 17, 2022 | </span> 
+    	<a href="/product/2022/11/17/zoom-one-app-to-rule-them-all.html">Can Zoom be the one app to rule them all?</a>
     </ul>
   
 

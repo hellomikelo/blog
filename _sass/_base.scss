@@ -40,23 +40,33 @@ h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
 %vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
+    //margin-bottom: $spacing-unit / 2;
 }
 
 .h2-post-title {
-    margin-bottom: $spacing-unit / 3;
+    margin: 0 0;
+    //margin-bottom: $spacing-unit / 3;
 }
 
 .h3-post-title {
-    margin: $spacing-unit/2 0;
+    //margin: $spacing-unit/2 0;
 }
 
 /**
  * Images
  */
 img {
-    max-width: 850px;
     vertical-align: middle;
+    max-width: $content-width - $spacing-unit * 2;
+
+    // not sure if this works
+    @include media-query($on-laptop) {
+        max-width: $content-width - $spacing-unit * 2;
+    }
+
+    @include media-query($on-palm) {
+        max-width: $on-palm - $spacing-unit * 2;
+    }
 }
 
 
@@ -78,8 +88,11 @@ figcaption {
  * Lists
  */
 ul, ol {
-    margin-left: $spacing-unit;
-    padding-left: $spacing-unit + 4;
+    //margin-left: $spacing-unit;
+    //padding-left: $spacing-unit + 4;
+    //margin-left: 30px;
+    padding-left: 40px;
+    //margin: 0 0;
 }
 
 li {
@@ -90,10 +103,6 @@ li {
     //display: block;
 }
 
-ul, ol, li {
-}
-
-
 
 
 /**
@@ -101,7 +110,15 @@ ul, ol, li {
  */
 h1, h2, h3, h4, h5, h6 {
     font-weight: $base-font-weight;
+    //margin-top: $base-font-size * 1.25;
+    //margin-bottom: $spacing-unit;
+    //line-height: 0;
 }
+
+
+/**
+ * Headings
+ */
 
 
 
