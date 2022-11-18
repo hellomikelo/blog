@@ -8,9 +8,6 @@ tags: [thoughts, products] # choose from [web3, ds, problem-solving, ?, career, 
 excerpt_separator: <!--end-->
 ---
 
-Disclaimer: The views and opinions expressed in this post are my own, and do not necessarily reflect the views or positions of Zoom.
-
-
 ## Zoom's push to build a unified communication platform
 
 No longer just a video conferencing company, Zoom's next play is in the unified communication as a service ([UCaaS](https://www.gartner.com/en/information-technology/glossary/unified-communications-service-ucaas)) space, where it'll try to **own the entire virtual collaboration life cycle, from pre- to in- to post-collaboration workflows, by offering an integrated and seamless communication experience, from telephony, messaging, conferencing, collaboration, to reporting and analytics.** This move is evident in the recent Zoomtopia 2022 product releases and platform enhancements. <!--end-->You can read about Zoomtopia's recap [here](https://blog.zoom.us/zoomtopia-2022-recap/).
@@ -77,3 +74,5 @@ In fact, when designed with care and implemented with artificial intelligence, I
 In conclusion, Zoom just announced loud and clear that it's entering the UCaaS platform space, and with it came a slew of new products and features that aims to help enterprises and knowledge workers up their collaboration game. Those new products and feature enhancements span the pre-, in-, and post-collaboration stages of work. In addition, new enterprise AI offerings (Zoom IQ for Sales and Zoom Contact Center), as well as Meeting and Apps SDKs, were introduced to strengthen Zoom's UCaaS platform position. 
 
 Going forward, I think AI will play important roles at both the product level (e.g. deep learning applications like chatbot, machine translation, avatars, etc) and at the workflow level (e.g. responsive and personalized user flow design); both have the potential to greatly enhance productivity and transform the way modern knowledge workers get things done. Looking forward to seeing how this all plays out!
+
+Disclaimer: The views and opinions expressed in this post are my own, and do not necessarily reflect the views or positions of Zoom.
