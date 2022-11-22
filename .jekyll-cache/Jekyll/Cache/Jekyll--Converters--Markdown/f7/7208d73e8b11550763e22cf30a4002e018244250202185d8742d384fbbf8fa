@@ -1,0 +1,35 @@
+I"
+<style>
+img {
+    /*border-radius: 10%;*/
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+<p><img src="/assets/images/mike-avatar.png" alt="notion avatar" width="25%" /></p>
+
+<p>Hello, I’m Mike. Here’s a summary of what I’m about.</p>
+
+<p>I am passionate about digital innovation, and I participate by strategizing, building, and scaling great digital products.</p>
+
+<p>I can set executive-level visions and strategies, map out problem solving action plans, and dive in with hands-on execution.</p>
+
+<p>I strive for organizational excellence by practicing <strong>agility</strong>, encouraging <strong>experimentation</strong>, and embracing a <strong>user-centered</strong> mindset. I believe in starting with the desired customer experience and working backwards to develop and iterate on new ideas or products.</p>
+
+<p>My leadership styles are <strong>strategic</strong>, <strong>democratic</strong>, and <strong>situational</strong>. My core values are <strong>empathy</strong>, <strong>growth</strong>, <strong>collaboration</strong>, <strong>ownership</strong>, <strong>pragmatism</strong>, <strong>resolve</strong>, and <strong>openness</strong>.</p>
+
+<p>I’m a technologist at heart, and I have a deep understanding of <strong>Cloud Native</strong>, <strong>Big Data</strong>, and <strong>Machine Learning</strong> technologies. I am excellent with <strong>Agile</strong> and <strong>Scrum</strong> methodologies, and well-versed in <strong>Lean Product</strong> and <strong>Design Thinking</strong>.</p>
+
+<!-- Hello hello! Welcome to my personal blog, where I write about **problem solving**, **machine learning**, **artificial intelligence**, **design** and **product management**. I'm interested in employing structured thinking to systematically tackle problems I encounter in life, work, and everything in between. This generally means 
+
+1. Diving deep to define the root problem statement,
+2. Dissecting the problem into more tractable sub-problems,
+3. Prioritizing sub-problems based on impact,
+4. Applying the appropriate techniques to solve the important sub-problems,
+5. Establishing a suitable cadence to follow up on the solutions.
+
+In my previous life as an academic, I contributed to research in **synchrotron-based X-ray nanoscopy techniques** and **3D object reconstruction algorithms**. If you are interested, then check out my <a href="https://scholar.google.com/citations?user=L_oHzBUAAAAJ&hl=en" target="_blank">Google Scholar page</a>.  -->
+
+<p>If you want to learn more, <a href="mailto:hellomikelo@gmail.com">let’s chat</a>!</p>
+:ET
