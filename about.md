@@ -16,9 +16,9 @@ img {
 
 Hello, I'm Mike. Here's a summary of what I'm about.
 
-I am passionate about digital innovation, and I participate by strategizing, building, and scaling great digital products.
+I am passionate about digital innovation, and I participate by strategizing, building, and scaling great **AI-driven digital products and services**.
 
-I can set executive-level visions and strategies, map out problem solving action plans, and dive in with hands-on execution.
+I can set executive-level **visions and strategies**, formulate detailed **roadmaps**, and dive in with **hands-on execution**.
 
 I strive for organizational excellence by practicing **agility**, encouraging **experimentation**, and embracing a **user-centered** mindset. I believe in starting with the desired customer experience and working backwards to develop and iterate on new ideas or products.
 
