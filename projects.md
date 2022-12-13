@@ -5,6 +5,13 @@ permalink: /projects
 published: true
 ---
 
+### AI/ML
+
+**Smarty: A mindful personal assistant**  
+[Github repo](https://github.com/hellomikelo/smarty) \| [Presentation](https://docs.google.com/presentation/d/1AGgXLxIofVwwKWWS9p7DDUqIfxlBbngMrIVmSvR_2Q8/edit?usp=sharing) \| [Streamlit demo](https://hellomikelo-smarty-smarty-app-2flo6l.streamlit.app/)
+
+*Smarty quiets the noise so you can work peacefully to get things done. It is a personalized task planner that uses generative AI to understand natural language semantics and evaluate the importance and urgency of your tasks, then prioritizes and batches them rigorously so you can focus on accomplishing what matters the most.*
+
 ### PhD Research
 
 What I did during my PhD:
@@ -34,11 +41,4 @@ A. Rana, J. Zhang, M. Pham, A. Yuan, __Y. H. Lo__, H. Jiang, S. Osher, J. Miao. 
 
 TBA
 
-### Machine Learning
-
-TBA
-
-### Deep Learning
-
-TBA
 
