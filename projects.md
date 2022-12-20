@@ -8,9 +8,16 @@ published: true
 ### AI/ML
 
 **Smarty: A mindful personal assistant**  
-[Github repo](https://github.com/hellomikelo/smarty) \| [Presentation](https://docs.google.com/presentation/d/1AGgXLxIofVwwKWWS9p7DDUqIfxlBbngMrIVmSvR_2Q8/edit?usp=sharing) \| [Streamlit demo](https://hellomikelo-smarty-smarty-app-2flo6l.streamlit.app/)
+[Project repo](https://github.com/hellomikelo/smarty) \| [Project presentation](https://docs.google.com/presentation/d/1AGgXLxIofVwwKWWS9p7DDUqIfxlBbngMrIVmSvR_2Q8/edit?usp=sharing) \| [Streamlit demo](https://hellomikelo-smarty-smarty-app-2flo6l.streamlit.app/) \| [Hackathon page](https://lablab.ai/event/generative-ai-hackathon/smarty/smarty-personal-assistant)
 
-*Smarty quiets the noise so you can work peacefully to get things done. It is a personalized task planner that uses generative AI to understand natural language semantics and evaluate the importance and urgency of your tasks, then prioritizes and batches them rigorously so you can focus on accomplishing what matters the most.*
+*Smarty uses generative AI to "quiet the noise" so you can work peacefully to get things done. It is a personalized task planner that uses generative AI to understand natural language semantics and evaluate the importance and urgency of your tasks, then prioritizes and batches them rigorously so you can focus on accomplishing what matters the most.*
+
+**Distill.ai: A smart-er AI meeting assistant**
+
+[Project repo](https://github.com/hellomikelo/openai-hackathon) \| [Project presentation](https://docs.google.com/presentation/d/1mOyOCs1HkmTxbvoHCTenvBFmGnSRM8ZiZsg6ddcr38w/edit?usp=sharing) \| [Streamlit demo](https://hellomikelo-openai-hackathon-app-wip-initial-r4od4p.streamlit.app/) \| [Hackathon page](https://lablab.ai/event/openai-whisper-gpt3-codex-dalle2-hackathon/headjackers/distill-ai-meeting-assistant)
+
+*Distiller uses generative AI to condense information shared during meetings into bit-sized summaries and provide inspirations and actionable plans to drive projects forward productively.*
+
 
 ### PhD Research
 
