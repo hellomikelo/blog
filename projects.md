@@ -18,6 +18,19 @@ published: true
 
 *Distiller uses generative AI to condense information shared during meetings into bit-sized summaries and provide inspirations and actionable plans to drive projects forward productively.*
 
+**PodSearch: Easily find and explore interesting podcast ideas**
+
+[Project repo](https://github.com/hellomikelo/semantic-search-hackathon) \| [Project presentation](https://docs.google.com/presentation/d/16xZuIotA-xYZVeVV7foN4lzPn7rrYBYy_MzMpoWiszs/edit?pli=1#slide=id.g1c57b49e1f0_0_196) \| [Streamlit demo](https://hellomikelo-semantic-search-hackathon-streamlit-app-p4qpo5.streamlit.app/) \| [Hackathon page](https://lablab.ai/event/semantic-search-hackathon/info-insighters/podsearh)
+
+*Have an interesting idea you want to learn more about but can't find the most relevant podcast to listen to? Look no further! Our app uses semantic search to quickly and accurately find the most relevant podcasts you're interested in. Try it out today and see for yourself how our app can make your search a breeze!*
+
+---
+
+### Design
+
+TBA
+
+--- 
 
 ### PhD Research
 
@@ -43,9 +56,5 @@ __Y. H. Lo__, J. Zhou, A. Rana, D. Morrill, C. Gentry, B. Enders, Y.-S. Yu, C.-Y
 A. Rana, J. Zhang, M. Pham, A. Yuan, __Y. H. Lo__, H. Jiang, S. Osher, J. Miao. Ptychographic coherent diffractive imaging for attosecond pulses. _Submitted_ (2019).
 
 \* _denotes equal contribution_. See my [Google Scholar page](https://scholar.google.com/citations?user=L_oHzBUAAAAJ&hl=en) for more detail.
-
-### Design
-
-TBA
 
 
