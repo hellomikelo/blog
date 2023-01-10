@@ -4,7 +4,7 @@ layout: post
 title: Deep Neural Network Denoising of Electron Microscopy Images 
 description: A deep learning approach to image denoising is applied to recover the true images of atomic electron microscopy images of nanoparticles
 published: true
-categories: [Data Science]
+categories: [AIML]
 tags: [ds]
 excerpt_separator: <!--more-->
 

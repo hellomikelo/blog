@@ -1,4 +1,4 @@
-I"�!<h3 id="aiml">AI/ML</h3>
+I"&<h3 id="aiml">AI/ML</h3>
 
 <p><strong>Smarty: A mindful personal assistant</strong><br />
 <a href="https://github.com/hellomikelo/smarty">Project repo</a> | <a href="https://docs.google.com/presentation/d/1AGgXLxIofVwwKWWS9p7DDUqIfxlBbngMrIVmSvR_2Q8/edit?usp=sharing">Project presentation</a> | <a href="https://hellomikelo-smarty-smarty-app-2flo6l.streamlit.app/">Streamlit demo</a> | <a href="https://lablab.ai/event/generative-ai-hackathon/smarty/smarty-personal-assistant">Hackathon page</a></p>
@@ -10,6 +10,18 @@
 <p><a href="https://github.com/hellomikelo/openai-hackathon">Project repo</a> | <a href="https://docs.google.com/presentation/d/1mOyOCs1HkmTxbvoHCTenvBFmGnSRM8ZiZsg6ddcr38w/edit?usp=sharing">Project presentation</a> | <a href="https://hellomikelo-openai-hackathon-app-wip-initial-r4od4p.streamlit.app/">Streamlit demo</a> | <a href="https://lablab.ai/event/openai-whisper-gpt3-codex-dalle2-hackathon/headjackers/distill-ai-meeting-assistant">Hackathon page</a></p>
 
 <p><em>Distiller uses generative AI to condense information shared during meetings into bit-sized summaries and provide inspirations and actionable plans to drive projects forward productively.</em></p>
+
+<p><strong>PodSearch: Easily find and explore interesting podcast ideas</strong></p>
+
+<p><a href="https://github.com/hellomikelo/semantic-search-hackathon">Project repo</a> | <a href="https://docs.google.com/presentation/d/16xZuIotA-xYZVeVV7foN4lzPn7rrYBYy_MzMpoWiszs/edit?pli=1#slide=id.g1c57b49e1f0_0_196">Project presentation</a> | <a href="https://hellomikelo-semantic-search-hackathon-streamlit-app-p4qpo5.streamlit.app/">Streamlit demo</a> | <a href="https://lablab.ai/event/semantic-search-hackathon/info-insighters/podsearh">Hackathon page</a></p>
+
+<p><em>Have an interesting idea you want to learn more about but can’t find the most relevant podcast to listen to? Look no further! Our app uses semantic search to quickly and accurately find the most relevant podcasts you’re interested in. Try it out today and see for yourself how our app can make your search a breeze!</em></p>
+
+<hr />
+
+<h3 id="design">Design</h3>
+
+<p>See <a href="https://docs.google.com/presentation/d/1oROXsQLQm8ELK0dEzsdcx973iEn-pGWoZoxFrCmI3QI/edit?usp=sharing">Mike’s Big Book of Designs</a> (Google Slides).</p>
 
 <hr />
 
@@ -123,9 +135,5 @@
 <p>A. Rana, J. Zhang, M. Pham, A. Yuan, <strong>Y. H. Lo</strong>, H. Jiang, S. Osher, J. Miao. Ptychographic coherent diffractive imaging for attosecond pulses. <em>Submitted</em> (2019).</p>
 
 <p>* <em>denotes equal contribution</em>. See my <a href="https://scholar.google.com/citations?user=L_oHzBUAAAAJ&amp;hl=en">Google Scholar page</a> for more detail.</p>
-
-<h3 id="design">Design</h3>
-
-<p>TBA</p>
 
 :ET

@@ -1,4 +1,4 @@
-I"l<div id="search-bar">
+I"B<div id="search-bar">
     <i class="fa fa-search" aria-hidden="true"></i>
     <input id="search" type="text" autocomplete="off" placeholder="Search me!" />
     <div id="search-result"></div>
@@ -6,8 +6,31 @@
 
 <ul class="post-list">
 
+  <h3 class="h3-post-title">AIML</h3>
+    
+    <ul class="post-list">
+    	<span class="post-meta">Dec 29, 2022 | </span> 
+    	<a href="/aiml/2022/12/29/building-and-using-generative-ai.html">Generative AI is shifting the way we use and build technology</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<span class="post-meta">Jul 2, 2022 | </span> 
+    	<a href="/aiml/2022/07/02/dais-2022.html">Thoughts from 2022 Databricks Data+AI Summit</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<span class="post-meta">Aug 29, 2019 | </span> 
+    	<a href="/aiml/2019/08/29/dncnn-em-images-denoising.html">Deep Neural Network Denoising of Electron Microscopy Images</a>
+    </ul>
+  
+
   <h3 class="h3-post-title">Career</h3>
     
+    <ul class="post-list">
+    	<span class="post-meta">Jan 8, 2023 | </span> 
+    	<a href="/career/2023/01/08/hackathon-mindset-p1.html">Learn anything by embracing the hackathon mindset (part 1/2)</a>
+    </ul>
+  
     <ul class="post-list">
     	<span class="post-meta">Jun 5, 2022 | </span> 
     	<a href="/diagrams/career/2022/06/05/general-problem-solving.html">A general problem solving mental model for tackling any problem</a>
@@ -19,11 +42,6 @@
     <ul class="post-list">
     	<span class="post-meta">Aug 8, 2022 | </span> 
     	<a href="/data%20science/design/2022/08/08/apple-core-create-ml.html">When ML engineering meets user-centered design</a>
-    </ul>
-  
-    <ul class="post-list">
-    	<span class="post-meta">Jul 2, 2022 | </span> 
-    	<a href="/data%20science/2022/07/02/dais-2022.html">Thoughts from 2022 Databricks Data+AI Summit</a>
     </ul>
   
     <ul class="post-list">
@@ -44,11 +62,6 @@
     <ul class="post-list">
     	<span class="post-meta">Apr 4, 2020 | </span> 
     	<a href="/data%20science/2020/04/04/new-medium-blog-post.html">New Medium Blog Post on My Recent ML Project</a>
-    </ul>
-  
-    <ul class="post-list">
-    	<span class="post-meta">Aug 29, 2019 | </span> 
-    	<a href="/data%20science/2019/08/29/dncnn-em-images-denoising.html">Deep Neural Network Denoising of Electron Microscopy Images</a>
     </ul>
   
     <ul class="post-list">

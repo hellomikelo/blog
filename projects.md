@@ -28,7 +28,7 @@ published: true
 
 ### Design
 
-TBA
+See [Mike's Big Book of Designs](https://docs.google.com/presentation/d/1oROXsQLQm8ELK0dEzsdcx973iEn-pGWoZoxFrCmI3QI/edit?usp=sharing) (Google Slides).
 
 --- 
 
