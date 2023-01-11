@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Learn anything by embracing the hackathon mindset (part 1/2)
+title: Learn anything using the hackathon mindset (part 1/2)
 description: Discuss how to learn better by adopting the mental framework for doing hackathon 
 published: true
 categories: [Career] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
@@ -50,10 +50,9 @@ When I reflected on my learnings from partaking in the hackathons, I noticed the
 
 These observations actually echoed many popular concepts covered in books about entrepreneurship, software development, and design thinking. For instance, the Lean Startup methodology aims to help companies quickly and efficiently develop and bring new products or services to market. The approach is based on the idea that it is better to learn as much as possible as quickly as possible, rather than trying to plan out every detail in advance (e.g. Build-Measure-Learn, MVP, Validated Learning, and Continuous Innovation). 
 
-Similarly, agile software development manifesto emphasizes flexibility, speed, and collaboration. It aims to deliver working (software) products in a fast-paced, constantly changing environment, through close partnership with internal teams and external customers. Lastly, design thinking advocates for creative confidence, embracing ambiguity, and making physical products as a way to learn. I feel the hackathon mindset is a blend of the valuable wisdoms distilled from these different subjects and studies, but with the added benefit of grounding the practice in more realistic settings by focusing on specific projects. 
+Similarly, agile software development manifesto emphasizes flexibility, speed, and collaboration. It aims to deliver working (software) products in a fast-paced, constantly changing environment, through close partnership with internal teams and external customers. Lastly, design thinking advocates for creative confidence, embracing ambiguity, and bias towards action as a way to learn. I feel the hackathon mindset is a blend of the valuable wisdoms distilled from these different subjects and studies, but with the added benefit of grounding the practice in more realistic settings by focusing on specific projects. 
 
-I'd also like to emphasize that the hackathon mindset can apply to more than just career upskilling; it can also apply to your professional work, your side projects, or even your day-to-day chores and hobbies. So think of it more as a general attitude towards life.
-
+I'd also like to emphasize that the hackathon mindset can apply to more than just career upskilling; it can also extend to your professional work, your side projects, or even your day-to-day chores and hobbies. I think of it as a constant reminder to reframe my goals and responsibilities – no matter large or small – as mini projects with tiny milestones that I have to complete to succeed. 
 
 ## The ultimate purpose for embracing this mindset
 
