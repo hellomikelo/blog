@@ -1,12 +1,14 @@
 ---
 layout: post
-title: Learn anything using the hackathon mindset (part 1/2)
+title: Learn anything using the hackathon mindset
 description: Discuss how to learn better by adopting the mental framework for doing hackathon 
 published: true
 categories: [Career] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
 tags: [career] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
 excerpt_separator: <!--end-->
 ---
+
+![](/static/imgs/pexels-yan-krukau-8612990.jpeg "image")
 
 ## The need to learn better and faster
 
