@@ -1,0 +1,61 @@
+I"�<p>In the classic 1999 open world arcade racing game <a href="https://en.wikipedia.org/wiki/Crazy_Taxi">Crazy Taxis</a> (see sample <a href="https://youtu.be/qjIGkv0_dEM?t=164">gameplay</a> here), the player assumes the role of a taxi driver who must accumulate money by delivering passengers to their destinations in the fastest time possible, earning tips by performing “crazy stunts” such as drifts, jumps, and near-misses before the passenger countdown and the main clock time run out. Ah… the nostalgia. It was a fun and engaging game. What if we can take Crazy Taxi’s core concepts and apply them in real life to achieve our problem-solving goals with the same enthusiasm? <!--end--></p>
+
+<p>Let’s start by breaking down the game’s basic components, which are:</p>
+
+<ul>
+  <li>**Starting line: **the place in the city where you enter the game.</li>
+  <li><strong>Finish line:</strong> the final destination that you drop off the last available passengers.</li>
+  <li>**Deadlines: **each passenger’s countdown clock.</li>
+  <li><strong>Limits:</strong> the game’s main countdown clock and the city’s physical boundaries.</li>
+</ul>
+
+<p>When superimposing those game components on a real life project, the starting line can represent a time when an interesting idea enters your mind. The finish line can be when you complete that product you envisioned, and the deadlines are the milestones along the way you need to hit to make the product a reality. Finally, the limits are the constraints inherent in your project (costs, size, scope, etc). With the rules set, is there a guide for playing the Crazy Taxis of our everyday life? To answer this question, let’s turn to the <strong>think-make-learn (TML) model</strong>.</p>
+
+<p>The TML model consists of 3 overarching steps with 2 elements each:</p>
+
+<ol>
+  <li>Think: define and distill</li>
+  <li>Make: distill and do</li>
+  <li>Learn: deploy and ditto</li>
+</ol>
+
+<p><img src="/static/imgs/tml-framework.png" alt="tml-framework" width="100%" /></p>
+
+<h2 id="think">Think</h2>
+
+<p><img src="/static/imgs/tml-think.png" alt="tml-think" width="70%" /></p>
+
+<p>This is where you embrace a divergent, heads-up mindset to really think through the big pictures of your goals and understand what you want to make.</p>
+
+<p><strong>Define</strong>: Reflect on the grand vision you have, the reason for putting in the effort into doing what you do. Feel free to get philosophical, think strategically, big picture, and dig into the literature to find inspirations. You may have to talk to experts and customers. Come up with a goal that you want to achieve with your product.</p>
+
+<p><strong>Distill</strong>: Embrace <a href="https://modelthinkers.com/mental-model/first-principle-thinking">First Principle Thinking</a> to break your grand vision into crucial components and think through the critical assumptions that need to be validated in order to make the vision a reality. Slicing the problem into different ways and dimensions, thinking about the constraints you have and which components – if solved – can benefit you the most. Having leverage means having a way to get what you want without applying large amounts of force.</p>
+
+<h2 id="make">Make</h2>
+
+<p><img src="/static/imgs/tml-make.png" alt="tml-make" width="70%" /></p>
+
+<p>This is where you draw out the storyboard for turning your project and turn it into reality by embracing a convergent, heads-down mindset.</p>
+
+<p><strong>Design</strong>: Start brainstorming the solution. Be creative and loosen your mind to float different solutions freely. Then clean your solution space by picking solutions that best satisfy the critical assumptions and primary goals laid out during the “distill” phase. Finally, put pen to paper and map out each step of the roadmap/algorithm in a storyboard, shine the light just far enough ahead to visualize the finished product.</p>
+
+<p><strong>Do</strong>: Roll up your sleeves, turn on the maker switch, dive in and turn your design into reality. Tinker with ways to make the product, but always stay focused on the product vision that was originally laid out, and engineer the minimum viable product with just enough detail to do its job in the hands of the end user.</p>
+
+<h2 id="learn">Learn</h2>
+
+<p><img src="/static/imgs/tml-learn.png" alt="tml-learn" height="70%" /></p>
+
+<p>This is where you let your baby walk out the door (figuratively) and into the real world. Raise your head back up again, and listen for feedback, reflect on them, and repeat the process again to improve on your product.</p>
+
+<p><strong>Deploy</strong>: Turn off the maker switch and release your product to the users. Then measure its performance in the wild (qualitatively and quantitatively). Put your assumptions to the test, and get feedback wherever you can, then reflect and learn from them.</p>
+
+<p><strong>Ditto</strong>: Embrace the continuous improvement mindset (think agile and lean) and act upon the feedback you get from others. Take what you learned and go back to square one. Repeat the process, this time a bit wiser and with a clearer direction. Nothing is ever complete, but that shouldn’t discourage you from striving for continuous Improvement.</p>
+
+<h2 id="wrap-up">Wrap-up</h2>
+
+<p>The TML framework isn’t new, but rather a distillation and recombination of various useful concepts I discovered from design thinking, agile methodology, and productivity tips. While there are other similar methods such as the <a href="https://members.optusnet.com.au/~charles57/Creative/Techniques/do_it.htm">DO IT technique</a> and the <a href="https://the6ds.com/what-are-the-6ds/?v=7516fd43adaa">6Ds discipline</a>, I personally find TML to be more general, versatile, and easily digestible. On a more philosophical level, I view TML as a catalyst for lowering the activation energy needed to bring an idea to reality – by directing focus toward the planning and making of the desired product and away from the unwanted byproducts such as frustration and feeling astray.</p>
+
+<p>The main benefit to using the TML model is that the structured process will force you to stop over-thinking (i.e. procrastinating) and push you toward action. Since each step is clearly defined, the end of every step naturally arrives at a decision point that will usher the project to the next stage. Thus, the overall process will help you avoid the infinite project loop with no end in sight.</p>
+
+<p>So next time you’re faced with a tough problem or have an idea you want to make into reality, why not give the TML model a try?</p>
+:ET
