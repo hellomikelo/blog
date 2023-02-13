@@ -8,6 +8,8 @@ tags: [products] # choose from [web3, ds, problem-solving, ?, career, ML, data s
 excerpt_separator: <!--end-->
 ---
 
+![midjourney-man-computer](/static/imgs/midjourney-man-computer.jpeg){: width="100%"}
+
 ## We've reached the AI critical mass
 
 AI is having an "oh shit" moment. It's that moment before a roller coaster before its descent from the top, when you only see the sky and feel that butterfly in the stomach as you brace for the drop. Similarly, Large Language Models (LLMs) that have endured years of research and development have reached a turning point: The technology is finally about to spill over from academic research labs and tech companies out to the rest of the society.<!--end-->
