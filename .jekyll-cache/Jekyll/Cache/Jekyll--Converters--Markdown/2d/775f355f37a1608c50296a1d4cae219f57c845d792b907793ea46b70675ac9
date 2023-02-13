@@ -1,0 +1,101 @@
+I"�7<p><img src="/static/imgs/midjourney-man-computer.jpeg" alt="midjourney-man-computer" width="100%" /></p>
+
+<h2 id="weve-reached-the-ai-critical-mass">We’ve reached the AI critical mass</h2>
+
+<p>AI is having an “oh shit” moment. It’s that moment before a roller coaster before its descent from the top, when you only see the sky and feel that butterfly in the stomach as you brace for the drop. Similarly, Large Language Models (LLMs) that have endured years of research and development have reached a turning point: The technology is finally about to spill over from academic research labs and tech companies out to the rest of the society.<!--end--></p>
+
+<p>In this current AI landscape, I see two major cohorts of players:</p>
+
+<ol>
+  <li><strong>Model producers:</strong> Large research institutions and tech companies with access to advanced compute resources and ML expertise that will explore the frontiers of LLMs and train more advanced large models that exhibit increasingly sophisticated <a href="https://www.pbs.org/wgbh/nova/sciencenow/3410/03-ever-nf.html">emergent behaviors</a>. These players include OpenAI’s <a href="https://openai.com/blog/chatgpt/">ChatGPT</a>, <a href="https://openai.com/dall-e-2/">DALL-E</a>, <a href="https://openai.com/blog/openai-codex/">Codex</a>, Stability AI’s <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">Stable Diffusion</a>, Google’s <a href="https://blog.google/technology/ai/bard-google-ai-search-updates/">Bard</a>, Meta’s <a href="https://blenderbot.ai/">BlenderBot</a>, Baidu’s <a href="http://research.baidu.com/Blog/index-view?id=165">ERNIE Titan</a> and startups like <a href="https://cohere.ai/">Cohere</a>, <a href="https://www.ai21.com/">AI21 Labs</a>, <a href="https://midjourney.com/">Midjourney</a>, Anthropic’s <a href="https://scale.com/blog/chatgpt-vs-claude">Claude</a>, <a href="https://jasper.ai/">Jasper.ai</a>, <a href="https://www.notion.ai/">Notion AI</a>, etc.</li>
+  <li><strong>Model consumers:</strong> Individual developers and smaller companies lacking AI expertise that will start to apply LLMs to create intelligent applications and revamp different industries. At most, they may perform <a href="https://en.wikipedia.org/wiki/Transfer_learning">transfer learning</a> on their own proprietary datasets to finetune the large models to their specific use cases, but they will not commit resources to build large models from scratch.</li>
+</ol>
+
+<p>Cohort #1 has been doing their thing for 10+ years, and that rising tide is well-documented in media coverage. What is less visible are the smaller boats in cohort #2 that are lifted as a result of those efforts. It now feels like a Wild Wild West of AI application development, in which companies race to figure out how to generate values using large models. As LLMs continue to be commoditized as API services and open sourced models, I can see attention in the AI landscape begin to shift toward the model consumers.</p>
+
+<p>As AI matures as a technology, time is now ripe to seriously think through ways those large models can weave into our everyday lives. To begin to explore that thought, one starting point is to ask: <em>how can we make AI products desirable?</em> Seeing as how AI will uproot the status quo and fundamentally redefine the way we interact with technology, how should AI products be designed and implemented so that they create more joy than woe? In this post, we’ll dive into this topic of AI product desirability.</p>
+
+<h2 id="can-ai-products-be-desirable">Can AI products be desirable?</h2>
+
+<p>In 1990, General Magic co-founder Marc Porat described the concept of a smartphone that predated the iPhone to then-Apple CEO John Sculley,</p>
+
+<p>“A tiny computer, a phone, a very personal object… It must be beautiful. It must offer the kind of personal satisfaction that a fine piece of jewelry brings. It will have a perceived value even when it’s not being used. It will offer the comfort of a touchstone, the tactile satisfaction of a seashell, the enchantment of a crystal. Once you use it you won’t be able to live without it.”</p>
+
+<p>The notion of a desirable hardware is easy to grasp: you can see it, you can touch it, and you know you feel good when using it. But the same cannot be easily said for software (AI). The field of user experience (UX) research emerged to make software more user-friendly, and yet, even in the best designed software program, we don’t perceive the same kind of strong visceral response that we’d get when using a well-designed physical product.</p>
+
+<p>So does it even make sense to describe AI products as desirable? Maybe a good AI product isn’t meant to be sexy or the centerpiece of an interaction. Maybe AI is meant to disappear into the background and do its job in silence. We talk about turning on lights, not electric lights, because electricity works so well that we take it for granted. If AI is the new electricity, then maybe it should be taken for granted, too. But does this suggest that desirable AI products aren’t possible, or just that it doesn’t exist yet?</p>
+
+<p>While I agree that AI products don’t need to be eye-catching, I also believe that they can be desirable. More specifically, I believe their desirability can manifest in the form of fully immersive experiences, wherein the user can enter a state of flow and become highly involved and focused on what they are doing, like a writer becoming so absorbed in his craft that words flow easily and quickly and time passes without him noticing. By that definition, then yes, AI products can be desirable. In fact, they are close to becoming reality.</p>
+
+<h2 id="imagining-the-desirable-ai-product">Imagining the desirable AI product</h2>
+
+<p>One existing AI product that many people may perceive as desirable is probably ChatGPT: It offers an intuitive user interface, and the workflow is simple enough that people of all ages and technical savviness can use it effortlessly. While ChatGPT in its current form already feels more natural than its peers, OpenAI will no doubt continue to enhance its usability both in model sophistication and user interface.</p>
+
+<p>However, to create a truly desirable AI product that doesn’t yet exist, we must first imagine what it could be like, and think what is plausible based on current technological trajectory. To do this, we can turn to science fiction and pop culture to find inspirations. In the 2013 movie Her, one of the most memorable scenes is when the protagonist Theodore first activates and greets Samantha, the OS1AI system. Here’s the scene,</p>
+
+<!-- <div class="youtube-wrapper">
+  <iframe src="https://www.youtube.com/embed/GV01B5kVsC0" frameborder="0" allowfullscreen>
+  </iframe>
+</div> -->
+
+<div style="width: 100%; margin:0 auto;">
+
+	<div class="youtube-wrapper">
+		<iframe class="yt" allowfullscreen="" src="https://www.youtube.com/embed/GV01B5kVsC0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+	</div>
+</div>
+
+<p>That whole first encounter feels so playful, natural, and wonderful, despite the fact that Samantha is a computer program with no physical embodiment. Nonetheless, Theodore is fully engaged in their conversation, and is actually able to be productive by seamlessly transitioning into grooming email inbox and contact lists. To me, Samantha’s interaction in that short sequence is the epitome of a desirable AI product. If we extrapolate the most salient characteristics from Samantha, we can begin to conceptualize what an ideal desirable AI product can be like:</p>
+
+<ul>
+  <li><strong>It should feel intuitive</strong>
+    <ul>
+      <li><strong>Simple interface.</strong> OS1 offers a minimalistic interface (think Apple’s Spotlight search) with system-wide reach that enables search for contacts, chat history, documents, and general knowledge.</li>
+      <li><strong>Natural language.</strong> Thoughts should be conveyed through basic forms of communication such as text or speech, not multiple choices or a series of button clicks.</li>
+      <li><strong>Multimodal interactions.</strong> Ideas and questions should be expressed in a continuous thread in one or more mediums, such as sketches, images, text, or speech, whichever is most suitable at the moment.</li>
+    </ul>
+  </li>
+  <li><strong>It should be truthful.</strong>
+    <ul>
+      <li><strong>Transparency.</strong> It should be honest when it is uncertain about topics, set the right expectations, and disclose confidence scores when appropriate.</li>
+    </ul>
+  </li>
+  <li><strong>It should solve nuanced problems</strong>
+    <ul>
+      <li><strong>Contextual understanding.</strong> It should comprehend your requests at face value, but also detect their undertone and varying sentiments through the tone of your voice.</li>
+      <li><strong>Steer toward desired outcomes.</strong> It should know when to nudge, not nag, you toward desired choices, but without removing options or changing incentives.</li>
+    </ul>
+  </li>
+  <li><strong>It should be fun</strong>
+    <ul>
+      <li><strong>Unique identity.</strong> It should have its own personality, with distinctive humor and quirks, but with guardrails to prevent inappropriate behaviors. This identity should grow over time through interactions with you, like aged leather that adds to its character without weakening its overall integrity.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="turning-plausible-imaginations-into-reality">Turning plausible imaginations into reality</h2>
+
+<p>Years after the pandemic forced the world to work remotely, companies are facing challenges in adopting hybrid work. One main challenge being that while current enterprise SaaS tools focus on replicating the traditional paradigm of human-human collaboration in the virtual space, they lack the ability to promote a new kind of <em>human-machine collaboration</em> that arises in remote settings and is crucial for <a href="https://asana.com/resources/what-is-deep-work">deep work</a>. Generative AI, with its conversational <a href="https://www.merriam-webster.com/dictionary/affordance">affordances</a> and intuitive workflows, can enhance that human-machine collaboration.</p>
+
+<p>Generative AI offers workers a new way to boost efficiency, creativity, and productivity, even when working alone. It can benefit all business units, and help with tasks such as drafting blog posts, job descriptions, meeting agenda, press releases, sales emails, social media posts, meeting summaries, action items, prioritizations, product strategy, code completion, etc.</p>
+
+<p>When generative AI evolves to a point where it can take on Samantha’s charm and natural problem-solving capabilities, it will bring tremendous value to companies and employees. To create such a desirable AI product, some important milestones need to be reached,</p>
+
+<ul>
+  <li>Redesign the user interface to promote more fluid and immersive interactions.</li>
+  <li>Experiment with custom model architectures to create new <a href="https://en.wikipedia.org/wiki/Emergent_algorithm">emergent behaviors in AI</a>.</li>
+  <li>Transfer learning with proprietary data to perform specialized tasks.</li>
+</ul>
+
+<p>Recently Microsoft took a leap in that direction with a new Bing that’s powered by ChatGPT (see overview <a href="https://www.theverge.com/2023/2/7/23587454/microsoft-bing-edge-chatgpt-ai">article</a> and <a href="https://youtu.be/q03pHll0VW4">video</a>). The new search engine offers Search, Answer, Chat, Create through a redesigned chat interface. At a high level, it works by using ChatGPT to transform user prompts into search queries that can map to a live internet index. Relevant contents are then fetched from the index and fed back into ChatGPT to summarize to the user. Microsoft also plans to incorporate ChatGPT into its <a href="https://www.theverge.com/2023/1/9/23546144/microsoft-openai-word-powerpoint-outlook-gpt-integration-rumor">Office</a> and <a href="https://www.theverge.com/2023/2/2/23582610/microsoft-teams-premium-openai-gpt-features">Teams</a> products.</p>
+
+<p>Other companies are also making similar strides. Zoom recently introduced its <a href="https://explore.zoom.us/en/products/contactcenter/features/virtual-agent/">Virtual Agent</a> product, Notion introduced <a href="https://www.notion.so/product/ai">Notion AI</a> digital writing assistant, and Jasper has the <a href="https://www.jasper.ai/">AI Content Platform</a> to streamline creative workflows. The competition is heating up. All these companies are striving for the same goal, and that is to create the most desirable generative AI product on the market.</p>
+
+<h2 id="buckle-up-for-the-ride">Buckle up for the ride!</h2>
+
+<p>Thirty years after the rise of the internet, we are now at the cusp of another tech revolution that’s driven by AI. Generative AI can be a powerful force for good in many areas of our lives, but if designed and implemented carelessly, the technology can go by the wayside like what happened to <a href="https://en.wikipedia.org/wiki/Tay_(bot)">Microsoft’s Tay</a> back in 2016. And when taken to the extreme, it can lead to unintended harm like the cautionary tale in the movie <a href="https://www.youtube.com/watch?v=BRb4U99OU80">M3GAN</a>.</p>
+
+<p>In order to realize AI’s full potential, designers and developers need to make it desirable for the users to use. On the design front, this means leveraging good design patterns to make the system intuitive, trustworthy, and fun to use. On the engineering front, this means crafting custom model architectures with domain-specific data to create specialized systems that not only solve straightforward problems, but can also enhance human creativity.</p>
+
+<p>Honestly, it can be unnerving to be at the “anticipation moment” of this generative AI roller coaster ride. There’s a mix of excitement, fear, and thrill because we aren’t sure where this technology will take us, or whether it will live up to its promise. The responses stirred up by this technology can be intense, but it’s often moments like this that are remembered long after the ride is over. So let’s buckle up and enjoy the journey!</p>
+:ET

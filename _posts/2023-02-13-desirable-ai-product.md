@@ -8,7 +8,7 @@ tags: [products] # choose from [web3, ds, problem-solving, ?, career, ML, data s
 excerpt_separator: <!--end-->
 ---
 
-![midjourney-man-computer](/static/imgs/midjourney-man-computer.jpeg){: width="100%"}
+![desirable-ai-product](/static/imgs/desirable-ai-product.png){: width="100%"}
 
 ## We've reached the AI critical mass
 
