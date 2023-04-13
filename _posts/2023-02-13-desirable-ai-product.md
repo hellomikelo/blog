@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Designing a desirable AI product
-description: We're in the Wild Wild West of AI application development, in which companies race to figure out how to generate values using large models. How will they create desirable AI products? 
+description: AI-driven technology has reached a new height, and its progress will continue to accelerate. But to avoid becoming just another fad, products should be designed and materialized to achieve maximum desirability so that users will want to incorporate them into their lives. In this post, I discussed what embodies a desirable AI product, and shared how it can be realized. 
 published: true
 categories: [AIML] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
 tags: [products] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]

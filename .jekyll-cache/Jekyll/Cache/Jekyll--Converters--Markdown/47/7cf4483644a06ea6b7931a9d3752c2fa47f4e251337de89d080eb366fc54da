@@ -1,4 +1,16 @@
-I"&<h3 id="aiml">AI/ML</h3>
+I"/<h2 id="aiml">AI/ML</h2>
+
+<p><strong>Fetcher: The work sidekick</strong><br />
+<a href="https://github.com/hellomikelo/hackathon-cohere-qdrant">Project repo</a> | <a href="https://storage.googleapis.com/lablab-static-eu/presentations%2Fsubmissions%2Fclfd4c4zf00903b6x3n6tf719%2Fclfd4c4zf00903b6x3n6tf719-1679093178421.pdf">Project presentation</a> | <a href="https://lablab.ai/event/multilingual-semantic-search-hackathon/fetch/fetcher-the-work-sidekick">Hackathon page</a></p>
+
+<p><em>In today’s increasingly remote working style, organization’s messaging system, whether it’s email or chat, contains lots of invaluable institutional knowledge. However, because these data are often unstructured and scattered, they are usually buried in the organization’s data ecosystem and are hard to search and extract value.</em> 
+<em>Fetcher is a chatbot that integrates into popular chat platforms such as Discord and Slack to seamlessly help users find relevant people and documents to save them from endless frustrating search. It does this by semantically searching chat messages to find the most relevant results and help to deliver actions that leads to a peace of mind.</em></p>
+
+<p><em>Fetcher differs from traditional keyword search engines in that it searches by the meaning of the query, not just by keywords. It also enables multi lingual search, so that global teams can more quickly find important information even when language is a barrier. Since Fetcher searches in the embedding space, this search engine can extend to multi modal modes that includes audio and images.</em></p>
+
+<p><em>Fetcher works by collecting a chat channel’s history and embedding them using Cohere’s Embed API, then saving the embeddings to Qdrant’s vector search engine. When a new query comes in, Fetcher embeds the query and searches against the vector database to find the most relevant results, which can then feed into Cohere’s Generate API to summarize the message thread to kick start new conversations.</em></p>
+
+<p><em>Fetcher offers 3 commands, /fetch, using vector similarities search to find relevant chat messages. /discuss, summarize a message thread, and kick start a conversation with a channel number. /revise, a sentence correction tool similar to Grammarly, allows user to send professional sounding messages.</em></p>
 
 <p><strong>Smarty: A mindful personal assistant</strong><br />
 <a href="https://github.com/hellomikelo/smarty">Project repo</a> | <a href="https://docs.google.com/presentation/d/1AGgXLxIofVwwKWWS9p7DDUqIfxlBbngMrIVmSvR_2Q8/edit?usp=sharing">Project presentation</a> | <a href="https://hellomikelo-smarty-smarty-app-2flo6l.streamlit.app/">Streamlit demo</a> | <a href="https://lablab.ai/event/generative-ai-hackathon/smarty/smarty-personal-assistant">Hackathon page</a></p>
@@ -19,7 +31,7 @@
 
 <hr />
 
-<h3 id="design">Design</h3>
+<h2 id="design">Design</h2>
 
 <p>See <a href="https://docs.google.com/presentation/d/1oROXsQLQm8ELK0dEzsdcx973iEn-pGWoZoxFrCmI3QI/edit?usp=sharing">Mike’s Big Book of Designs</a> (Google Slides).</p>
 
