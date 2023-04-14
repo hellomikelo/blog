@@ -8,6 +8,8 @@ tags: [products] # choose from [web3, ds, problem-solving, ?, career, ML, data s
 excerpt_separator: <!--end-->
 ---
 
+![banner](/static/imgs/banner-chatgpt.png)
+
 Most of the technology inside ChatGPT isn't new or revolutionary. It wasn't anything exciting, at least [according to the team at OpenAI](https://www.technologyreview.com/2023/03/03/1069311/inside-story-oral-history-how-chatgpt-built-openai/). The model is a fine-tuned version of GPT-3.5, a family of large language models that was already used to train another similar model called InstructGPT way back in January 2022. If other models with similar raw technical capabilities already existed prior to ChatGPT's emergence in late 2022, what made ChatGPT so special?<!--end-->
 
 In my opinion, two defining differentiators are __accessibility__ and __alignment__.
