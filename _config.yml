@@ -9,7 +9,7 @@
 title: hellomikelo
 description: "Design of everything AI/ML"
 
-url: "https://www.hellomikelo.com" # the base hostname & protocol for your site
+url: "hellomikelo.com" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog
 # site_url: 
 
