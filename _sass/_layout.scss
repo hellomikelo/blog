@@ -380,3 +380,9 @@
 .plotly {
     max-width: 850px;
 }
+
+// Image
+img {
+    max-inline-size: 100%;
+    block-size: auto;
+  }
