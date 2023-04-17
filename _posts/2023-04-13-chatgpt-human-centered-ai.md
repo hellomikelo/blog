@@ -10,13 +10,19 @@ excerpt_separator: <!--end-->
 
 ![banner](/static/imgs/banner-chatgpt.png)
 
+## ChatGPT isn't groundbreaking
+
 Most of the technology inside ChatGPT isn't new or revolutionary. It wasn't anything exciting, at least [according to the team at OpenAI](https://www.technologyreview.com/2023/03/03/1069311/inside-story-oral-history-how-chatgpt-built-openai/). The model is a fine-tuned version of GPT-3.5, a family of large language models that was already used to train another similar model called InstructGPT way back in January 2022. If other models with similar raw technical capabilities already existed prior to ChatGPT's emergence in late 2022, what made ChatGPT so special?<!--end-->
 
 In my opinion, two defining differentiators are __accessibility__ and __alignment__.
 
+## Old technology can be useful if it is easy to use
+
 Accessibility is obvious. ChatGPT is infinitely easier to use than alternatives due to its minimalist web chat interface with clear affordance. The design is so straightforward that even grandmas who can barely use a smart phone can quickly ease into it.
 
 ![chatgpt](/static/imgs/chatgpt.png)
+
+## Magic happens when AI actually does what we want it to do
 
 Now alignment is more interesting. Both ChatGPT and InstructGPT were trained using a technique called reinforcement learning from human feedback (RLHF). The basic idea is to take a large language model with a tendency to spit out anything it wants and tune it by teaching it what kinds of responses human users actually prefer.
 
