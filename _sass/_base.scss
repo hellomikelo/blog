@@ -193,6 +193,8 @@ pre {
 /**
  * Wrapper
  */
+
+  
 .wrapper {
     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
     max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
@@ -210,6 +212,17 @@ pre {
     }
 }
 
+.table-wrapper {
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+        
+    overflow-x: scroll;
+    // white-space: break-line; 
+  }
+
+// .wrapper table { 
+    // white-space: break-line; 
+// }
 
 
 /**
