@@ -2,7 +2,7 @@
 <html>
 
   {% include head.html %}
-  {% include google_analytics.html %}
+  
   <body>
     <style>
     img{
@@ -18,9 +18,11 @@
       </div>
     </div>
 
-    {% include footer.html %}
-    {% include jekyll-search.html %}    
-
   </body>
+  {% if page.title == "About" %}
+    {% include footer.html %}
+  {% endif %}
+  {% include jekyll-search.html %}    
+  {% include google_analytics.html %}
 
 </html>

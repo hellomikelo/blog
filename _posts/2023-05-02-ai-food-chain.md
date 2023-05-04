@@ -8,7 +8,7 @@ tags: [trends] # choose from [web3, ds, problem-solving, ?, career, ML, data sci
 excerpt_separator: <!--end-->
 ---
 
-![banner](/static/imgs/banner-ai-food-chain.png)
+[![banner](/static/imgs/banner-ai-food-chain.png)](/static/imgs/banner-ai-food-chain.png)
 
 The introduction of generative models with unexpected [emergent behavior](https://www.assemblyai.com/blog/emergent-abilities-of-large-language-models/) has captivated the world's attention, as evident by a [surge in Google search](https://trends.google.com/trends/explore?geo=US&q=generative%20ai&hl=en) and the slew of tech companies pivoting to become "AI first" companies. 
 
@@ -16,7 +16,7 @@ That said, the flood of recent news in generative AI can be overwhelming, even t
 
 It's worth zooming out from all the news and view the forest instead of the trees. Let's break down this emerging "AI food chain" and analyze them conceptually by comparing them to earth's natural ecosystem.<!--end-->
 
-![AI food chain](/static/imgs/ai-food-chain.png)
+[![AI food chain](/static/imgs/ai-food-chain.png)](/static/imgs/ai-food-chain.png)
 
 Digging deeper, lets expand upon that analogy and describe the key players in each group of the food chain. 
 

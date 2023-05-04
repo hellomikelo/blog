@@ -21,11 +21,16 @@ layout: default
   <p>
     <div class="post-content" itemprop="articleBody">
       {{ content }}
+      <hr>
     </div>
   </p>
-{% include share-buttons.html %} 
-<!-- {% include comments.html %} -->
-{% include views-tracker.html %}
+  <p>
+    {% include share-buttons.html %} 
+  </p>
+  
+  <!-- {% include views-tracker.html %} -->
+  <!-- {% include comments.html %} -->
+  
 
 <script type="text/javascript" src="/js/lightbox.js"></script>
 <link rel="stylesheet" href="/css/lightbox.css">

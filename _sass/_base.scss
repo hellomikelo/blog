@@ -213,9 +213,6 @@ pre {
 }
 
 .table-wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-        
     overflow-x: scroll;
     // white-space: break-line; 
   }
