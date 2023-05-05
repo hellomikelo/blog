@@ -28,7 +28,7 @@ As AI matures as a technology, time is now ripe to seriously think through ways 
 
 In 1990, General Magic co-founder Marc Porat described the concept of a smartphone that predated the iPhone to then-Apple CEO John Sculley, 
 
-"A tiny computer, a phone, a very personal object… It must be beautiful. It must offer the kind of personal satisfaction that a fine piece of jewelry brings. It will have a perceived value even when it's not being used. It will offer the comfort of a touchstone, the tactile satisfaction of a seashell, the enchantment of a crystal. Once you use it you won't be able to live without it."
+> A tiny computer, a phone, a very personal object… It must be beautiful. It must offer the kind of personal satisfaction that a fine piece of jewelry brings. It will have a perceived value even when it's not being used. It will offer the comfort of a touchstone, the tactile satisfaction of a seashell, the enchantment of a crystal. Once you use it you won't be able to live without it.
 
 The notion of a desirable hardware is easy to grasp: you can see it, you can touch it, and you know you feel good when using it. But the same cannot be easily said for software (AI). The field of user experience (UX) research emerged to make software more user-friendly, and yet, even in the best designed software program, we don't perceive the same kind of strong visceral response that we'd get when using a well-designed physical product.
 

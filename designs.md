@@ -7,12 +7,12 @@ published: true
 
 ## Plotter art
 
-Art that's been created with the use of an autonomous system.
+Art created using autonomous systems.
 
 {% include image-gallery.html folder="/static/designs" %}
 
 ## Thinker's Toolbox: 
 
-Generative children stories that illustrates useful mental models.
+Generative children stories about mental models.
 
 {% include pdf-gallery.html folder="/static/pdfs" %}
