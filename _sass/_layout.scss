@@ -271,6 +271,35 @@
     border: 0;
 }
 
+// Google Slides
+
+/* Responsive Google Slides, YouTube & Vimeo */
+iframe[src*="docs.google.com"],
+iframe[src*="youtube.com"],
+iframe[src*="player.vimeo.com"] {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;  
+}
+
+// .google-slides-container{
+//     position: relative;
+//     width: 100%;
+//     height: 200%;
+//     // padding-top: 60%;
+//     // overflow: hidden;
+//     border: 0;
+// }
+
+// .google-slides-container iframe{
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     // width: 100%;
+//     height: 100%;
+// }
+
 // Posts
 .post-header {
     //margin-bottom: $spacing-unit;
