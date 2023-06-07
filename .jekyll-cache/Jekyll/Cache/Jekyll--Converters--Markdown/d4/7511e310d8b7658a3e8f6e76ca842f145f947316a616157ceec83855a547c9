@@ -1,0 +1,153 @@
+I"{*<h2 id="aiml">AI/ML</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>March 17, 2023</td>
+      <td><strong>Fetcher: The work sidekick</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="https://github.com/hellomikelo/hackathon-cohere-qdrant">Project repo</a> | <a href="https://storage.googleapis.com/lablab-static-eu/presentations%2Fsubmissions%2Fclfd4c4zf00903b6x3n6tf719%2Fclfd4c4zf00903b6x3n6tf719-1679093178421.pdf">Project presentation</a> | <a href="https://lablab.ai/event/multilingual-semantic-search-hackathon/fetch/fetcher-the-work-sidekick">Hackathon page</a></p>
+
+<p>Fetcher is a chatbot that integrates into popular chat platforms such as Discord and Slack to seamlessly help users find relevant people and documents to save them from endless frustrating search. It does this by semantically searching chat messages to find the most relevant results and help to deliver actions that leads to a peace of mind. Fetcher differs from traditional keyword search engines in that it searches by the meaning of the query, not just by keywords. It also enables multi lingual search, so that global teams can more quickly find important information even when language is a barrier. Since Fetcher searches in the embedding space, this search engine can extend to multi modal modes that includes audio and images.*</p>
+
+<hr />
+
+<p>December 05, 2022 | 
+<strong>Smarty: A mindful personal assistant</strong><br />
+<a href="https://github.com/hellomikelo/smarty">Project repo</a> | <a href="https://docs.google.com/presentation/d/1AGgXLxIofVwwKWWS9p7DDUqIfxlBbngMrIVmSvR_2Q8/edit?usp=sharing">Project presentation</a> | <a href="https://hellomikelo-smarty-smarty-app-2flo6l.streamlit.app/">Streamlit demo</a> | <a href="https://lablab.ai/event/generative-ai-hackathon/smarty/smarty-personal-assistant">Hackathon page</a></p>
+
+<p>Smarty uses generative AI to “quiet the noise” so you can work peacefully to get things done. It is a personalized task planner that uses generative AI to understand natural language semantics and evaluate the importance and urgency of your tasks, then prioritizes and batches them rigorously so you can focus on accomplishing what matters the most.</p>
+
+<hr />
+
+<p>December 16, 2022 | 
+<strong>Distill.ai: A smart-er AI meeting assistant</strong><br />
+<a href="https://github.com/hellomikelo/openai-hackathon">Project repo</a> | <a href="https://docs.google.com/presentation/d/1mOyOCs1HkmTxbvoHCTenvBFmGnSRM8ZiZsg6ddcr38w/edit?usp=sharing">Project presentation</a> | <a href="https://hellomikelo-openai-hackathon-app-wip-initial-r4od4p.streamlit.app/">Streamlit demo</a> | <a href="https://lablab.ai/event/openai-whisper-gpt3-codex-dalle2-hackathon/headjackers/distill-ai-meeting-assistant">Hackathon page</a></p>
+
+<p>Distiller uses generative AI to condense information shared during meetings into bit-sized summaries and provide inspirations and actionable plans to drive projects forward productively.</p>
+
+<hr />
+
+<p>December 24, 2022 | 
+<strong>PodSearch: Find and explore interesting podcast ideas</strong><br />
+<a href="https://github.com/hellomikelo/semantic-search-hackathon">Project repo</a> | <a href="https://docs.google.com/presentation/d/16xZuIotA-xYZVeVV7foN4lzPn7rrYBYy_MzMpoWiszs/edit?pli=1#slide=id.g1c57b49e1f0_0_196">Project presentation</a> | <a href="https://hellomikelo-semantic-search-hackathon-streamlit-app-p4qpo5.streamlit.app/">Streamlit demo</a> | <a href="https://lablab.ai/event/semantic-search-hackathon/info-insighters/podsearh">Hackathon page</a></p>
+
+<p>Have an interesting idea you want to learn more about but can’t find the most relevant podcast to listen to? Look no further! Our app uses semantic search to quickly and accurately find the most relevant podcasts you’re interested in. Try it out today and see for yourself how our app can make your search a breeze!</p>
+
+<hr />
+
+<h2 id="phd-research">PhD Research</h2>
+
+<p>What I did during my PhD:</p>
+
+<!-- ![jpg](/assets/images/phd-history.jpg){:width="100%"} -->
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages:['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'From');
+        data.addColumn('string', 'To');
+        data.addColumn('number', 'Time');
+        data.addColumn({type: 'string', role: 'tooltip'});
+
+        data.addRows([
+          ['My PhD', 'Algorithms', 20, 'Built, test, and improve image reconstruction algorithms'],
+          ['My PhD', 'Data Analysis', 30, 'Cleaned, analyzed, and presented experimental results'],
+          ['My PhD', 'Experiment', 20, 'Planned and executed 6 synchrotron radiation X-ray imaging experiments'],
+          ['My PhD', 'Science communication', 20, 'Wrote journal articles and presented research findings at conferences'],
+          ['My PhD', 'Teaching', 10, 'Taught undergraduate science courses, ranging from physics to biochemistry'],
+          ['My PhD', 'Extracurricular', 10, 'Worked as a tech transfer analyst and also as a visiting scholar'],
+          
+          ['Algorithms', 'CryoEM', 2, 'Tested a new 3D reconstruction method for CryoEM'],
+          ['Algorithms', 'MRI', 2, 'Tested an iterative phase retrieval algorithm for MRI image reconstruction'],
+          ['Algorithms', 'CDI', 16, 'Conceptualized and implemented the in situ CDI technique'],
+
+          ['Data Analysis', 'CDI', 20, 'Processed a lot of coherent diffractive imaging and ptychography data'],
+          ['Data Analysis', 'Tomography', 10, 'Processed a lot of tomography data'],
+
+          ['Experiment', 'NSLS-II', 2, 'The first attempted X-ray in situ CDI experiment at CHX beamline'],
+          ['Experiment', 'APS', 2, 'Cryogenic 3D X-ray bioimaging experiment at the Bionanoprobe'],
+          ['Experiment', 'ALS', 14, 'Multiple X-ray imaging experiments at the 5.3.2.1 and 7.0.1.2 COSMIC beamlines'],
+          ['Experiment', 'UCF', 2, 'First attempt at demonstrating an exciting new ultrafast lensless X-ray imaging technique'],
+
+          ['Science communication', 'CDI', 14, 'Wrote 4 first-author papers on CDI and ptychography'],
+          ['Science communication', 'APS', 3, 'Advanced Light Source 2018 User Meeting'],
+          ['Science communication', 'STROBE', 3, ''],
+
+          ['Teaching', 'CDI', 3, 'Taught undergraduate biophysics laboratory on lensless imaging'],
+          ['Teaching', 'Biochemistry', 4, 'Taught CHEM 153A: Introduction to Structure, Enzymes, and Metabolism'],
+          ['Teaching', 'Physics', 3, 'Tutor for the UCLA Program for the Education and Enrichment of Relational Skills (PEERS)'],
+
+          ['Extracurricular', 'Tech Transfer', 2.5, 'Technology transfer fellow in the office of intellectual property'],
+          ['Extracurricular', 'Summer research', 2.5, 'JUACEP summer research in Nagoya, Japan'],
+          ['Extracurricular', 'STROBE', 5, 'Student-Postdoc Council'],          
+        ]);
+
+        // Sets chart options.
+        var colors = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
+                  '#cab2d6', '#ffff99', '#1f78b4', '#33a02c'];
+
+        var options = {
+          // height: 400,
+          sankey: {
+            node: {
+              colors: colors,
+              label: { 
+                fontName: 'Helvetica Neue', 
+                fontSize: 15 
+              }
+            },
+            link: {
+              colorMode: 'gradient',
+              colors: colors
+            }
+          },
+          tooltip: {
+            textStyle: {
+              color: 'black',
+              fontName: 'Helvetica Neue',
+              fontSize: 15,
+            }, 
+            showColorCode: true
+          }, 
+        };
+
+        // Instantiates and draws our chart, passing in some options.
+        var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+        chart.draw(data, options);
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="sankey_basic" style="max-width: '100%'; height: 500px;"></div>
+  </body>
+</html>
+
+<h3 id="publications">Publications</h3>
+
+<p>M. Gallagher-Jones*, C. S. B. Dias*, A. Pryor Jr.*, K. Bouchmella, L. Zhao, <strong>Y. H. Lo</strong>, M. B. Cardoso, D. Shapiro, J. A. Rodriguez and J. Miao. Correlative cellular ptychography with functionalized nanoparticles at the Fe L-edge. <em>Scientific Reports</em> <strong>7</strong>, 4757 (2017). [<a href="https://www.nature.com/articles/s41598-017-04784-5">Article</a>]</p>
+
+<p>A. Pryor Jr., Y. Yang, A. Rana, M. Gallagher-Jones, J. Zhou, <strong>Y. H. Lo</strong>, G. Melinte, W. Chiu, J. A. Rodriguez, J. Miao. GENFIRE: A generalized Fourier iterative reconstruction algorithm for high-resolution 3D imaging. <em>Scientific Reports</em> <em>7</em>, 10409 (2017). [<a href="https://www.nature.com/articles/s41598-017-09847-1">Article</a>]</p>
+
+<p><strong>Y. H. Lo</strong>, L. Zhao, M. Gallagher-Jones, A. Rana, J. Lodico, W. Xiao, B.C. Regan, J. Miao. In situ coherent diffractive imaging. <em>Nature communications</em> <strong>9</strong>, 1826 (2018). [<a href="https://www.nature.com/articles/s41467-018-04259-9">Article</a>]</p>
+
+<p>J. Deng*, <strong>Y. H. Lo</strong>*, M. Gallagher-Jones, S. Chen, A. Pryor Jr., Q. Jin, Y. P. Hong, Y. S. G. Nashed, S. Vogt, J. Miao, C. Jacobsen. Correlative 3D x-ray fluorescence and ptychographic tomography of frozen-hydrated green algae. <em>Science Advances</em> <strong>4</strong>, eaau4548 (2018). [<a href="https://advances.sciencemag.org/content/4/11/eaau4548">Article</a>]</p>
+
+<p><strong>Y. H. Lo</strong>, C.-T. Liao, J. Zhou, A. Rana, C. S. Bevis, G. Gui, B. Enders, K. M. Cannon, Y.-S.Yu, R. Celestre, K. Nowrouzi, D. Shapiro, H. Kapteyn, R. Falcone, C. Bennett, M. Murnane, J. Miao. Multimodal x-ray and electron microscopy of the Allende meteorite. <em>Science Advances</em> <strong>5</strong>, eaax3009 (2019). [<a href="https://phys.org/news/2019-09-multimodal-x-ray-electron-microscopy-allende.html">Phys.org Highlight</a>] [<a href="https://advances.sciencemag.org/content/5/9/eaax3009.full">Article</a>]</p>
+
+<p><strong>Y. H. Lo</strong>, J. Zhou, A. Rana, D. Morrill, C. Gentry, B. Enders, Y.-S. Yu, C.-Y. Sun, D. Shapiro, R. Falcone, H. Kapteyn, M. Murnane, P. U. P. A. Gilbert, J. Miao. X-ray linear dichroic ptychography reveals mis-orientations within coral skeleton ‘single crystals’. <em>Submitted</em> (2019).</p>
+
+<p>A. Rana, J. Zhang, M. Pham, A. Yuan, <strong>Y. H. Lo</strong>, H. Jiang, S. Osher, J. Miao. Ptychographic coherent diffractive imaging for attosecond pulses. <em>Submitted</em> (2019).</p>
+
+<p>* <em>denotes equal contribution</em>. See my <a href="https://scholar.google.com/citations?user=L_oHzBUAAAAJ&amp;hl=en">Google Scholar page</a> for more detail.</p>
+
+:ET

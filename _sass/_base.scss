@@ -31,8 +31,6 @@ body {
     font-kerning: normal;
 }
 
-
-
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
@@ -149,23 +147,24 @@ a {
  * Blockquotes
  */
 blockquote {
-    // color: $grey-color;
     // border-left: 4px solid $grey-color-light;
     // padding-left: $spacing-unit / 2;
-    color: $text-color;
-    text-align: left;    
+    text-align: left;
     font-size: $quote-font-size;
-    padding: 0 $indent-spacing*0 0 $indent-spacing;
+    line-height: $quote-line-height;
+    padding: 0 $indent-spacing 0 $indent-spacing;
     letter-spacing: $base-spacing;
+    color: $text-color; // 
+    color: $grey-color-dark;
     // font-style: italic;
     // font-weight: bold;
-    line-height: $quote-line-height;
+    font-family: $quote-font-family;
+    
 
     > :last-child {
         margin-bottom: 0;
     }
 }
-
 
 
 /**
@@ -298,4 +297,24 @@ pre {
         // }
     }
 
+}
+
+/**
+ * Footnotes
+ */
+
+.footnotes ol { 
+    // font-family: serif;
+    font-size: $footnotes-font-size;
+    line-height: $post-line-height;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+.footnotes li {
+    margin-left: 1.1em;
+ }
+
+.footnotes p {
+    margin: 0;
 }

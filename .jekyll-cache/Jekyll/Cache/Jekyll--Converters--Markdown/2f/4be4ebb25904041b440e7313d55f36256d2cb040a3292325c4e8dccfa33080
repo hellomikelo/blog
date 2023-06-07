@@ -1,0 +1,223 @@
+I"D#<div id="search-bar">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <input id="search" type="text" autocomplete="off" placeholder="Search me!" />
+    <div id="search-result"></div>
+</div>
+
+<ul class="post-list">
+
+  <h3 class="h3-post-title">AIML</h3>
+    
+    <ul class="post-list">
+    	<!-- <span class="post-meta">May 16, 2023 | </span>  -->
+      <span class="post-meta">2023-05-16 | </span> 
+    	<a href="/aiml/2023/05/16/surviving-age-of-ai.html">Surviving the Age of AI</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">May 2, 2023 | </span>  -->
+      <span class="post-meta">2023-05-02 | </span> 
+    	<a href="/aiml/2023/05/02/ai-food-chain.html">The emerging AI food chain</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Apr 13, 2023 | </span>  -->
+      <span class="post-meta">2023-04-13 | </span> 
+    	<a href="/aiml/2023/04/13/chatgpt-human-centered-ai.html">ChatGPT as an example of human-centered AI</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Feb 13, 2023 | </span>  -->
+      <span class="post-meta">2023-02-13 | </span> 
+    	<a href="/aiml/2023/02/13/desirable-ai-product.html">Designing a desirable AI product</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Dec 29, 2022 | </span>  -->
+      <span class="post-meta">2022-12-29 | </span> 
+    	<a href="/aiml/2022/12/29/building-and-using-generative-ai.html">Generative AI is shifting the way we use and build technology</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Jul 2, 2022 | </span>  -->
+      <span class="post-meta">2022-07-02 | </span> 
+    	<a href="/aiml/2022/07/02/dais-2022.html">Thoughts from 2022 Databricks Data+AI Summit</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Aug 29, 2019 | </span>  -->
+      <span class="post-meta">2019-08-29 | </span> 
+    	<a href="/aiml/2019/08/29/dncnn-em-images-denoising.html">Deep Neural Network Denoising of Electron Microscopy Images</a>
+    </ul>
+  
+
+  <h3 class="h3-post-title">Career</h3>
+    
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Jan 20, 2023 | </span>  -->
+      <span class="post-meta">2023-01-20 | </span> 
+    	<a href="/career/2023/01/20/hackathon-mindset-p2.html">Think-make-learn structured problem-solvings</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Jan 8, 2023 | </span>  -->
+      <span class="post-meta">2023-01-08 | </span> 
+    	<a href="/career/2023/01/08/hackathon-mindset-p1.html">Learn anything using the hackathon mindset</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Jun 5, 2022 | </span>  -->
+      <span class="post-meta">2022-06-05 | </span> 
+    	<a href="/diagrams/career/2022/06/05/general-problem-solving.html">A general problem solving mental model for tackling any problem</a>
+    </ul>
+  
+
+  <h3 class="h3-post-title">Data Science</h3>
+    
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Aug 8, 2022 | </span>  -->
+      <span class="post-meta">2022-08-08 | </span> 
+    	<a href="/data%20science/design/2022/08/08/apple-core-create-ml.html">When ML engineering meets user-centered design</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">May 25, 2020 | </span>  -->
+      <span class="post-meta">2020-05-25 | </span> 
+    	<a href="/data%20science/2020/05/25/covid-tech-layoff-analysis.html">Numbers Behind Tech Job Layoffs Due to COVID-19</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">May 23, 2020 | </span>  -->
+      <span class="post-meta">2020-05-23 | </span> 
+    	<a href="/data%20science/2020/05/23/gcp-quick-commands.html">GCP Quick-n-Dirty Commands</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">May 10, 2020 | </span>  -->
+      <span class="post-meta">2020-05-10 | </span> 
+    	<a href="/data%20science/2020/05/10/numbers-behind-airbnb-recent-layoffs.html">The Numbers Behind AirBnB's Recent Layoffs</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Apr 4, 2020 | </span>  -->
+      <span class="post-meta">2020-04-04 | </span> 
+    	<a href="/data%20science/2020/04/04/new-medium-blog-post.html">New Medium Blog Post on My Recent ML Project</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Aug 14, 2019 | </span>  -->
+      <span class="post-meta">2019-08-14 | </span> 
+    	<a href="/data%20science/2019/08/14/software-carpentry-day-notes.html">Software Carpentry Notes</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Apr 24, 2019 | </span>  -->
+      <span class="post-meta">2019-04-24 | </span> 
+    	<a href="/data%20science/2019/04/24/data-tour-through-la-neighborhoods.html">A Data Tour Through Los Angeles Neighborhoods</a>
+    </ul>
+  
+
+  <h3 class="h3-post-title">Design</h3>
+    
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Aug 8, 2022 | </span>  -->
+      <span class="post-meta">2022-08-08 | </span> 
+    	<a href="/data%20science/design/2022/08/08/apple-core-create-ml.html">When ML engineering meets user-centered design</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">May 14, 2020 | </span>  -->
+      <span class="post-meta">2020-05-14 | </span> 
+    	<a href="/design/2020/05/14/design-ah-tv-program.html">Design Ah! Reminding Us to Look, Think, and Create</a>
+    </ul>
+  
+
+  <h3 class="h3-post-title">Diagrams</h3>
+    
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Jun 5, 2022 | </span>  -->
+      <span class="post-meta">2022-06-05 | </span> 
+    	<a href="/diagrams/career/2022/06/05/general-problem-solving.html">A general problem solving mental model for tackling any problem</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">May 11, 2022 | </span>  -->
+      <span class="post-meta">2022-05-11 | </span> 
+    	<a href="/diagrams/web3/2022/05/11/web3.html">Web3 Ecosystem Deconstruction</a>
+    </ul>
+  
+
+  <h3 class="h3-post-title">Guides</h3>
+    
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Apr 23, 2020 | </span>  -->
+      <span class="post-meta">2020-04-23 | </span> 
+    	<a href="/guides/2020/04/23/step-by-step-GKE-deployment.html">Step-by-Step Streamlit App Deployment Via GKE</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Jul 30, 2018 | </span>  -->
+      <span class="post-meta">2018-07-30 | </span> 
+    	<a href="/guides/2018/07/30/training-neural-networks-on-computing-clusters.html">Training Neural Networks on Computing Clusters</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Jul 21, 2018 | </span>  -->
+      <span class="post-meta">2018-07-21 | </span> 
+    	<a href="/guides/2018/07/21/grep.html">The Very Useful grep Command for Searching General Keywords in Command Line</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Jun 19, 2018 | </span>  -->
+      <span class="post-meta">2018-06-19 | </span> 
+    	<a href="/guides/2018/06/19/getting-started-with-Conda.html">Getting Started with Conda</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Jun 17, 2018 | </span>  -->
+      <span class="post-meta">2018-06-17 | </span> 
+    	<a href="/guides/2018/06/17/git-jekyll-github-pages.html">Short Guide to Using git with Jekyll and Github Pages</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Oct 13, 2017 | </span>  -->
+      <span class="post-meta">2017-10-13 | </span> 
+    	<a href="/guides/2017/10/13/exploding-text-in-lithographic-mask-design-using-autocad-and-inkscape.html">Exploding Text in Lithographic Mask Design Using AutCAD and Inkscape</a>
+    </ul>
+  
+
+  <h3 class="h3-post-title">Product</h3>
+    
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Nov 17, 2022 | </span>  -->
+      <span class="post-meta">2022-11-17 | </span> 
+    	<a href="/product/2022/11/17/zoom-one-app-to-rule-them-all.html">Can Zoom be the one app to rule them all?</a>
+    </ul>
+  
+
+  <h3 class="h3-post-title">Research</h3>
+    
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Sep 13, 2019 | </span>  -->
+      <span class="post-meta">2019-09-13 | </span> 
+    	<a href="/research/2019/09/13/runnning-jobarrays-on-hoffman2.html">Running MATLAB jobarrays on UCLA's Hoffman2</a>
+    </ul>
+  
+    <ul class="post-list">
+    	<!-- <span class="post-meta">Jul 17, 2019 | </span>  -->
+      <span class="post-meta">2019-07-17 | </span> 
+    	<a href="/research/2019/07/17/LaTex-for-UCLA-dissertation.html">LaTex Formatting for UCLA Dissertation Using uclathe</a>
+    </ul>
+  
+
+  <h3 class="h3-post-title">Web3</h3>
+    
+    <ul class="post-list">
+    	<!-- <span class="post-meta">May 11, 2022 | </span>  -->
+      <span class="post-meta">2022-05-11 | </span> 
+    	<a href="/diagrams/web3/2022/05/11/web3.html">Web3 Ecosystem Deconstruction</a>
+    </ul>
+  
+
+</ul>
+:ET

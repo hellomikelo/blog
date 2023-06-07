@@ -7,34 +7,23 @@ published: true
 
 ## AI/ML
 
-**Fetcher: The work sidekick**  
-[Project repo](https://github.com/hellomikelo/hackathon-cohere-qdrant) \| [Project presentation](https://storage.googleapis.com/lablab-static-eu/presentations%2Fsubmissions%2Fclfd4c4zf00903b6x3n6tf719%2Fclfd4c4zf00903b6x3n6tf719-1679093178421.pdf) \| [Hackathon page](https://lablab.ai/event/multilingual-semantic-search-hackathon/fetch/fetcher-the-work-sidekick)
+2023-03-17 \| **Fetcher**: Work sidekick ([repo](https://github.com/hellomikelo/hackathon-cohere-qdrant) / [slides](https://storage.googleapis.com/lablab-static-eu/presentations%2Fsubmissions%2Fclfd4c4zf00903b6x3n6tf719%2Fclfd4c4zf00903b6x3n6tf719-1679093178421.pdf) / [page](https://lablab.ai/event/multilingual-semantic-search-hackathon/fetch/fetcher-the-work-sidekick))
 
-*In today's increasingly remote working style, organization’s messaging system, whether it's email or chat, contains lots of invaluable institutional knowledge. However, because these data are often unstructured and scattered, they are usually buried in the organization’s data ecosystem and are hard to search and extract value.* 
-*Fetcher is a chatbot that integrates into popular chat platforms such as Discord and Slack to seamlessly help users find relevant people and documents to save them from endless frustrating search. It does this by semantically searching chat messages to find the most relevant results and help to deliver actions that leads to a peace of mind.* 
+Fetcher is a chatbot that integrates into popular chat platforms such as Discord and Slack to seamlessly help users find relevant people and documents to save them from endless frustrating search. It does this by semantically searching chat messages to find the most relevant results and help to deliver actions that leads to a peace of mind. Fetcher differs from traditional keyword search engines in that it searches by the meaning of the query, not just by keywords. It also enables multi lingual search, so that global teams can more quickly find important information even when language is a barrier. Since Fetcher searches in the embedding space, this search engine can extend to multi modal modes that includes audio and images.* 
 
-*Fetcher differs from traditional keyword search engines in that it searches by the meaning of the query, not just by keywords. It also enables multi lingual search, so that global teams can more quickly find important information even when language is a barrier. Since Fetcher searches in the embedding space, this search engine can extend to multi modal modes that includes audio and images.* 
+2022-12-05 \| **Smarty**: Mindful personal assistant ([repo](https://github.com/hellomikelo/smarty) / [slides](https://docs.google.com/presentation/d/1AGgXLxIofVwwKWWS9p7DDUqIfxlBbngMrIVmSvR_2Q8/edit?usp=sharing) / [demo](https://hellomikelo-smarty-smarty-app-2flo6l.streamlit.app/) / [page](https://lablab.ai/event/generative-ai-hackathon/smarty/smarty-personal-assistant))
 
-*Fetcher works by collecting a chat channel’s history and embedding them using Cohere’s Embed API, then saving the embeddings to Qdrant’s vector search engine. When a new query comes in, Fetcher embeds the query and searches against the vector database to find the most relevant results, which can then feed into Cohere’s Generate API to summarize the message thread to kick start new conversations.* 
+Smarty uses generative AI to "quiet the noise" so you can work peacefully to get things done. It is a personalized task planner that uses generative AI to understand natural language semantics and evaluate the importance and urgency of your tasks, then prioritizes and batches them rigorously so you can focus on accomplishing what matters the most.
 
-*Fetcher offers 3 commands, /fetch, using vector similarities search to find relevant chat messages. /discuss, summarize a message thread, and kick start a conversation with a channel number. /revise, a sentence correction tool similar to Grammarly, allows user to send professional sounding messages.*
+2022-12-16 \| **Distill.ai**: AI meeting assistant ([repo](https://github.com/hellomikelo/openai-hackathon) / [slides](https://docs.google.com/presentation/d/1mOyOCs1HkmTxbvoHCTenvBFmGnSRM8ZiZsg6ddcr38w/edit?usp=sharing) / [demo](https://hellomikelo-openai-hackathon-app-wip-initial-r4od4p.streamlit.app/) / [page](https://lablab.ai/event/openai-whisper-gpt3-codex-dalle2-hackathon/headjackers/distill-ai-meeting-assistant))
 
-**Smarty: A mindful personal assistant**  
-[Project repo](https://github.com/hellomikelo/smarty) \| [Project presentation](https://docs.google.com/presentation/d/1AGgXLxIofVwwKWWS9p7DDUqIfxlBbngMrIVmSvR_2Q8/edit?usp=sharing) \| [Streamlit demo](https://hellomikelo-smarty-smarty-app-2flo6l.streamlit.app/) \| [Hackathon page](https://lablab.ai/event/generative-ai-hackathon/smarty/smarty-personal-assistant)
+Distiller uses generative AI to condense information shared during meetings into bit-sized summaries and provide inspirations and actionable plans to drive projects forward productively.
 
-*Smarty uses generative AI to "quiet the noise" so you can work peacefully to get things done. It is a personalized task planner that uses generative AI to understand natural language semantics and evaluate the importance and urgency of your tasks, then prioritizes and batches them rigorously so you can focus on accomplishing what matters the most.*
+<!-- ---  -->
 
-**Distill.ai: A smart-er AI meeting assistant**
+2022-12-24 \| **PodSearch**: Find + explore podcasts ([repo](https://github.com/hellomikelo/semantic-search-hackathon) / [slides](https://docs.google.com/presentation/d/16xZuIotA-xYZVeVV7foN4lzPn7rrYBYy_MzMpoWiszs/edit?pli=1#slide=id.g1c57b49e1f0_0_196) / [demo](https://hellomikelo-semantic-search-hackathon-streamlit-app-p4qpo5.streamlit.app/) / [page](https://lablab.ai/event/semantic-search-hackathon/info-insighters/podsearh))
 
-[Project repo](https://github.com/hellomikelo/openai-hackathon) \| [Project presentation](https://docs.google.com/presentation/d/1mOyOCs1HkmTxbvoHCTenvBFmGnSRM8ZiZsg6ddcr38w/edit?usp=sharing) \| [Streamlit demo](https://hellomikelo-openai-hackathon-app-wip-initial-r4od4p.streamlit.app/) \| [Hackathon page](https://lablab.ai/event/openai-whisper-gpt3-codex-dalle2-hackathon/headjackers/distill-ai-meeting-assistant)
-
-*Distiller uses generative AI to condense information shared during meetings into bit-sized summaries and provide inspirations and actionable plans to drive projects forward productively.*
-
-**PodSearch: Easily find and explore interesting podcast ideas**
-
-[Project repo](https://github.com/hellomikelo/semantic-search-hackathon) \| [Project presentation](https://docs.google.com/presentation/d/16xZuIotA-xYZVeVV7foN4lzPn7rrYBYy_MzMpoWiszs/edit?pli=1#slide=id.g1c57b49e1f0_0_196) \| [Streamlit demo](https://hellomikelo-semantic-search-hackathon-streamlit-app-p4qpo5.streamlit.app/) \| [Hackathon page](https://lablab.ai/event/semantic-search-hackathon/info-insighters/podsearh)
-
-*Have an interesting idea you want to learn more about but can't find the most relevant podcast to listen to? Look no further! Our app uses semantic search to quickly and accurately find the most relevant podcasts you're interested in. Try it out today and see for yourself how our app can make your search a breeze!*
+Have an interesting idea you want to learn more about but can't find the most relevant podcast to listen to? Look no further! Our app uses semantic search to quickly and accurately find the most relevant podcasts you're interested in. Try it out today and see for yourself how our app can make your search a breeze!
 
 --- 
 
