@@ -161,8 +161,8 @@
 }
 
 .footer-col-2 {
-    width: -webkit-calc(30% - (#{$spacing-unit} / 2));
-    width:         calc(30% - (#{$spacing-unit} / 2));
+    width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+    width:         calc(50% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-3 {
@@ -207,13 +207,14 @@
 .post-meta {
     font-size: $base-font-size;
     color: $text-color;
-    //margin-top: 100px;
 }
 
 .post-link {
     display: block;
     font-size: $base-font-size + 6;  //before: 21px;
     font-weight: $title-font-weight;
+    margin-bottom: $base-font-size / 4;
+    line-height: $title-line-height;
     //letter-spacing: $base-spacing;
 
 }
@@ -303,27 +304,25 @@ iframe[src*="player.vimeo.com"] {
 // Posts
 .post-header {
     //margin-bottom: $spacing-unit;
-    //margin-top: 0;
+    // margin-top: 0;
 }
 
 .post-title {
     font-size: $title-font-size;
-    //letter-spacing: $base-spacing;
-    //line-height: 1;
+    line-height: $title-line-height;
     font-weight: $title-font-weight;
-    //margin-top: 0;
-    //margin-bottom: $spacing-unit / 2;
-    margin-bottom: 0;
-
-    @include media-query($on-laptop) {
-        font-size: $title-font-size;
-    }
+    margin-bottom: $base-font-size / 4; //$title-font-siz / 2;
+    // @include media-query($on-laptop) {
+    //     font-size: $title-font-size;
+    //     // line-height: 1.3;
+    // }
 }
 
 .post-date {
     font-size: $base-font-size;
     color: $text-color;
-    //margin-bottom: 100px;
+    // line-height: 1.3;
+    // padding-top: 200px;
 }
 
 .post-content {

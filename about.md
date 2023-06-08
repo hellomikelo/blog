@@ -27,5 +27,3 @@ My leadership styles are **strategic**, **democratic**, and **situational**. My 
 I'm a technologist at heart, and I have a deep understanding of **Cloud Native**, **Big Data**, and **Machine Learning** technologies. I am excellent with **Agile** and **Scrum** methodologies, and well-versed in **Lean Product** and **Design Thinking**.
 
 If you want to learn more, let's chat!
-
-
