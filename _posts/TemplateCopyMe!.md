@@ -1,10 +1,12 @@
 ---
 layout: post
-title: 
-description: 
+title: Title
+description: Description
 published: false
-categories: [] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
-tags: [] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
+# choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
+categories: [] 
+# choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
+tags: [] 
 excerpt_separator: <!--end-->
 ---
 

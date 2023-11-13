@@ -4,6 +4,8 @@ title: About
 permalink: /about
 ---
 
+<p><hr style="width: 5%"></p>
+
 <style>
 img {
     /*border-radius: 10%;*/
@@ -12,11 +14,13 @@ img {
 }
 </style>
 
-![notion avatar](/assets/images/mike-avatar.png){:width="25%"}
+<!-- ![notion avatar](/assets/images/mike-avatar.png){:width="25%"} -->
 
-Hello, I'm Mike. Here's a summary of what I'm about.
+Hello, I'm Mike, and here's my human Venn diagram.
 
-I am passionate about digital innovation, and I participate by strategizing, building, and scaling great **AI-driven digital products and services**.
+![notion avatar](/assets/images/mike-venn-diagram.png){:width="75%"}
+
+<!-- I am passionate about digital innovation, and I participate by strategizing, building, and scaling great **AI-driven digital products and services**.
 
 I can set executive-level **visions and strategies**, formulate detailed **roadmaps**, and dive in with **hands-on execution**.
 
@@ -25,5 +29,5 @@ I strive for organizational excellence by practicing **agility**, encouraging **
 My leadership styles are **strategic**, **democratic**, and **situational**. My core values are **empathy**, **growth**, **collaboration**, **ownership**, **pragmatism**, **resolve**, and **openness**.
 
 I'm a technologist at heart, and I have a deep understanding of **Cloud Native**, **Big Data**, and **Machine Learning** technologies. I am excellent with **Agile** and **Scrum** methodologies, and well-versed in **Lean Product** and **Design Thinking**.
-
-If you want to learn more, let's chat!
+ -->
+Let's [chat](mailto:hellomikelo@gmail.com)!

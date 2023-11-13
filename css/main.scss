@@ -8,18 +8,18 @@
 // Our variables
 
 // Font sizes & family 
-$title-font-size: 32px;  //28px
-$base-font-size:   18px;  //15px
-$quote-font-size: 18px; // 24px
-$table-font-size:  15px;  //13px
+$title-font-size: 32px;
+$base-font-size:   18px;
+$quote-font-size: 18px;
+$table-font-size:  15px;
 $footnotes-font-size: 15px;
 $code-font-size: 16px;
 $footer-font-size: 16px;
 
-$page-padding: 16px;
+$page-padding: 16px ;
 $small-font-size:  $base-font-size * 0.875;
 $base-font-family: "Helvetica Neue", Arial, sans-serif;  //Verdana, Geneva, sans-serif;
-$quote-font-family: Courier, Verdana, Geneva, sans-serif;
+$quote-font-family: Georgia, Garamond, Verdana, Courier, Geneva, sans-serif;
 
 // Font weights
 $title-font-weight: 550;
@@ -28,7 +28,7 @@ $base-font-weight: 350;
 // Line heights
 $base-line-height: 1.5;
 $heading-line-height: 200%;
-$post-line-height: 1.7;
+$post-line-height: 1.5;
 $title-line-height: 1.2;
 $post-heading-line-height: 200%;
 $code-line-height: 1.3;

@@ -15,7 +15,7 @@ published: false
 
 <ul class="post-list">
   {% for post in site.posts limit:total %}
-    <li>      
+    <li class="post-list">      
       <h2>
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </h2>

@@ -11,47 +11,47 @@
         <!-- </ul> -->
       <!-- </div> -->
 
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          
-          {% if site.email %}
-          <li>
-            {% include icon-email.html email=site.email%}
-          </li>
-          {% endif %}
+        <div class="footer-col footer-col-2">
+          <ul class="social-media-list">
+            
+            {% if site.email %}
+            <li>
+              {% include icon-email.html email=site.email%}
+            </li>
+            {% endif %}
 
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
+            {% if site.github_username %}
+            <li>
+              {% include icon-github.html username=site.github_username %}
+            </li>
+            {% endif %}
 
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
+            {% if site.twitter_username %}
+            <li>
+              {% include icon-twitter.html username=site.twitter_username %}
+            </li>
+            {% endif %}
 
-          {% if site.linkedin_username %}
-          <li>
-            {% include icon-linkedin.html username=site.linkedin_username %}
-          </li>
-          {% endif %}
+            {% if site.linkedin_username %}
+            <li>
+              {% include icon-linkedin.html username=site.linkedin_username %}
+            </li>
+            {% endif %}
 
-          {% if site.so_link %}
-          <li>
-            {% include so.html so_link=site.so_link username=site.so_username %}
-          </li>
-          {% endif %}
+            {% if site.so_link %}
+            <li>
+              {% include so.html so_link=site.so_link username=site.so_username %}
+            </li>
+            {% endif %}
 
-          {% if site.steemit_username %}
-          <li>
-            {% include steemit.html steemit_name=site.steemit_name steemit_username=site.steemit_username %}
-          </li>
-          {% endif %}
+            {% if site.steemit_username %}
+            <li>
+              {% include steemit.html steemit_name=site.steemit_name steemit_username=site.steemit_username %}
+            </li>
+            {% endif %}
 
-        </ul>        
-      </div>
+          </ul>        
+        </div>
       
       <!-- <div class="footer-col footer-col-3"> -->
         <!-- <p>{{ site.description }}</p> -->

@@ -42,8 +42,12 @@ ul, ol, dl, figure,
 }
 
 .h2-post-title {
-    margin: 0 0;
+    // margin: 0 0;
     //margin-bottom: $spacing-unit / 3;
+}
+
+.h2-post-list-title {
+    margin: 0 0;
 }
 
 .h3-post-title {
@@ -155,15 +159,17 @@ blockquote {
     padding: 0 $indent-spacing 0 $indent-spacing;
     letter-spacing: $base-spacing;
     color: $text-color; // 
-    color: $grey-color;
+    // color: $grey-color;
+    // padding: 18px;
+    margin: 0px;
     // font-style: italic;
     // font-weight: bold;
     font-family: $quote-font-family;
     
 
-    > :last-child {
-        margin-bottom: 0;
-    }
+    // > :last-child {
+    //     margin-bottom: 0;
+    // }
 }
 
 
