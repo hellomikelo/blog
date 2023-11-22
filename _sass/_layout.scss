@@ -1,4 +1,4 @@
-    //  Site header
+//  Site header
 .site-header {
     // padding: 0 $page-padding;
     padding: 18px $page-padding 18px $page-padding;
@@ -428,3 +428,18 @@ img {
     max-inline-size: 100%;
     block-size: auto;
   }
+
+
+// Horizonal line
+.hr-post {
+    width: 5%; 
+    margin: auto; 
+    border-color: $grey-color-light; 
+    border-bottom: 0;
+}
+
+.hr-page {
+    width: 5%; 
+    border-color: $grey-color-light; 
+    border-bottom: 0;
+}

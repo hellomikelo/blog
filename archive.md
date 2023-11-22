@@ -4,7 +4,7 @@ title: Archive
 permalink: /archive
 ---
 
-<p><hr style="width: 5%"></p>
+<p><hr class="hr-page"></p>
 
 {% include searchbar.html %} 
 {% assign total = 0 %}

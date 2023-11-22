@@ -5,7 +5,7 @@ permalink: /designs
 published: true
 ---
 
-<p><hr style="width: 5%"></p>
+<p><hr class="hr-page"></p>
 
 ## Plotter art
 

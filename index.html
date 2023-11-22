@@ -20,7 +20,7 @@ title: "Blog"
   {% for post in site.posts limit:total %}
     <p>
       <li>
-        <hr style="width: 5%">
+        <hr class="hr-page">
         <p>
           <h2 class="h2-post-list-title">
             <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
