@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Principles of a Meaningful Career
+title: 💡 Principles of a Meaningful Career
 description: Description 
 published: true
-categories: [Career] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
+categories: [💡 Problem Solving] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
 tags: [career] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
 excerpt_separator: <!--end-->
 ---

@@ -16,7 +16,9 @@ img {
 
 <!-- ![notion avatar](/assets/images/mike-avatar.png){:width="25%"} -->
 
-Hello, I'm Mike, and here's my human Venn diagram.
+Hey, I'm Mike. I write about __problem solving__, __AI/ML__, __design__, __product__ and their intersections, in no particular order.
+
+Oh, and here's my human Venn diagram.
 
 ![notion avatar](/assets/images/mike-venn-diagram.png){:width="75%"}
 
@@ -31,4 +33,4 @@ My leadership styles are **strategic**, **democratic**, and **situational**. My 
 I'm a technologist at heart, and I have a deep understanding of **Cloud Native**, **Big Data**, and **Machine Learning** technologies. I am excellent with **Agile** and **Scrum** methodologies, and well-versed in **Lean Product** and **Design Thinking**.
  -->
 
-Let's [chat](mailto:hellomikelo@gmail.com)!
+You can reach me via [email](mailto:hellomikelo@gmail.com).

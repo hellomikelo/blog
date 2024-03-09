@@ -1,11 +1,11 @@
 ---
 
 layout: post
-title: Software Carpentry Notes
+title: 📝 Software Carpentry Notes
 description: 
 published: true
 excerpt_separator: <!--more-->
-categories: [Data Science]
+categories: [📝 Notes]
 
 ---
 

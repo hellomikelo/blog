@@ -1,9 +1,9 @@
 ---
 layout: post
-title: The Signals Are Talking (Notes)
-description: Some notes from the book The Signals Are Talking.
+title: 📝 The Signals Are Talking (Amy Webb)
+description: Notes from the book The Signals Are Talking.
 published: true
-categories: [Guides] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
+categories: [📝 Notes] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
 tags: [thoughts] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
 excerpt_separator: <!--end-->
 ---
