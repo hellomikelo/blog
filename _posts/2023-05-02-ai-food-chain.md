@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The emerging AI food chain
+title: The Emerging AI Food Chain
 description: Discussing the emerging "AI food chain" and its significance in the tech industry and society at large, comparing it to earth's natural ecosystem.
 published: true
 categories: [AIML] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]

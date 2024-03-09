@@ -42,7 +42,7 @@ Distiller uses generative AI to condense information shared during meetings into
 
 Have an interesting idea you want to learn more about but can't find the most relevant podcast to listen to? Look no further! Our app uses semantic search to quickly and accurately find the most relevant podcasts you're interested in. Try it out today and see for yourself how our app can make your search a breeze!
 
---- 
+<p><hr style="width: 5%"></p>
 
 ## PhD Research
 
