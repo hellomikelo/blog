@@ -22,13 +22,18 @@ title: "Blog"
       <li>
         <hr class="hr-page">
         <p>
-          <h2 class="h2-post-list-title">
+          <h2 class="post-list-title">
             <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           </h2>
           <!-- <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>  -->
-          <span class="post-meta">{{ post.date | date: "%Y.%m.%d" }}</span> 
+          <div class="post-list-subtitle">{{ post.description }}</div> 
+          <div class="post-list-date">{{ post.date | date: "%Y.%m.%d" }}</div> 
         </p>
-        <div class='post-content'>{{ post.excerpt | strip_html }} </div>
+        
+        <!-- <span class="post-meta">{{ post.date | date: "%Y.%m.%d" }}</span>  -->
+        
+        <!-- <div class='post-content'>{{ post.excerpt | strip_html }} </div> -->
+
         {% if post.image %}
           <a href="{{ post.url | prepend: site.baseurl }}" ><img src="{{ post.image }}" /></a>
         {% endif %}
