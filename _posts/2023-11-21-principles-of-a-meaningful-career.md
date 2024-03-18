@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 💡 Principles of a Meaningful Career
-description: Description 
+description: Wisdom from accomplished researchers on how to make a fruitful career.
 published: true
 categories: [💡 Problem Solving] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
 tags: [career] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
