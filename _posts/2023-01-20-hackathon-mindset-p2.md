@@ -19,7 +19,7 @@ Let's start by breaking down the game's basic components, which are:
 
 When superimposing those game components on a real life project, the starting line can represent a time when an interesting idea enters your mind. The finish line can be when you complete that product you envisioned, and the deadlines are the milestones along the way you need to hit to make the product a reality. Finally, the limits are the constraints inherent in your project (costs, size, scope, etc). With the rules set, is there a guide for playing the Crazy Taxis of our everyday life? To answer this question, let's turn to the **think-make-learn (TML) model**.
 
-![tml-framework](/static/imgs/tml-framework.png ){: width="100%"}
+[tml-framework](/static/imgs/tml-framework.png){: width="100%"}
 
 The TML model consists of 3 overarching steps with 2 elements each:
 

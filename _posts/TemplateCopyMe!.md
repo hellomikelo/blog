@@ -14,4 +14,4 @@ Some text...<!--end-->More text...
 
 * [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-[![](/static/imgs/image)](/static/imgs/image)
+[![](/static/imgs/image){: width="100%"}](/static/imgs/image)
