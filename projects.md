@@ -5,8 +5,6 @@ permalink: /projects
 published: true
 ---
 
-<p><hr class="hr-page"></p>
-
 ## AI/ML Hackathons
 
 <!-- --- -->

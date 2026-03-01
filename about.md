@@ -4,8 +4,6 @@ title: About
 permalink: /about
 ---
 
-<p><hr class="hr-page"></p>
-
 <style>
 img {
     /*border-radius: 10%;*/

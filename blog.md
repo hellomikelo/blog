@@ -5,24 +5,20 @@ permalink: /blog
 published: false
 ---
 
-{% assign total = 0 %}
-{% for post in site.posts %}
-  {% assign total = total | plus: 1 %}
-{% endfor %}
-
-{% assign total = 5 %}
-<h1 class="page-heading">Recent posts ({{ total }})</h1>
+## Recent Posts
 
 <ul class="post-list">
-  {% for post in site.posts limit:total %}
-    <li class="post-list">      
-      <h2>
+  {% for post in site.posts limit:5 %}
+    <li>
+      <h3 class="post-list-title">
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </h2>
-      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-      {{ post.excerpt | strip_html }}
+      </h3>
+      {% if post.description %}
+        <div class="post-list-subtitle">{{ post.description }}</div>
+      {% endif %}
+      <div class="post-list-date">{{ post.date | date: "%Y.%m.%d" }}</div>
       {% if post.image %}
-        <a href="{{ post.url | prepend: site.baseurl }}" ><img src="{{ post.image }}" /></a>
+        <a href="{{ post.url | prepend: site.baseurl }}"><img src="{{ post.image }}" alt="{{ post.title }}" /></a>
       {% endif %}
     </li>
   {% endfor %}

@@ -4,21 +4,71 @@
       searchInput: document.getElementById('search'),
       resultsContainer: document.getElementById('search-result'),
       json: '/search.json',
-      // searchResultTemplate: '<a class="result-item" href="https://hellomikelo.com{url}"><div class="title">{title}'+
-      //         '</div><div class="description">{description}</div></a>'
-      searchResultTemplate: '<a class="result-item" href="{url}"><div class="title">{title}'+
-              '</div><div class="description">{description}</div></a>'
+      searchResultTemplate: '<a class="result-item" href="{url}"><div class="title">{title}</div><div class="description">{description}</div></a>'
     });
     
-    document.querySelector('#search').addEventListener('keyup', function () {
+    var searchInput = document.querySelector('#search');
+    var searchResult = document.querySelector('#search-result');
+    var resultItems = [];
+    var activeIndex = -1;
+    var searchTimeout;
+
+    function updateResultItems() {
+      resultItems = searchResult.querySelectorAll('.result-item');
+      activeIndex = -1;
+    }
+
+    searchInput.addEventListener('input', function () {
+      clearTimeout(searchTimeout);
       var keyword = this.value.toLowerCase();
 
-      sjs.search(keyword);
+      searchTimeout = setTimeout(function() {
+        sjs.search(keyword);
+        setTimeout(updateResultItems, 50);
+        
+        if (keyword.length > 0) {
+          searchResult.style.display = 'block';
+        } else {
+          searchResult.style.display = 'none';
+        }
+      }, 150);
+    });
 
-      if (keyword.length > 0) {
-        document.querySelector('#search-result').style.display = 'block';;
-      } else {
-        document.querySelector('#search-result').style.display = 'none';;
+    searchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        
+        if (resultItems.length === 0) {
+          updateResultItems();
+        }
+
+        if (resultItems.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+          activeIndex = Math.min(activeIndex + 1, resultItems.length - 1);
+        } else {
+          activeIndex = Math.max(activeIndex - 1, -1);
+        }
+
+        resultItems.forEach(function(item, index) {
+          item.classList.toggle('active', index === activeIndex);
+        });
+
+        if (activeIndex >= 0 && resultItems[activeIndex]) {
+          resultItems[activeIndex].scrollIntoView({ block: 'nearest' });
+        }
+      } else if (e.key === 'Enter' && activeIndex >= 0 && resultItems[activeIndex]) {
+        e.preventDefault();
+        window.location.href = resultItems[activeIndex].href;
+      } else if (e.key === 'Escape') {
+        searchResult.style.display = 'none';
+        searchInput.blur();
       }
-    })
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!searchInput.contains(e.target) && !searchResult.contains(e.target)) {
+        searchResult.style.display = 'none';
+      }
+    });
 </script>

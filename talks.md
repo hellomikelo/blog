@@ -5,13 +5,12 @@ permalink: /talks
 published: true
 ---
 
-<p><hr class="hr-page"></p>
-
 ## Previous talks
 
-2020.03.01 \| [Pair: project overview](slides/pair-overview.html)  
-2020.06.01 \| [Pair: image-based product recommender](slides/insight-ds-gke.html)
+**Pair: project overview**  
+2020.03.01 | [slides](slides/pair-overview.html)
 
-<p><hr class="hr-page"></p>
+**Pair: image-based product recommender**  
+2020.06.01 | [slides](slides/insight-ds-gke.html)
 
 ## Ideas in flux

@@ -5,15 +5,11 @@ permalink: /designs
 published: true
 ---
 
-<p><hr class="hr-page"></p>
-
 ## Plotter art
 
 Art created using autonomous systems.
 
 {% include image-gallery.html folder="/static/designs" %}
-
-<p><hr style="width: 5%"></p>
 
 ## Thinker's Toolbox 
 
