@@ -3,7 +3,7 @@ layout: post
 title: 🧰 Progress-Enhance Project Tracker
 description: An intuitive and visual way to track a project’s progress.
 published: true
-categories: [🧰 Guides] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
+categories: [Guides] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
 tags: [Misc] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
 excerpt_separator: <!--end-->
 ---

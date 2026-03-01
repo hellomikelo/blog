@@ -3,7 +3,7 @@ layout: post
 title: 💡 ML is Better with Business and Design
 description: 
 published: true
-categories: [💡 Problem Solving] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
+categories: [Problem Solving] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
 tags: [ML] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
 excerpt_separator: <!--end-->
 ---

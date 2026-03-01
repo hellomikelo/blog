@@ -1,7 +1,7 @@
 ---
 ---
 :root {
-  --bg-color: #fafafa;
+  --bg-color: #fff;
   --text-color: #333;
   --text-light: #666;
   --accent-color: #2563eb;
@@ -149,7 +149,15 @@ img {
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
+}
+
+.page-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem;
+  letter-spacing: -0.02em;
   color: var(--text-color);
 }
 

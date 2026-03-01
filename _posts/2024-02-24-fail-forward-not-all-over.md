@@ -3,7 +3,7 @@ layout: post
 title: 💡 Fail Forward, Not All Over
 description: Don’t drift with the current. Act fast and adapt, but move decisively and with purpose.
 published: true
-categories: [💡 Problem Solving] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
+categories: [Problem Solving] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
 tags: [problem-solving] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
 excerpt_separator: <!--end-->
 ---

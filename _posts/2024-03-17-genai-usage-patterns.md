@@ -3,7 +3,7 @@ layout: post
 title: 🤖 Common GenAI Usage Patterns 
 description: Autocomplete, explain, generate. Three ways that GenAI is changing the way I work.
 published: true
-categories: [🤖 AIML] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
+categories: [AIML] # choose from [AIML, Career, Data Science, Design, Diagrams, Guides, Product, Research, Web3]
 tags: [thoughts] # choose from [web3, ds, problem-solving, ?, career, ML, data science, thoughts, trends, products, Misc]
 excerpt_separator: <!--end-->
 ---
