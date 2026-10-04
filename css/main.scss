@@ -312,10 +312,11 @@ img {
 }
 
 .post-content blockquote {
-  border-left: 3px solid var(--accent-color);
+  border-left: 3px solid var(--border-color);
   margin: 2rem 0;
   padding: 0.25rem 0 0.25rem 1.5rem;
   font-size: 1.08em;
+  font-style: italic;
 }
 
 .post-content blockquote p {
