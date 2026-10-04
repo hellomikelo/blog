@@ -19,4 +19,15 @@ layout: default
   
   <script type="text/javascript" src="/js/lightbox.js"></script>
   <link rel="stylesheet" href="/css/lightbox.css">
+  <script>
+    // Add hover-reveal anchor links to post section headings
+    document.querySelectorAll('.post-content h2[id], .post-content h3[id]').forEach(function (heading) {
+      var anchor = document.createElement('a');
+      anchor.className = 'anchor-link';
+      anchor.href = '#' + heading.id;
+      anchor.setAttribute('aria-label', 'Link to this section');
+      anchor.textContent = '#';
+      heading.appendChild(anchor);
+    });
+  </script>
 </article>
