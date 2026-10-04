@@ -10,7 +10,7 @@ permalink: /archive
 
 <div class="archive-list">
 {% for category in sorted_categories %}
-  <h2 class="h2-post-title">{{ category[0] }}</h2>
+  <h2 class="h2-post-title">{{ category[0] }} <span class="archive-count">{{ category[1].size }}</span></h2>
   <ul class="post-list archive-posts">
     {% for post in category[1] %}
       <li>
