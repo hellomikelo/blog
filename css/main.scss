@@ -438,15 +438,9 @@ img {
 }
 
 .archive-posts li {
-  margin-bottom: 0;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0.25rem;
   display: flex;
   gap: 0.75rem;
-}
-
-.archive-posts li:last-child {
-  border-bottom: none;
 }
 
 .archive-posts .post-meta {
@@ -561,4 +555,51 @@ img {
   .site-nav .page-link {
     font-size: 0.85rem;
   }
+}
+
+/* ---------- Projects page ---------- */
+.project {
+  padding: 1.5rem 0;
+}
+
+.project + .project {
+  border-top: 1px solid var(--border-color);
+}
+
+.project h3 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+/* link row directly under the project title -> chips */
+.project h3 + p {
+  margin-bottom: 1rem;
+}
+
+.project h3 + p a {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  margin: 0 0.4rem 0.4rem 0;
+  background: var(--code-bg);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.project h3 + p a:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+.project > p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Archive page ---------- */
+.archive-count {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--meta-color);
+  margin-left: 0.25rem;
 }
