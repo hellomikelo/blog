@@ -438,9 +438,15 @@ img {
 }
 
 .archive-posts li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   gap: 0.75rem;
+}
+
+.archive-posts li:last-child {
+  border-bottom: none;
 }
 
 .archive-posts .post-meta {
