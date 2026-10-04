@@ -8,3 +8,15 @@
     <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
   </div>
 </footer>
+
+<script>
+  // Append hover-reveal anchor links to post H2s
+  document.querySelectorAll('.post-content h2[id]').forEach(function(h2) {
+    var link = document.createElement('a');
+    link.className = 'anchor-link';
+    link.href = '#' + h2.id;
+    link.textContent = '#';
+    link.title = 'Link to this section';
+    h2.appendChild(link);
+  });
+</script>
