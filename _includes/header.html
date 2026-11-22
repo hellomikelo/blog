@@ -2,16 +2,19 @@
   <div class="wrapper">
     <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
     <nav class="site-nav">
-      {% for my_page in site.pages %}
-        {% if my_page.title %}
-          {% assign nav_class = "page-link" %}
-          {% if page.url == my_page.url %}
-            {% assign nav_class = "page-link active" %}
-          {% elsif my_page.title == "Blog" and page.layout == "post" %}
-            {% assign nav_class = "page-link active" %}
+      {% assign nav_order = "About,Blog,Archive,Designs,Projects,Talks" | split: "," %}
+      {% for nav_title in nav_order %}
+        {% for my_page in site.pages %}
+          {% if my_page.title == nav_title %}
+            {% assign nav_class = "page-link" %}
+            {% if page.url == my_page.url %}
+              {% assign nav_class = "page-link active" %}
+            {% elsif my_page.title == "Blog" and page.layout == "post" %}
+              {% assign nav_class = "page-link active" %}
+            {% endif %}
+            <a class="{{ nav_class }}" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
           {% endif %}
-          <a class="{{ nav_class }}" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
-        {% endif %}
+        {% endfor %}
       {% endfor %}
       <button id="theme-toggle" aria-label="Toggle dark mode">
         <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
